@@ -1,0 +1,12 @@
+[29-Jan-2019 16:32:58 America/Sao_Paulo] PHP Notice:  Undefined variable: objSession2 in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:32:58 America/Sao_Paulo] PHP Fatal error:  Call to a member function get() on null in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:33:07 America/Sao_Paulo] PHP Notice:  Undefined variable: objSession2 in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:33:07 America/Sao_Paulo] PHP Fatal error:  Call to a member function get() on null in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:35:39 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:35:45 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:35:50 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:36:19 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:36:21 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:36:30 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:40:08 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29
+[29-Jan-2019 16:40:16 America/Sao_Paulo] PHP Notice:  Use of undefined constant session_name - assumed 'session_name' in /home/netcom/public_html/painel/geral/sistema/ckfinder/config.php on line 29

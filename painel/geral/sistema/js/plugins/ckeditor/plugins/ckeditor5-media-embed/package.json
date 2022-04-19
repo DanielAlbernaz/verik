@@ -1,0 +1,101 @@
+{
+  "_from": "@ckeditor/ckeditor5-media-embed",
+  "_id": "@ckeditor/ckeditor5-media-embed@11.1.3",
+  "_inBundle": false,
+  "_integrity": "sha512-4iy2NYkO2WsM60sXACl9XjclF7p241vdNhQ1PzcMEAqy744UfEquJI3kh/ecnvEf/JXYU56UhCdw+J3EhY1tFg==",
+  "_location": "/@ckeditor/ckeditor5-media-embed",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@ckeditor/ckeditor5-media-embed",
+    "name": "@ckeditor/ckeditor5-media-embed",
+    "escapedName": "@ckeditor%2fckeditor5-media-embed",
+    "scope": "@ckeditor",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@ckeditor/ckeditor5-media-embed/-/ckeditor5-media-embed-11.1.3.tgz",
+  "_shasum": "e228561fc698f049a7e88909f8c211fe647b290f",
+  "_spec": "@ckeditor/ckeditor5-media-embed",
+  "_where": "C:\\Users\\euripedes.junior\\Dropbox\\projetos\\site\\painel\\geral\\sistema\\js\\plugins\\ckeditor\\plugins",
+  "author": {
+    "name": "CKSource",
+    "url": "http://cksource.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/ckeditor/ckeditor5-media-embed/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@ckeditor/ckeditor5-clipboard": "^12.0.1",
+    "@ckeditor/ckeditor5-core": "^12.2.1",
+    "@ckeditor/ckeditor5-engine": "^13.2.1",
+    "@ckeditor/ckeditor5-image": "^13.1.2",
+    "@ckeditor/ckeditor5-ui": "^13.0.2",
+    "@ckeditor/ckeditor5-undo": "^11.0.4",
+    "@ckeditor/ckeditor5-utils": "^13.0.1",
+    "@ckeditor/ckeditor5-widget": "^11.0.4"
+  },
+  "deprecated": false,
+  "description": "Media Embed feature for CKEditor 5.",
+  "devDependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^11.1.3",
+    "@ckeditor/ckeditor5-editor-balloon": "^12.2.1",
+    "@ckeditor/ckeditor5-editor-classic": "^12.1.3",
+    "@ckeditor/ckeditor5-link": "^11.1.1",
+    "@ckeditor/ckeditor5-list": "^12.0.4",
+    "@ckeditor/ckeditor5-paragraph": "^11.0.4",
+    "@ckeditor/ckeditor5-typing": "^12.1.1",
+    "eslint": "^5.5.0",
+    "eslint-config-ckeditor5": "^2.0.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.7.1"
+  },
+  "eslintIgnore": [
+    "src/lib/**",
+    "packages/**"
+  ],
+  "files": [
+    "lang",
+    "src",
+    "theme"
+  ],
+  "homepage": "https://ckeditor.com/ckeditor-5",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "ckeditor",
+    "ckeditor5",
+    "ckeditor 5",
+    "ckeditor5-feature",
+    "ckeditor5-plugin"
+  ],
+  "license": "GPL-2.0-or-later",
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --quiet"
+    ]
+  },
+  "name": "@ckeditor/ckeditor5-media-embed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckeditor/ckeditor5-media-embed.git"
+  },
+  "scripts": {
+    "lint": "eslint --quiet '**/*.js'"
+  },
+  "version": "11.1.3"
+}

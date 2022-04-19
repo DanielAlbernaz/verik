@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jcrop Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../dist/jcrop.css" />
+	<style>.jcrop-stage{display:none;}</style>
+  </head>
+  <body>
+	
+    <div style="padding:0 5%;">
+    <h1 style="font-family:Helvetica,sans-serif;">
+      Jcrop Example 
+      <span style="color:lightgray;">- Aspect Ratio + SVG</span>
+    </h1>
+
+    <img id="target"/>
+
+    <div style="margin-top:0.5em;">
+		<input type="file" name="files" id="files" onchange="preview(this);">
+    </div>
+
+    </div>
+
+ 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../dist/jcrop.js"></script>
+    <script>
+	
+		function preview(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#target').attr('src', e.target.result).width(550)
+				};
+				reader.readAsDataURL(input.files[0]);
+				$('.jcrop-stage').show();
+			}
+		}	
+	
+		const jcp = Jcrop.attach('target',{multi:false});
+
+		const rect = Jcrop.Rect.fromPoints([100,100],[1920,768]);
+
+		const crop = jcp.newWidget(rect,{
+			onSelect: updateCoords,
+			aspectRatio: rect.aspect,
+
+			canRemove: false
+		});
+
+		const img = document.getElementById('img');
+		crop.el.appendChild(img);
+		
+		function updateCoords(c)
+		{
+			$('#x').val(c.x);
+			$('#y').val(c.y);
+			$('#w').val(c.w);
+			$('#h').val(c.h);
+
+		}
+
+		function anim(){
+			if (!jcp.active) return false;
+			const animtype = document.getElementById('animtype').value;
+			jcp.active.animate(rrect(),null,animtype);
+			jcp.focus();
+		}
+    </script>
+  </body>
+</html>
