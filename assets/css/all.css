@@ -1,1 +1,18 @@
 @charset "UTF-8";
+
+/*font google verik*/
+
+@font-face {
+    font-family: "IntroDemo-BlackCAPS";
+    src: url("../fonts/WEB/IntroDemo-BlackCAPS.eot")
+}
+
+
+/*sobre nos*/
+
+.tituloDestaque {
+    font-family: "IntroDemo-BlackCAPS";
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 50px;
+}

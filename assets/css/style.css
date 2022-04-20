@@ -1,13 +1,10 @@
 @charset "UTF-8";
 
 /*
-  Template Name: Suruchi - Fashion eCommerce HTML Template
-  Author Name: Hook theme
-  Author URL: https://themeforest.net/user/hooktheme
-  Version: 1.0.0
+  Verik
 
   ----------------------------
-  [Table of contents CSS] 
+  Configurações CSS] 
   ----------------------------
 
     1. Base CSS
@@ -1581,14 +1578,14 @@ hr {
     padding: 0 1.8rem;
     letter-spacing: 0.2px;
     border-radius: 0.3rem;
-    background: var(--secondary-color);
+    background: var(--black-color);
     color: var(--white-color);
     border: 0;
 }
 
 .primary__btn:hover {
-    background: var(--primary-color);
-    color: var(--white-color);
+    background: var(--bg-verik-cinza);
+    color: var(--black-color);
 }
 
 .fechar_pedido__btn {
@@ -1899,7 +1896,7 @@ select {
 }
 
 .text__secondary {
-    color: var(--secondary-color);
+    color: var(--bg-verik-cinza);
 }
 
 .text__secondary2 {

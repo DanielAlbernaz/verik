@@ -1,7 +1,7 @@
 <?php
 	date_default_timezone_set('America/Sao_Paulo');
 	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	header('Content-Type: text/html; charset=utf-8');
 	/* caminho dos paths */
 	if (($_SERVER['SERVER_NAME'] == '192.168.7.203') || ($_SERVER['SERVER_NAME'] == 'localhost')) {		

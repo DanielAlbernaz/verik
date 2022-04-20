@@ -3,23 +3,16 @@
     include 'ctrl.php';
 ?>
 <!doctype html>
-<html lang="pt-br">
-
+    <html lang="pt-br">
 <head>
-
-
-    <meta charset="utf-8">
-    <!-- <meta name="description" content="<?=str_replace('<br/>',' ',$meta->og['description'])?>"> -->
+    <meta charset="utf-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $path["site"] ?>assets/img/favicon.ico">
     <base href="<?php print "http://".$_SERVER['SERVER_NAME'] . $path["site"]; ?>" />
-
     <!-- ======= Todos os plugins CSS aqui ======== -->
     <link rel="stylesheet" href="<?= $path["site"] ?>assets/css/plugins/swiper-bundle.min.css">
     <link rel="stylesheet" href="<?= $path["site"] ?>assets/css/plugins/glightbox.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Plugin css -->
     <!-- <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css"> -->
@@ -34,7 +27,6 @@
     </script>
     <title><?=$titPag?></title>
 </head>
-
 <body>
     <!-- Inicio preloader -->
     <div id="preloader">

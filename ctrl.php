@@ -7,8 +7,12 @@ $path["conexao"] = "painel/classes/";
 include_once $path["conexao"] . "class.conexao.php";
 
 //classe úteis
-// include_once $path["classes"] . "class.uteis.php";
-// $objUteis = new Uteis();
+include_once $path["classes"] . "class.uteis.php";
+$objUteis = new Uteis();
+
+//classe de post
+include_once $path["classes"]."session/post.class.php";
+$objPost = new gp();
 
 //inclui a classe de configuracao
 include_once $path["classes"] ."class.Configuracao.php";
@@ -35,29 +39,38 @@ $purifier = new HTMLPurifier($configs);
 // $meta->og['description'] = "";
 
 $titPag = "";
-
+// print_r($objPost);
 $objSession2->get('session');
 
 if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
-
-    // $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);  
-
-    $titPag .= "Excelência Distribuidora de sistemas de segurança eletrônica";
-
-    $abrePag = "internas/principal.php";
-
+    $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);  
+    $titPag .= "Verik - Ditec agora é Verik";
+    $abrePag = "internas/sobreNos.php";
 } else {    
+    
 
     switch ($objPost->param["acao"]) {
-
         default:  
-            // $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);            
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);            
             $meta->tags = "metas tags separadas por virgula";
             $meta->descricao = "descrição maximo 160 caracteres";
             $titPag .= "Página não encontrada"; 
             print_r('aqui')           ;
             $abrePag = "internas/404.php";
         break;
+
+        // Sobre nós 
+        case 'sobre-nos':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            $meta->tags = "tags";
+            $meta->descricao = "descricao.";
+            $titPag .= "Sobre nós - Verik";
+            $abrePag = "internas/sobreNos.php";
+        break; // ------------------------------------------------------------ //
+
+
+        
 
     }
     
