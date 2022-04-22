@@ -1,18 +1,40 @@
 @charset "UTF-8";
 
-/*font google verik*/
+/*sobre nos*/
 
-@font-face {
-    font-family: "IntroDemo-BlackCAPS";
-    src: url("../fonts/WEB/IntroDemo-BlackCAPS.eot")
+.backgroung_sobre_verik {
+    background-color: var(--bg-verik-cinza);
+    padding: 80px 0;
+}
+
+.tituloDestaque {
+    font-family: var(--font-poppins);
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.ver_todos_produtos {
+    display: block;
+    margin: auto;
+    width: 350px !important;
+    text-align: center !important;
+    padding-top: 11px;
 }
 
 
-/*sobre nos*/
+/*dicas e novidades*/
 
-.tituloDestaque {
-    font-family: "IntroDemo-BlackCAPS";
-    font-size: 42px;
-    font-weight: bold;
-    line-height: 50px;
+.titulo_dicas_novidades {
+    height: 100px;
+}
+
+
+/*mobile*/
+
+@media (min-width: 250px) and (max-width: 990px) {
+    /*dicas e novidades*/
+    .titulo_dicas_novidades {
+        height: 60px !important;
+    }
 }

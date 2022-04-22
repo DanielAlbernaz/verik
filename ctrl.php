@@ -42,20 +42,20 @@ $titPag = "";
 // print_r($objPost);
 $objSession2->get('session');
 
-if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
+if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
     $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);  
     $titPag .= "Verik - Ditec agora é Verik";
-    $abrePag = "internas/sobreNos.php";
+    $abrePag = "internas/principal.php";
 } else {    
     
 
-    switch ($objPost->param["acao"]) {
+    switch ($_REQUEST["acao"]) {
         default:  
             $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);            
             $meta->tags = "metas tags separadas por virgula";
             $meta->descricao = "descrição maximo 160 caracteres";
             $titPag .= "Página não encontrada"; 
-            print_r('aqui')           ;
+            // print_r('aqui')           ;
             $abrePag = "internas/404.php";
         break;
 
@@ -63,10 +63,60 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         case 'sobre-nos':
             $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
             
-            $meta->tags = "tags";
-            $meta->descricao = "descricao.";
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
             $titPag .= "Sobre nós - Verik";
-            $abrePag = "internas/sobreNos.php";
+            $abrePag = "internas/sobreNos.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Dicas e novidades = Blog
+        case 'dicas-novidades':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Dicas e novidades - Blog - Verik";
+            $abrePag = "internas/blog.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Saiba mais - Dicas e novidades = Blog
+        case 'detalhes-blog':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Saiba mais - Blog - Verik";
+            $abrePag = "internas/blogSaibaMais.php";            
+        break; // ------------------------------------------------------------ //
+        
+        // Política de Privacidade
+        case 'politica-privacidade':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Política de Privacidade - Verik";
+            $abrePag = "internas/politicaPrivacidade.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Política de Cookies
+        case 'politica-cookies':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Política de Cookies - Verik";
+            $abrePag = "internas/politicaCookies.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Termo de uso
+        case 'termo-uso':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Termo de uso - Verik";
+            $abrePag = "internas/politicaUso.php";            
         break; // ------------------------------------------------------------ //
 
 

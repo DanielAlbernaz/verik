@@ -88,16 +88,12 @@
                         </button>
                     </h2>
                     <ul class="footer__widget--menu footer__widget--inner">
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#sobre-nos">Sobre nós</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="#blog">Dicas
-                                e novidades</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#politica-privacidade">Política de Privacidade</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#politica-cookies">Política de Cookies</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#termo-uso">Termo de Uso</a></li>
+                        <li class="footer__widget--menu__list">
+                            <a class="footer__widget--menu__text" href="<?= $path["site"] ?>sobre-nos">Sobre nós</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>dicas-novidades">Dicas e novidades</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>politica-privacidade">Política de Privacidade</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>politica-cookies">Política de Cookies</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>termo-uso">Termo de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer__widget">

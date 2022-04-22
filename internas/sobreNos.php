@@ -51,7 +51,7 @@
         <!-- End about section -->
         
         <!-- Start counterup banner section -->
-        <div class="counterup__banner--section" id="funfactId">
+        <div class="counterup__banner--section backgroung_sobre_verik" id="funfactId">
             <div class="container">
                 <div class="row row-cols-1 align-items-center">
                     <div class="col-6 tituloDestaque">
@@ -60,26 +60,46 @@
                         continuamos nos reinventando.
                     </div>
                     <div class="col-6">
-                        teste
+                        <a class="newsletter__subscribe--button ver_todos_produtos" href="#">VER TODOS OS PRODUTOS</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End counterup banner section -->
 
-        <!-- Start team members section -->
-        
-        <!-- End team members section -->
+       <!-- Start about section -->
+       <section class="about__section section--padding mb-95">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-6">
+                        <div class="about__content">
+                            <h2 class="about__content--maintitle mb-25">Nossa visão & missão</h2>
+                            <p class="about__content--desc mb-20">
+                                Profissionalizar o segmento de atuação, tornando seu mundo mais profissional e seguro.<br/><br/>
+                                Dar suporte para nossos parceiros através de produtos e soluções inteligentes, se tornando referência nos segmentos de atuação.<br/><br/>
+                                Acreditamos que pequenas atitudes podem fazer grandes mudanças.<br/><br/>
+                                Juntos somos a Ditec Distribuidora.<br/><br/>
+                                Cada sonho compartilhado, momento vivido, e agora a mesma visão para o futuro.: O Crescimento.<br/><br/>
 
-        <!-- Start testimonial section -->
-        
-        <!-- End testimonial section -->
+                                É inegável que VOCÊ é primordial nessa nova jornada, sua visão, garra, força e dedicação nos inspira profundamente.<br/><br/>
 
-        <!-- Start shipping section -->
-        
-        <!-- End shipping section -->
+                                A DITEC é feita por e para pessoas, que constroem a cada dia um ecossistema, rico de conhecimento, aprendizado e claro de sucesso.<br/><br/>
 
-        <!-- Start brand logo section -->
+                                Obrigado por fazer parte disso, vamos viver essa nova fase JUNTOS! <br/>
+                                #ISSOÉMUITODITEC!
+                            </p>                                                        
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__thumb d-flex">                                                        
+                            <img class="about__thumb--img border-radius-5 display-block" src="<?= $path["site"] ?>assets/img/other/about-thumb-list2.png" alt="Sobre nós - Verik">                                                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End about section -->
         
         <!-- End brand logo section -->
     </main>
