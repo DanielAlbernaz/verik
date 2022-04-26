@@ -88,6 +88,46 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
             $titPag .= "Saiba mais - Blog - Verik";
             $abrePag = "internas/blogSaibaMais.php";            
         break; // ------------------------------------------------------------ //
+
+        // Fale Conosco
+        case 'fale-conosco':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Fale conosco - Verik";
+            $abrePag = "internas/faleConosco.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Dúvidas frequentes
+        case 'duvidas-frequentes':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Dúvidas frequentes - Verik";
+            $abrePag = "internas/duvidasFrequentes.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Formas de pagamento
+        case 'formas-pagamento':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Formas de pagamento - Verik";
+            $abrePag = "internas/formasPagamento.php";            
+        break; // ------------------------------------------------------------ //
+
+         // Trocas e devoluções
+         case 'trocas-devolucoes':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Trocas e devoluções - Verik";
+            $abrePag = "internas/trocasDevolucoes.php";            
+        break; // ------------------------------------------------------------ //
         
         // Política de Privacidade
         case 'politica-privacidade':
@@ -117,6 +157,39 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
             // $meta->descricao = "descricao.";
             $titPag .= "Termo de uso - Verik";
             $abrePag = "internas/politicaUso.php";            
+        break; // ------------------------------------------------------------ //
+
+
+        // ÁREA RESTRITA
+
+        // Login
+        case 'login':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "login - Verik";
+            $abrePag = "internas/uLogin.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Cadastro
+        case 'cadastro':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Cadastro - Verik";
+            $abrePag = "internas/uCadastro.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Esqueceu a senha
+        case 'cadastro':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Esqueceu a senha - Verik";
+            $abrePag = "internas/uEsqueceuSenha.php";            
         break; // ------------------------------------------------------------ //
 
 

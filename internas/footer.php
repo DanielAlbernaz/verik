@@ -111,10 +111,8 @@
                                 href="#acesso">Minha conta</a></li>
                         <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                 href="#carrinho">Carrinho</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#formas-pagamento">Formas De Pagamento</a></li>
-                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                href="#trocas-devolucoes">Trocas E Devoluções</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>formas-pagamento">Formas De Pagamento</a></li>
+                        <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>trocas-devolucoes">Trocas E Devoluções</a></li>
                         <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                 href="compare.html">Meus favoritos</a></li>
                     </ul>
@@ -131,10 +129,8 @@
                     </button>
                 </h2>
                 <ul class="footer__widget--menu footer__widget--inner">
-                    <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="#acesso">Fale
-                            Conosco</a></li>
-                    <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                            href="#carrinho">Dúvidas Frequentes</a></li>
+                    <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>fale-conosco">Fale Conosco</a></li>
+                    <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="<?= $path["site"] ?>duvidas-frequentes">Dúvidas Frequentes</a></li>
                     <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                             href="#formas-pagamento">Lojas</a></li>
                 </ul>

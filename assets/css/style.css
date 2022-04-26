@@ -7940,7 +7940,7 @@ input.quickview__value--number {
 .accordion__items--button__icon {
     width: 3rem;
     height: 3rem;
-    background: var(--secondary-color);
+    background: var(--bg-verik-cinza);
     color: var(--white-color);
     padding: 5px;
     border-radius: 50%;
@@ -10594,7 +10594,7 @@ input.quickview__value--number {
 }
 
 .contact__info {
-    background: var(--secondary-color);
+    background: var(--bg-verik-amarelo);
     width: 46rem;
     padding: 2rem;
     position: absolute;
@@ -10652,7 +10652,7 @@ input.quickview__value--number {
 
 .contact__info--icon {
     margin-right: 1.2rem;
-    color: var(--white-color);
+    color: var(--black-color);
     padding-top: 0.8rem;
 }
 
@@ -12865,6 +12865,7 @@ details>summary::-webkit-details-marker {
 .privacy__policy--content__desc {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
 @media only screen and (min-width: 1200px) {
