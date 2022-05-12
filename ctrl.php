@@ -159,6 +159,19 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
             $abrePag = "internas/politicaUso.php";            
         break; // ------------------------------------------------------------ //
 
+        // PRODUTOS
+
+         // Todos os produtos
+         case 'busca':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Busca - Verik";
+            $abrePag = "internas/busca.php";            
+        break; // ------------------------------------------------------------ //
+        
+
 
         // ÁREA RESTRITA
 
@@ -183,7 +196,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
         break; // ------------------------------------------------------------ //
 
         // Esqueceu a senha
-        case 'cadastro':
+        case 'esqueceu-senha':
             $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
             
             // $meta->tags = "tags";

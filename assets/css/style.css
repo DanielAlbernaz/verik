@@ -2078,7 +2078,7 @@ body.overlay__active::before,
 
 @media only screen and (min-width: 1200px) {
     .section--padding {
-        padding-top: 9rem;
+        padding-top: 4rem;
         padding-bottom: 9rem;
     }
 }
@@ -8730,13 +8730,13 @@ input.quickview__value--number {
 }
 
 .product__grid--column__buttons--icons:hover {
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    color: var(--black-color);
+    border-color: var(--bg-verik-cinza);
 }
 
 .product__grid--column__buttons--icons.active {
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    color: var(--black-color);
+    border-color: var(--bg-verik-cinza);
 }
 
 .product__view--search__form {
@@ -8779,7 +8779,7 @@ input.quickview__value--number {
 }
 
 .product__view--search__input:focus {
-    border-color: var(--secondary-color);
+    border-color: var(--black-color);
 }
 
 .product__view--search__btn {
@@ -8787,7 +8787,7 @@ input.quickview__value--number {
     right: 0;
     top: 0;
     border: 0;
-    background: var(--secondary-color);
+    background: var(--black-color);
     color: var(--white-color);
     height: 100%;
     width: 4rem;
@@ -8796,7 +8796,7 @@ input.quickview__value--number {
 }
 
 .product__view--search__btn:hover {
-    background: var(--primary-color);
+    background: var(--bg-verik-cinza);
 }
 
 .product__showing--count {
@@ -8815,8 +8815,8 @@ input.quickview__value--number {
 @media only screen and (min-width: 1200px) {
     .product__showing--count {
         font-size: 1.7rem;
-        line-height: 2.8rem;
-        margin-left: 2rem;
+        margin-top: 15px;
+        margin-right: 2rem;
     }
 }
 
@@ -9118,7 +9118,7 @@ input.quickview__value--number {
 }
 
 .widget__form--check__input:checked~.widget__form--checkmark {
-    background-color: var(--secondary-color);
+    background-color: var(--black-color);
 }
 
 .widget__form--check__input:checked~.widget__form--checkmark::before {
@@ -9128,7 +9128,7 @@ input.quickview__value--number {
 .widget__form--checkmark {
     height: 1.8rem;
     width: 1.8rem;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--bg-verik-cinza);
     border-radius: 50%;
     display: block;
     position: absolute;
