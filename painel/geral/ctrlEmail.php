@@ -14,7 +14,7 @@ include_once "classes/class.csv.php";
 $objCsv = new CSV();
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();

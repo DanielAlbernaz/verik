@@ -15,7 +15,7 @@ $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 case "listar":
     $user = $conf["whm"]['userCpanelCliente'];
     $xmlapi = new xmlapi($conf["whm"]['dominio'], $conf["whm"]['user'], $conf["whm"]['pass']);

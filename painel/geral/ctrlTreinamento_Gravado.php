@@ -12,7 +12,7 @@ include_once "classes/class.Crop_Imagem.php";
 $permissao = $objSecao->permissaoSecaoFixaUsuario("81",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 case "frmCad":
 
 	$categoria = $objCategoriaTreinamento->listar(array('status' => 1));

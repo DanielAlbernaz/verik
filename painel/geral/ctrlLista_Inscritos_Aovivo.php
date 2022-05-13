@@ -12,7 +12,7 @@ $objCsv = new CSV();
 
 $permissao = $objSecao->permissaoSecaoFixaUsuario("83",$objSession2->get('tlAdmLoginId'));
 
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 
 	case "listar":
 		$idTreinamento =  $objPost->param['id_treinamento_aovivo'];
