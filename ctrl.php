@@ -170,6 +170,16 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
             $titPag .= "Busca - Verik";
             $abrePag = "internas/busca.php";            
         break; // ------------------------------------------------------------ //
+
+        // Produtos
+        case 'produto':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Php do nome do produto - Verik";
+            $abrePag = "internas/produto.php";            
+        break; // ------------------------------------------------------------ //
         
 
 
@@ -205,6 +215,57 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
             $abrePag = "internas/uEsqueceuSenha.php";            
         break; // ------------------------------------------------------------ //
 
+        // CARRINHO
+
+        // Pré Carrinho
+        case 'precarrinho':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Pré Carrinho - Verik";
+            $abrePag = "internas/cPreCarrinho.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Carrinho
+        case 'carrinho':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Carrinho - Verik";
+            $abrePag = "internas/cCarrinho.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Pagamento
+        case 'pagamento':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Forma do pagamento - Verik";
+            $abrePag = "internas/cPagamento.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Confirmação
+        case 'confirmacao':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Confirmação do pedido - Verik";
+            $abrePag = "internas/cConfirmacao.php";            
+        break; // ------------------------------------------------------------ //
+
+        // Conclusão
+        case 'concluir':
+            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Conclusão do pedido - Verik";
+            $abrePag = "internas/cConclusao.php";            
+        break; // ------------------------------------------------------------ //
 
         
 
