@@ -10,6 +10,7 @@ include_once $path["conexao"] . "class.conexao.php";
 include_once $path["classes"] . "class.uteis.php";
 $objUteis = new Uteis();
 
+
 //classe de post
 include_once $path["classes"]."session/post.class.php";
 $objPost = new gp();
