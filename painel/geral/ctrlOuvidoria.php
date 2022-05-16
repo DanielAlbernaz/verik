@@ -10,7 +10,7 @@ $objCsv = new CSV();
 $permissao = $objSecao->permissaoSecaoFixaUsuario("62",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 
 case "listar":
 	// lista todos os dados do banco de dados

@@ -11,7 +11,7 @@ $permissao = $objSecao->permissaoSecaoFixaUsuario("37",$objSession2->get('tlAdmL
 $objParceiro->verificaExpiracao();
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 case "frmCad":
 	// inclui o arquivo
 	$abrePag = "../frms/frmCadParceiro.php";

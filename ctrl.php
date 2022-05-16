@@ -42,16 +42,16 @@ $titPag = "";
 // print_r($objPost);
 $objSession2->get('session');
 
-if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
-    $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);  
+if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
+    $atributos = $objUteis->gerarUrl($objPost->param['atributos']);  
     $titPag .= "Verik - Ditec agora é Verik";
     $abrePag = "internas/principal.php";
 } else {    
     
 
-    switch ($_REQUEST["acao"]) {
+    switch ($objPost->param["acao"]) {
         default:  
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);            
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);            
             $meta->tags = "metas tags separadas por virgula";
             $meta->descricao = "descrição maximo 160 caracteres";
             $titPag .= "Página não encontrada"; 
@@ -61,7 +61,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Sobre nós 
         case 'sobre-nos':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -71,7 +71,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Dicas e novidades = Blog
         case 'dicas-novidades':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -81,7 +81,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Saiba mais - Dicas e novidades = Blog
         case 'detalhes-blog':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -91,7 +91,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Fale Conosco
         case 'fale-conosco':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -101,7 +101,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Dúvidas frequentes
         case 'duvidas-frequentes':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -111,7 +111,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Formas de pagamento
         case 'formas-pagamento':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -121,7 +121,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
          // Trocas e devoluções
          case 'trocas-devolucoes':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -131,7 +131,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
         
         // Política de Privacidade
         case 'politica-privacidade':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -141,7 +141,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Política de Cookies
         case 'politica-cookies':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -151,7 +151,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Termo de uso
         case 'termo-uso':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -163,7 +163,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
          // Todos os produtos
          case 'busca':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -187,7 +187,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Login
         case 'login':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -197,7 +197,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Cadastro
         case 'cadastro':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -207,7 +207,7 @@ if (!isset($_REQUEST["acao"]) && empty($_REQUEST["acao"])) {
 
         // Esqueceu a senha
         case 'esqueceu-senha':
-            $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";

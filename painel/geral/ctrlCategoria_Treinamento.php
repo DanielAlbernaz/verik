@@ -13,7 +13,7 @@ $objCategoriaTreinamento = new CategoriaTreinamento();
 $permissao = $objSecao->permissaoSecaoFixaUsuario("80",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
 case "frmCad":
 	// inclui o arquivo
 	$abrePag = "../frms/frmCadCategoria_Treinamento.php";

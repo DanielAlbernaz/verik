@@ -27,7 +27,7 @@ if($objSession2->get('tlAdmLoginId')){
 
 
 //executa a ação que o usuário do sistema estiver solicitando
-switch ($_REQUEST['acao']) {
+switch ($objPost->param['acao']) {
     default:
         $abrePag = "../usuarios/frms/frmHome.php";
         break;
