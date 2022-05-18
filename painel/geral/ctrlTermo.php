@@ -12,7 +12,7 @@ $objTermo = new Termo();
 
 include_once "classes/class.Crop_Imagem.php";
 
-$permissao = $objSecao->permissaoSecaoFixaUsuario("17",$objSession2->get('tlAdmLoginId'));
+$permissao = $objSecao->permissaoSecaoFixaUsuario("11",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($objPost->param['acao']) {
