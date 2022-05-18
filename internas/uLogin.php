@@ -19,6 +19,42 @@
             </div>
         </section>
         <!--/fim breadcrumb section -->
+
+        <div class="login__section section--padding">
+            <div class="container">
+                <form action="#">
+                    <div class="login__section--inner">
+                        <div class="row row-cols-md-2 row-cols-1">
+                            <div class="col box-login">
+                                <div class="account__login">
+                                    <div class="account__login--header mb-25">
+                                        <h2 class="account__login--header__title h3 mb-10">Login do Cliente</h2>
+                                        <p class="account__login--header__desc">Veja seus pedidos de forma fácil, compre mais rápido e tenha uma experiência personalizada :)</p>
+                                    </div>
+                                    <div class="account__login--inner">
+                                        <input class="account__login--input" placeholder="E-mail" type="text">
+                                        <input class="account__login--input" placeholder="Senha" type="password">
+                                        <div class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
+                                            <div class="account__login--remember position__relative">
+                                                <input class="checkout__checkbox--input" id="check1" type="checkbox">
+                                                <span class="checkout__checkbox--checkmark"></span>
+                                                <label class="checkout__checkbox--label login__remember--label" for="check1">Continuar conectado</label>
+                                            </div>
+                                            <a href="<?= $path["site"] ?>esqueceu-senha" class="account__login--forgot">Esqueci minha senha</a>
+                                        </div>
+                                        <button class="account__login--btn login__btn" type="submit">Entrar</button>
+                                        <div class="account__login--divide">
+                                            <span class="account__login--divide__text">OU</span>
+                                        </div>
+                                        <a href="<?= $path["site"] ?>cadastro" class="account__login--btn login_cadastro__btn" type="submit">Quero me cadastrar</a>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </form>
+            </div>     
+        </div>
         
     </main>
 
