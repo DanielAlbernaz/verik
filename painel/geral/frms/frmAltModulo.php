@@ -85,7 +85,7 @@ $objForm->sk_fimWizard();
 $objForm->sk_fimDoFormulario();
 
 $menus = $objModulo->listarMenusBySecao($modulo->id);
-$objUteis->encode($menus);
+//$objUteis->encode($menus);
 
 ?>
 

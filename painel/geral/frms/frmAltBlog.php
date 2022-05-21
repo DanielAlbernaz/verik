@@ -3,41 +3,41 @@
 
 
 //Informações do Formalário
-$nomedoformulario = 'Alterar Blog';
+$nomedoformulario = 'Alterar dica e novidade ';
 $acaodoformulario = 'index.php?acao=alterar&ctrl=blog';
-$avisodoformulario = 'Esta página você altera o blog cadastrado.';
+$avisodoformulario = 'Esta página você altera o dica e novidade cadastrado.';
 
 
 //Inicia o Formulário
 $objForm->sk_iniciaFormulario($nomedoformulario,$acaodoformulario,$avisodoformulario);
 
 //Cria um input text
-$objForm->sk_formText('Titulo','titulo','',true,'Aqui você altera o titulo do banner.',$blogForm->titulo);
+$objForm->sk_formText('Titulo','titulo','',true,'Aqui você altera o titulo da dica e novidade.',$blogForm->titulo);
 
 //Monta o array com as categorias cadastradas no banco
 
 for($i=0; $i < count($categoria); $i++){    
-    if($categoria[$i]->id == $blogForm->categoria ){             
-        $nome_categoria = $categoria[$i]->nome_categoria;
+    if($categoria[$i]->id == $blogForm->id_categoria ){             
+        $nome_categoria = $categoria[$i]->nome;
     }   
 }
 
 $optionsCategoria[] = '<option value="" ></option>';
-$optionsCategoria[] = '<option value='.$blogForm->categoria.' selected="selected" >'.$nome_categoria.'</option>';
+$optionsCategoria[] = '<option value='.$blogForm->id_categoria.' selected="selected" >'.$nome_categoria.'</option>';
 foreach($categoria as $key => $val){
     if($val->id <> NULL){
-        if($val->id <> $blogForm->categoria){
+        if($val->id <> $blogForm->id_categoria){
             $optionsCategoria[] = '<option value='.$val->id.'>'.$val->nome_categoria.'</option>';
         }       
     }  
 }
 
-$objForm->sk_formSelect('Categoria', 'categoria', $optionsCategoria, true, 'Selecione uma categoria');
+$objForm->sk_formSelect('Categoria', 'id_categoria', $optionsCategoria, true, 'Selecione uma categoria');
 
 //Cria o Texto de descrição
 $objForm->sk_formTextHTML('Texto','texto',true,'Aqui você escreve o texto.', $blogForm->texto);
 
-$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do banner 1200px x 628px',$blogForm->imagem);
+$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do dica e novidade 1280px x 700px',$blogForm->imagem);
 
 echo'<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon"><h6>Galeria de fotos</h6></div>';
 $objForm->sk_montaMultUploadGaleria($blogForm->id,'index.php?acao=cadastraFoto&ctrl=blog',$formularioFotos->fotos,'index.php?acao=deletarFoto&ctrl=blog');
@@ -87,7 +87,7 @@ $objForm->sk_fimDoFormulario();
                 if (input.files && input.files[0]){
                     var reader = new FileReader(); 
                     reader.onload = function(e){
-                        $('#jcrop').attr('src', e.target.result).width(1200),
+                        $('#jcrop').attr('src', e.target.result).width(1200/2),
                         cropImg()
                     };
                     reader.readAsDataURL(input.files[0]);                    
@@ -101,12 +101,12 @@ $objForm->sk_fimDoFormulario();
                     onSelect: exibePreview,
                     bgColor         : 'white',
                     minSize         : [ 100, 100 ],
-                    maxSize         : [ 1200, 628 ],
-                    setSelect       : [ 0, 0, 1200, 628 ],                       
+                    maxSize         : [ 1280/2, 700/2 ],
+                    setSelect       : [ 0, 0, 1280/2, 700/2 ],                       
                     bgOpacity       : .3,
                     borderOpacity   : .9,
                     allowResize	: true,
-                    aspectRatio: 1200/628
+                    aspectRatio: 1280/700
                 });        
             };
 

@@ -1,28 +1,28 @@
 <?php
 
 //Informações do Formalário
-$nomedoformulario = 'Cadastrar Blog';
+$nomedoformulario = 'Cadastrar Dicas e novidades';
 $acaodoformulario = 'index.php?acao=cadastrar&ctrl=blog';
-$avisodoformulario = 'Esta página você cadastra os Artigos para o blog.';
+$avisodoformulario = 'Esta página você cadastra os Artigos para o dicas e novidades.';
 
 //Inicia o Formulário
 $objForm->sk_iniciaFormulario($nomedoformulario,$acaodoformulario,$avisodoformulario);
 
 //Cria um input text
-$objForm->sk_formText('Título','titulo','',true,'Aqui você coloca um titulo para o blog.');
+$objForm->sk_formText('Título','titulo','',true,'Aqui você coloca um titulo para o dicas e novidades.');
 
 //Monta o array com as categorias cadastradas no banco
 $optionsCategoria[] = '<option value="" selected="selected"></option>';
-for($i=0; $i < count($categoria); $i++){
-    $optionsCategoria[] = '<option value='.$categoria[$i]->id.'>'.$categoria[$i]->nome_categoria.'</option>';
+for($i=0; $i < count($categoria) -1; $i++){
+    $optionsCategoria[] = '<option value='.$categoria[$i]->id.'>'.$categoria[$i]->nome.'</option>';
 }
 
-$objForm->sk_formSelect('Categoria', 'categoria', $optionsCategoria, true, 'Selecione uma categoria');
+$objForm->sk_formSelect('Categoria', 'id_categoria', $optionsCategoria, true, 'Selecione uma categoria');
 
 //Cria o Texto de descrição
 $objForm->sk_formTextHTML('Texto','texto',true,'Aqui você escreve o texto.');
 
-$objForm->sk_formFileCrop("Imagem principal",'imagem',true, 'Resolução sugerida - 800px X 445px');
+$objForm->sk_formFileCrop("Imagem principal",'imagem',true, 'Resolução sugerida - 1280px X 700px');
 
 echo'<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon"><h6>Galeria de fotos</h6></div>';
 $objForm->sk_montaMultUploadGaleria('','index.php?acao=cadastraFoto&ctrl=blog','','');
@@ -69,7 +69,7 @@ $objForm->sk_fimDoFormulario();
                 if (input.files && input.files[0]){
                     var reader = new FileReader(); 
                     reader.onload = function(e){
-                        $('#jcrop').attr('src', e.target.result).width(800),
+                        $('#jcrop').attr('src', e.target.result).width(1280/2),
                         cropImg()
                     };
                     reader.readAsDataURL(input.files[0]);                    
@@ -83,12 +83,12 @@ $objForm->sk_fimDoFormulario();
                     onSelect: exibePreview,
                     bgColor         : 'white',
                     minSize         : [ 100, 100 ],
-                    maxSize         : [ 800, 445 ],
-                    setSelect       : [ 0, 0, 800, 445 ],                       
+                    maxSize         : [ 1280/2, 700/2 ],
+                    setSelect       : [ 0, 0, 1280/2, 700/2 ],                       
                     bgOpacity       : .3,
                     borderOpacity   : .9,
                     allowResize	: true,
-                    aspectRatio: 800/445
+                    aspectRatio: 1280/700
                 });        
             };
 

@@ -23,7 +23,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$enderecoForm = $objEndereco->lista($condicao);
-	$objUteis->encode($enderecoForm);
+	//$objUteis->encode($enderecoForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltEndereco.php";
 break;
@@ -53,7 +53,7 @@ case "alterar":
 		
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objEndereco->alterar($form);
 	
 	//verifica se foi alterado

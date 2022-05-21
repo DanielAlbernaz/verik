@@ -10,16 +10,19 @@
 include_once "classes/class.Blog.php";
 $objBlog = new Blog();
 
+include_once "classes/class.Categoria.php";
+$objCategoria = new Categoria();
+
 include_once "classes/class.Crop_Imagem.php";
 
-$permissao = $objSecao->permissaoSecaoFixaUsuario("36",$objSession2->get('tlAdmLoginId'));
+$permissao = $objSecao->permissaoSecaoFixaUsuario("16",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($objPost->param['acao']) {
 case "frmCad":
 
-	$categoria = $objBlog->listarCategorias(array('status' => 1));
-	$objUteis->encode($categoria);
+	$categoria = $objCategoria->listar();
+	//$objUteis->encode($categoria);
 
 	// inclui o arquivo
 	$abrePag = "../frms/frmCadBlog.php";
@@ -27,68 +30,19 @@ case "frmCad":
 case "cadastrar":
 	//monta o array dos post
 	$form['titulo'] = $objPost->param['titulo'];
+	$form['id_categoria'] = $objPost->param['id_categoria'];
 	$form['texto'] = $objPost->param['texto'];
 	$form['status'] = $objPost->param['status'];
-	$form['categoria'] = $objPost->param['categoria'];
-	$form['dhcadastro'] = date('Y-m-d H:i:s');
+	$form['dhcadastro'] = $objPost->param['dhcadastro'] ? $objUteis->converteDataHora($objPost->param['dhcadastro']) : date('Y-m-d H:i:s');
 	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
     if($form['data_expiracao']){
 		$form['data_expiracao'] = $objUteis->converteDataHora($objPost->param['data_expiracao']);
 	}
-	$form['idoperador_cadastro'] = $objSession2->get('tlAdmLoginId');
+	$form['idoperador_cadastro'] = $objSession2->get('tlAdmLoginId');	
+	$form['imagem'] = $objUteis->imagePrimary($objPost->param['imagem'], '1280', $_POST, '', 'blog', 'blog', true);
 	
-
-	//se tiver selecionado uma imagem destaque
-	if($objPost->param["imagem"]["name"] !=""){
-
-		$formatoImgDestaque = ".".$objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
-
-		}else{      
-			$objUteis->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=frmCad&ctrl=noticias');
-			exit();
-		}
-
-		//Retorna formato da imagem
-		$formatoImgDestaque = $objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		//Definir nome para imagem
-		$dir = "arq_blog/";
-		if(!file_exists("arq_blog")) {
-				$objUteis->criaDir("arq_blog");
-		}
-		$nomeImg = "blog".time().".".$formatoImgDestaque;
-		$temp = $dir.$nomeImg;
-		//deleta a imagem antiga
-		$objUteis->delFile($objPost->param['imgAntiga']);
-		//Fazendo o upload da imagem
-			$imagem = $objPost->param["imagem"];
-			// armazena dimensões da imagem
-			$imagesize = getimagesize($imagem['tmp_name']);				
-			if($imagesize !== false){
-				// move a imagem para o servidor
-				if($objUteis->uploadArq($objPost->param["imagem"]["tmp_name"],$temp)){
-					$oImg = new Crop_Imagem($temp );
-					// valida via m2brimagem
-					if($oImg->valida() == 'OK'){					
-						// redimensiona (caso seja menor que o tamanho )
-						$oImg->redimensiona('1200', '', '');
-						// grava nova imagem
-						$oImg->grava($temp);                            
-						$oImg->posicaoCrop( $_POST['x'], $_POST['y'] );
-						$oImg->redimensiona( $_POST['w'], $_POST['h'], 'crop' );
-						$oImg->redimensiona('1200', '', '');
-						$oImg->grava( $temp );
-					}
-				}
-			}
-			$imgDestaque = $dir.$nomeImg;
-		}
-
-		$form['imagem'] =  $imgDestaque;
-
-
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objBlog->cadastrar($form);
 
 	// verifica se cadastrou
@@ -133,12 +87,12 @@ case "cadastraFoto" :
 	$img = $dir . md5($objPost->param["file"] ["name"]).$formatoImg;
 	
 	if ($proximo_id){
-                $form['id_blog'] = $proximo_id;	
-                $form['nome'] = $objPost->param["file"]["name"];
-                $form['img'] = $img;			
-                // inseri o registro no banco de fotos
-                $objUteis->decode($form);
-                $result = $objBlog->cadastrarFoto($form);
+		$form['id_blog'] = $proximo_id;	
+		$form['nome'] = $objPost->param["file"]["name"];
+		$form['img'] = $img;			
+		// inseri o registro no banco de fotos
+		//$objUteis->decode($form);
+		$result = $objBlog->cadastrarFoto($form);
 	}
 	exit ();
 break; 
@@ -146,7 +100,8 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$blogs = $objBlog->listar();
-	$objUteis->encode($blogs);
+	
+	//$objUteis->encode($blogs);
 	// inclui o formulario
 	$abrePag = "../frms/listaBlog.php";
 	break;
@@ -157,13 +112,17 @@ case "frmAlterar":
 	);
 
 	$blogForm = $objBlog->lista($condicao);
-	$objUteis->encode($blogForm);
+	//$objUteis->encode($blogForm);
+
+	$formularioFotos->fotos = $objBlog->listar_fotos(array('id' => $objPost->param["id"]));  
+	print_r($formularioFotos)  ;
+	//$objUteis->encode($formularioFotos); 
 
 	$formularioFotos->fotos = $objBlog->listar_fotos(array('id' => $objPost->param["id"]));    
-	$objUteis->encode($formularioFotos); 
+	//$objUteis->encode($formularioFotos); 
 	
-	$categoria = $objBlog->listarCategorias(array('status' => 1));
-	$objUteis->encode($categoria);
+	$categoria = $objCategoria->listar();
+	//$objUteis->encode($categoria); 
 	
 	// inclui o formulario
 	$abrePag = "../frms/frmAltBlog.php";
@@ -173,64 +132,21 @@ case "alterar":
 	$form = array();
 	$form['id'] = $objPost->param['id'];
 	$form['titulo'] = $objPost->param['titulo'];
+	$form['id_categoria'] = $objPost->param['id_categoria'];
 	$form['texto'] = $objPost->param['texto'];
-	$form['categoria'] = $objPost->param['categoria'];
 	$form['status'] = $objPost->param['status'];
+	$form['dhcadastro'] = $objPost->param['dhcadastro'] ? $objUteis->converteDataHora($objPost->param['dhcadastro']) : date('Y-m-d H:i:s');
 	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
-    if($form['data_expiracao']){
+    if($objPost->param['data_expiracao']){
 		$form['data_expiracao'] = $objUteis->converteDataHora($objPost->param['data_expiracao']);
+	}else{
+		$form['data_expiracao'] = null;
 	}
-	
-	 //se tiver selecionado uma imagem destaque
-	 if($objPost->param["imagem"]["name"] !=""){
-		$formatoImgDestaque = ".".$objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
-
-		}else{
-				$objUteis->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=frmCad&ctrl=noticias');
-				exit();
-		}
-
-		//Retorna formato da imagem
-		$formatoImgDestaque = $objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		//Definir nome para imagem
-		$dir = "arq_blog/";
-		if(!file_exists("arq_blog")) {
-				$objUteis->criaDir("arq_blog");
-		}
-		$nomeImg = "blog".time().".".$formatoImgDestaque;
-		$temp = $dir.$nomeImg;
-		//deleta a imagem antiga
-		$objUteis->delFile($objPost->param['imgAntiga']);
-		//Fazendo o upload da imagem
-				$imagem = $objPost->param["imagem"];
-				// armazena dimensões da imagem
-				$imagesize = getimagesize($imagem['tmp_name']);				
-				if($imagesize !== false){
-					// move a imagem para o servidor
-					if($objUteis->uploadArq($objPost->param["imagem"]["tmp_name"],$temp)){
-						$oImg = new Crop_Imagem($temp );
-						// valida via m2brimagem
-						if($oImg->valida() == 'OK'){					
-							// redimensiona (caso seja menor que o tamanho )
-							$oImg->redimensiona('1200', '', '');
-							// grava nova imagem
-							$oImg->grava($temp);                            
-							$oImg->posicaoCrop( $_POST['x'], $_POST['y'] );
-							$oImg->redimensiona( $_POST['w'], $_POST['h'], 'crop' );
-							$oImg->redimensiona('1200', '', '');
-							$oImg->grava( $temp );
-						}
-					}
-				}
-				$imgDestaque = $dir.$nomeImg;
-				$form['imagem'] = $imgDestaque;
-		}else{
-		$form['imagem'] = $objPost->param['imgAntiga'];
-		}
+	$form['idoperador_alteracao'] = $objSession2->get('tlAdmLoginId');	
+	$form['imagem'] = $objUteis->imagePrimary($objPost->param['imagem'], '1280', $_POST, $objPost->param['imgAntiga'], 'blog', 'blog', true);
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objBlog->alterar($form);
 	
 	// verifica se foi alterado

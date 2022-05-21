@@ -24,7 +24,7 @@ case "cadastrar":
 
 
 	$buscaProduto = $objDescricao->lista(array('codigo_produto' =>  $objPost->param['codigo_produto']));
-	$objUteis->encode($buscaProduto);
+	//$objUteis->encode($buscaProduto);
 
 	if($buscaProduto->codigo_produto == $objPost->param['codigo_produto']){
 		$objUteis
@@ -35,7 +35,7 @@ case "cadastrar":
 	exit();
 	}else{
 		//Cadastra os dados
-		$objUteis->decode($form);
+		//$objUteis->decode($form);
 		$result = $objDescricao->cadastrar($form);
 	}
 	
@@ -62,7 +62,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$destaques = $objDescricao->listar();
-	$objUteis->encode($destaques);
+	//$objUteis->encode($destaques);
 	// inclui o formulario
 	$abrePag = "../frms/listaDescricao.php";
 	break;
@@ -73,7 +73,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$destaqueForm = $objDescricao->lista($condicao);
-	$objUteis->encode($destaqueForm);
+	//$objUteis->encode($destaqueForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltDescricao.php";
 	break;
@@ -87,14 +87,14 @@ case "alterar":
 
 
 	$buscaProduto = $objDescricao->lista(array('codigo_produto' =>  $objPost->param['codigo_produto']));
-	$objUteis->encode($buscaProduto);
+	//$objUteis->encode($buscaProduto);
 
 	if($buscaProduto->id && $buscaProduto->id == $objPost->param['id']){
-		$objUteis->decode($form);
+		//$objUteis->decode($form);
 		$result = $objDescricao->alterar($form);
 	}
 	if(!$buscaProduto->id){
-		$objUteis->decode($form);
+		//$objUteis->decode($form);
 		$result = $objDescricao->alterar($form);
 	}else{
 		$objUteis
@@ -200,7 +200,7 @@ case "publicar":
 		$objPost->param['codigo'];
 
 		$produto = $objProduto->lista(array('ativo' => 1, 'id' => $objPost->param['codigo']));
-		$objUteis->encode($produto);
+		//$objUteis->encode($produto);
 		
 		if($produto->nome){
 			$resposta['situacao'] = "sucess";

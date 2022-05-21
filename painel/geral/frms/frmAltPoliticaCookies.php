@@ -17,7 +17,7 @@ $objForm->sk_formText('Título','titulo','',true,'Aqui digita um título.', $pol
 
 $objForm->sk_formTextHTML('Texto','texto',true,'Aqui você escreve o texto.', $politicacookiesForm->texto);
 
-$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do banner 1920px x 400px',$politicacookiesForm->imagem);
+$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do polític cookies 1920px x 400px',$politicacookiesForm->imagem);
 
 //Cria um input hidden
 $objForm->sk_formHidden('id',$politicacookiesForm->id);

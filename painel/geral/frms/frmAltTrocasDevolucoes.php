@@ -17,7 +17,7 @@ $objForm->sk_formText('Título','titulo','',true,'Aqui digita um título.', $tro
 
 $objForm->sk_formTextHTML('Texto','texto',true,'Aqui você escreve o texto.', $trocasdevolucoesForm->texto);
 
-$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do banner 1920px x 400px',$trocasdevolucoesForm->imagem);
+$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do troca e devoluções 1920px x 400px',$trocasdevolucoesForm->imagem);
 
 //Cria um input hidden
 $objForm->sk_formHidden('id',$trocasdevolucoesForm->id);

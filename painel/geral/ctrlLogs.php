@@ -23,9 +23,9 @@
 			break;
 		default:
 			$logs = $objLog->ultimosLogs();
-                        $objUteis->encode($logs);
+                        //$objUteis->encode($logs);
 			$acesso = $objLog->ultimoAcesso($objSession2->get('tlAdmLoginId'));
-                        $objUteis->encode($acesso);
+                        //$objUteis->encode($acesso);
                         $abrePag = "../frms/listaLogs.php";
                         
 			break;

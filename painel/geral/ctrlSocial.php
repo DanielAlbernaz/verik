@@ -26,7 +26,7 @@ case "cadastrar":
 	$form['status'] = 1;
 
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objSocial->cadastrar($form);
 
 	// verifica se cadastrou
@@ -51,7 +51,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$socials = $objSocial->listar();
-	$objUteis->encode($socials);
+	//$objUteis->encode($socials);
 	// inclui o formulario
 	$abrePag = "../frms/listaSocial.php";
 	break;
@@ -61,7 +61,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$socialForm = $objSocial->lista($condicao);
-	$objUteis->encode($socialForm);
+	//$objUteis->encode($socialForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltSocial.php";
 	break;
@@ -75,7 +75,7 @@ case "alterar":
 	$form['status'] = 1;
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objSocial->alterar($form);
 
 	// verifica se foi alterado

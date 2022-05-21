@@ -77,7 +77,7 @@ $objUteis->delFile($objPost->param['imgAntiga']);
 $form['imagem'] =  $imgDestaque;
 	
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objBanner->cadastrar($form);
 
 	// verifica se cadastrou
@@ -102,7 +102,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$banners = $objBanner->listar();
-	$objUteis->encode($banners);
+	//$objUteis->encode($banners);
 	// inclui o formulario
 	$abrePag = "../frms/listaBanner.php";
 	break;
@@ -112,7 +112,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$bannerForm = $objBanner->lista($condicao);
-	$objUteis->encode($bannerForm);
+	//$objUteis->encode($bannerForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltBanner.php";
 	break;
@@ -179,7 +179,7 @@ $form['imagem'] = $objPost->param['imgAntiga'];
 }
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objBanner->alterar($form);
 	
 	// verifica se foi alterado

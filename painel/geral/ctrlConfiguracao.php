@@ -26,7 +26,7 @@ case "cadastrar":
 	$form['status'] = 1;
 	
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objConfiguracao->cadastrar($form);
 
 	// verifica se cadastrou
@@ -51,7 +51,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$configuracaos = $objConfiguracao->listar();
-	$objUteis->encode($configuracaos);
+	//$objUteis->encode($configuracaos);
 	// inclui o formulario
 	$abrePag = "../frms/listaConfiguracao.php";
 	break;
@@ -61,7 +61,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$configuracaoForm = $objConfiguracao->lista($condicao);
-	$objUteis->encode($configuracaoForm);
+	//$objUteis->encode($configuracaoForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltConfiguracao.php";
 	break;
@@ -75,7 +75,7 @@ case "alterar":
 	$form['status'] = 1;
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objConfiguracao->alterar($form);
 	
 	// verifica se foi alterado

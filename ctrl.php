@@ -25,7 +25,7 @@ $objSession2 = new EyeSecureSession('site');
 
 $conf = Config::AtributosConfig();
 
-// $objUteis->encode($conf);
+// //$objUteis->encode($conf);
 
 require_once $path["classes"] ."htmlpurifier/library/HTMLPurifier.auto.php";
 

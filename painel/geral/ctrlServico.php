@@ -80,7 +80,7 @@ case "cadastrar":
 $form['imagem'] =  $imgDestaque;
 	
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objServico->cadastrar($form);
 
 	// verifica se cadastrou
@@ -105,7 +105,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$servicos = $objServico->listar();
-	$objUteis->encode($servicos);
+	//$objUteis->encode($servicos);
 	// inclui o formulario
 	$abrePag = "../frms/listaServico.php";
 	break;
@@ -115,7 +115,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$servicoForm = $objServico->lista($condicao);
-	$objUteis->encode($servicoForm);
+	//$objUteis->encode($servicoForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltServico.php";
 	break;
@@ -185,7 +185,7 @@ case "alterar":
 		}
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objServico->alterar($form);
 	
 	// verifica se foi alterado

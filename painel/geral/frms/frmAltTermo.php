@@ -17,7 +17,7 @@ $objForm->sk_formText('Título','titulo','',true,'Aqui digita um título.', $ter
 
 $objForm->sk_formTextHTML('Texto','texto',true,'Aqui você escreve o texto.', $termoForm->texto);
 
-$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do banner 1920px x 400px',$termoForm->imagem);
+$objForm->sk_formFileCrop("Imagem",'imagem',false,'Tamanho da imagem do termo 1920px x 400px',$termoForm->imagem);
 
 //Cria um input hidden
 $objForm->sk_formHidden('id',$termoForm->id);

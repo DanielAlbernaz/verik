@@ -10,7 +10,7 @@
 include_once "classes/class.Categoria.php";
 $objCategoria = new Categoria();
 
-$permissao = $objSecao->permissaoSecaoFixaUsuario("61",$objSession2->get('tlAdmLoginId'));
+$permissao = $objSecao->permissaoSecaoFixaUsuario("15",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($objPost->param['acao']) {
@@ -20,16 +20,12 @@ case "frmCad":
 	break;
 case "cadastrar":
 	//monta o array dos post
-	$form['nome_categoria'] = $objPost->param['nome_categoria'];
-	$form['status'] = $objPost->param['status'];
-	$form['dhcadastro'] = date('Y-m-d H:i:s');
-	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
-    $form['data_expiracao']       = ($objPost->param['data_expiracao'] ? $objUteis->converteDataHora($objPost->param['data_expiracao']) : '0000-00-00 00:00:00'); 
+	$form['nome'] = $objPost->param['nome'];
+	$form['dhcadastro'] = $objPost->param['dhcadastro'] ? $objUteis->converteDataHora($objPost->param['dhcadastro']) : date('Y-m-d H:i:s');
 	$form['idoperador_cadastro'] = $objSession2->get('tlAdmLoginId');	
-
 	
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objCategoria->cadastrar($form);
 
 	// verifica se cadastrou
@@ -54,7 +50,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$categorias = $objCategoria->listar();
-	$objUteis->encode($categorias);
+	//$objUteis->encode($categorias);
 	// inclui o formulario
 	$abrePag = "../frms/listaCategoria.php";
 	break;
@@ -65,7 +61,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$categoriaForm = $objCategoria->lista($condicao);
-	$objUteis->encode($categoriaForm);
+	//$objUteis->encode($categoriaForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltCategoria.php";
 	break;
@@ -73,13 +69,13 @@ case "alterar":
 	//monta o array para alterar
 	$form = array();
 	$form['id'] = $objPost->param['id'];
-	$form['nome_categoria'] = $objPost->param['nome_categoria'];
+	$form['nome'] = $objPost->param['nome'];
 	$form['status'] = $objPost->param['status'];
 	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
     $form['data_expiracao'] = ($objPost->param['data_expiracao'] ? $objUteis->converteDataHora($objPost->param['data_expiracao']) : '0000-00-00 00:00:00' );
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objCategoria->alterar($form);
 	
 	//verifica se foi alterado

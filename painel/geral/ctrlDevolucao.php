@@ -14,7 +14,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$devolucaoForm = $objDevolucao->lista($condicao);
-	$objUteis->encode($devolucaoForm);
+	//$objUteis->encode($devolucaoForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltDevolucao.php";
 break;
@@ -27,7 +27,7 @@ case "alterar":
 	$form['status'] = 1;
 	
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objDevolucao->alterar($form);
 	
 	//verifica se foi alterado

@@ -29,7 +29,7 @@ case "cadastrar":
 	
 	
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objCliente->cadastrar($form);
 
 	// verifica se cadastrou
@@ -54,7 +54,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$clientes = $objCliente->listar();
-	$objUteis->encode($clientes);
+	//$objUteis->encode($clientes);
 	// inclui o formulario
 	$abrePag = "../frms/listaCliente.php";
 	break;
@@ -64,7 +64,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$clienteForm = $objCliente->lista($condicao);
-	$objUteis->encode($clienteForm);
+	//$objUteis->encode($clienteForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltCliente.php";
 	break;
@@ -82,7 +82,7 @@ case "alterar":
 	
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objCliente->alterar($form);
 	
 	// verifica se foi alterado

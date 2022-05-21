@@ -1,5 +1,5 @@
 <?
-
+include_once "class.Crop_Imagem.php";
 class Uteis {
 
     public function gerarCodigo($nome){
@@ -2707,6 +2707,124 @@ public function enviaEmailContatoSite($emails=null, $msg=null, $replyTo=null, $a
             return 'Publicado em '.date('d/m/Y',strtotime($data_cadastro));
         }
     }
+
+    function imagePrimary(array $idImage, string $width, array $post, ?string $imgOld, string $nameDir, string $namePhoto, $imageBig = false)
+	{
+        if($idImage["name"] !=""){
+            
+            $formatoImgDestaque = ".".$this->formatoFile($idImage["name"]);
+            if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
+            }else{
+                $this->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=alterar&ctrl=noticias');
+                exit();
+            }
+
+            //Retorna formato da imagem
+            $formatoImgDestaque = $this->formatoFile($idImage["name"]);
+            //Definir nome para imagem
+            $dir = $nameDir."/";
+            if(!file_exists($nameDir)) {
+                $this->criaDir($nameDir);
+            }
+            
+            $nomeImg = $namePhoto.time().".".$formatoImgDestaque;
+            $temp = $dir.$nomeImg;
+            //deleta a imagem antiga
+            $this->delFile($imgOld);
+            //Fazendo o upload da imagem
+                    $imagem = $idImage;
+                    // armazena dimensões da imagem
+                    $imagesize = getimagesize($imagem['tmp_name']);				
+                    if($imagesize !== false){
+                        // move a imagem para o servidor
+                        if($this->uploadArq($idImage["tmp_name"],$temp)){
+                            $oImg = new Crop_Imagem($temp);
+                            // valida via m2brimagem
+                            if($oImg->valida() == 'OK'){					
+                                // redimensiona (caso seja menor que o tamanho )
+                                $oImg->redimensiona($width, '', '');
+                                // grava nova imagem                                
+                                if($imageBig == true){                                    
+                                    $oImg->grava($temp);                            
+                                    $oImg->posicaoCrop( $post['x']*2, $post['y']*2 );
+                                    $oImg->redimensiona( $post['w']*2, $post['h']*2, 'crop' );
+                                    $oImg->redimensiona($width, '', '');
+                                    $oImg->grava($temp);
+                                }else{
+                                    $oImg->grava($temp);                            
+                                    $oImg->posicaoCrop( $post['x'], $post['y'] );
+                                    $oImg->redimensiona( $post['w'], $post['h'], 'crop' );
+                                    $oImg->redimensiona($width, '', '');
+                                    $oImg->grava($temp);
+                                }                               
+                            }
+                        }
+                    }
+            $imgDestaque = $dir.$nomeImg;
+            return $imgDestaque;
+        }else{
+            return $imgOld;
+        }
+	}
+
+    function imageSecondary(array $idImage, string $width, array $post, ?string $imgOld, string $nameDir, string $namePhoto, $imageBig = false)
+	{
+        // return $post;
+        if($idImage["name"] !=""){
+
+            $formatoImgDestaque = ".".$this->formatoFile($idImage["name"]);
+            if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
+            }else{
+                $this->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=alterar&ctrl=noticias');
+                exit();
+            }
+
+            //Retorna formato da imagem
+            $formatoImgDestaque = $this->formatoFile($idImage["name"]);
+            //Definir nome para imagem
+            $dir = $nameDir."/";
+            if(!file_exists($nameDir)) {
+                $this->criaDir($nameDir);
+            }
+            $nomeImg = $namePhoto.time().".".$formatoImgDestaque;
+            $temp = $dir.$nomeImg;
+            //deleta a imagem antiga
+            $this->delFile($imgOld);
+            //Fazendo o upload da imagem
+                    $imagem = $idImage;
+                    // armazena dimensões da imagem
+                    $imagesize = getimagesize($imagem['tmp_name']);				
+                    if($imagesize !== false){
+                        // move a imagem para o servidor
+                        if($this->uploadArq($idImage["tmp_name"],$temp)){
+                            $oImg = new Crop_Imagem($temp);
+                            // valida via m2brimagem
+                            if($oImg->valida() == 'OK'){					
+                                // redimensiona (caso seja menor que o tamanho )
+                                $oImg->redimensiona($width, '', '');
+                                // grava nova imagem
+                                if($imageBig == true){
+                                    $oImg->grava($temp);                            
+                                    $oImg->posicaoCrop( $post['x2']*2, $post['y2']*2 );
+                                    $oImg->redimensiona( $post['w2']*2, $post['h2']*2, 'crop' );
+                                    $oImg->redimensiona($width, '', '');
+                                    $oImg->grava($temp);
+                                }else{
+                                    $oImg->grava($temp);                            
+                                    $oImg->posicaoCrop( $post['x2'], $post['y2'] );
+                                    $oImg->redimensiona( $post['w2'], $post['h2'], 'crop' );
+                                    $oImg->redimensiona($width, '', '');
+                                    $oImg->grava($temp);
+                                }
+                            }
+                        }
+                    }
+            $imgDestaque = $dir.$nomeImg;
+            return $imgDestaque;
+        }else{
+            return $imgOld;
+        }
+	}
 
 
 

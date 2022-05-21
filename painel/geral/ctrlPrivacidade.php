@@ -23,7 +23,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$privacidadeForm = $objPrivacidade->lista($condicao);
-	// $objUteis->encode($privacidadeForm);
+	// //$objUteis->encode($privacidadeForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltPrivacidade.php";
 break;
@@ -89,7 +89,7 @@ case "alterar":
 	
 
 	//altera o registro no banco
-	// $objUteis->decode($form);
+	// //$objUteis->decode($form);
 	$result = $objPrivacidade->alterar($form);
 	
 	//verifica se foi alterado

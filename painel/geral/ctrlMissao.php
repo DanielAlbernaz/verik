@@ -23,7 +23,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$missaoForm = $objMissao->lista($condicao);
-	// $objUteis->encode($missaoForm);
+	// //$objUteis->encode($missaoForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltMissao.php";
 break;
@@ -89,7 +89,7 @@ case "alterar":
 	
 
 	//altera o registro no banco
-	// $objUteis->decode($form);
+	// //$objUteis->decode($form);
 	$result = $objMissao->alterar($form);
 	
 	//verifica se foi alterado

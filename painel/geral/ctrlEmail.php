@@ -19,7 +19,7 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$emails = $objEmail->listar();
-	$objUteis->encode($emails);
+	//$objUteis->encode($emails);
 	// inclui o formulario
 	$abrePag = "../frms/listaEmail.php";
 	break;
@@ -54,7 +54,7 @@ break;
 case 'criar_csv':
 
 	$newss = $objEmail->listar();
-	$objUteis->encode($newss);
+	//$objUteis->encode($newss);
 
 	// set headings
 	$objCsv->setHeading('Nome', 'Email');

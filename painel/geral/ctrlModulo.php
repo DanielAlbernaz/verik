@@ -28,7 +28,7 @@ case "cadastrar":
 	$form['img'] = $objPost->param['img'];
 	$form['ativar'] = 1;
 	//Cadastra os dados
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objModulo->cadastrar($form);
 	
 	//Cadastra subtipos
@@ -38,7 +38,7 @@ case "cadastrar":
 		$form2['titulo'] = $objPost->param["tituloform"][$i];
 		$form2['url'] = $objPost->param["url"][$i];
 		
-		$objUteis->decode($form2);
+		//$objUteis->decode($form2);
 		$result2 = $objModulo->cadastrarMenu($form2);
 	}
 
@@ -63,14 +63,14 @@ case "listar":
 	// lista todos os dados do banco de dados
 	$condicao = array();
 	$modulos = $objModulo->listar('','ordem ASC');
-	$objUteis->encode($modulos);
+	//$objUteis->encode($modulos);
 	// inclui o formulario
 	$abrePag = "../frms/listaModulo.php";
 	break;
 case "frmAlterar":
 	// lista o dados no banco de dados pelo id
 	$modulo = $objModulo->moduloById($objPost->param['id']);
-	$objUteis->encode($modulo);
+	//$objUteis->encode($modulo);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltModulo.php";
 	break;
@@ -83,7 +83,7 @@ case "alterar":
 	$form['img'] = $objPost->param['img'];
 
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objModulo->alterar($form);
 
 	if($result){
@@ -97,7 +97,7 @@ case "alterar":
 					$form2['titulo'] = $objPost->param["tituloform"][$i];
 					$form2['url'] = $objPost->param["url"][$i];
 		
-					$objUteis->decode($form2);
+					//$objUteis->decode($form2);
 					$result = $objModulo->cadastrarMenu($form2);
 				}
 			}
@@ -155,7 +155,7 @@ case "alterarOrdem":
 	$direction = $objPost->param["direction"];
 
 	$listagens = $objModulo->listar('','ordem ASC');
-	$objUteis->encode($listagens);
+	//$objUteis->encode($listagens);
 
 	for ($i = 0; $i < $listagens["num"]; $i++) {
 		$resultaff = $objModulo->alteraOrdem($listagens[$i]->id, $i);
@@ -164,7 +164,7 @@ case "alterarOrdem":
 	if ($direction == "forward") {
 
 		$listagens = $objModulo->pegarListagensParaAlterarForward($fromPosition, $toPosition);
-		$objUteis->encode($listagens);
+		//$objUteis->encode($listagens);
 
 		for ($i = 0; $i < $listagens["num"]; $i++) {
 
@@ -182,7 +182,7 @@ case "alterarOrdem":
 	if ($direction == "back") {
 
 		$listagens = $objModulo->pegarListagensParaAlterarBack($fromPosition, $toPosition);
-		$objUteis->encode($listagens);
+		//$objUteis->encode($listagens);
 
 		for ($i = 0; $i < $listagens["num"]; $i++) {
 

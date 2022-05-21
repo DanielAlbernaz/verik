@@ -12,7 +12,7 @@ $dadosDaTabela = array(
 
 for($i=0;$i<$modulos["num"];$i++){
   $menus = $objModulo->listarMenusBySecao($modulos[$i]->id);
-  $objUteis->encode($menus);
+  //$objUteis->encode($menus);
   $modulos[$i]->img = "<img src='".$modulos[$i]->img."'/>"; 
   $modulos[$i]->menus = '';
   for($j=0;$j<$menus["num"];$j++){

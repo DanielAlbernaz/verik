@@ -18,7 +18,7 @@ include_once "../classes/class.Configuracao.php";
 $objConfiguracao = new Configuracao();
 
 $conf = Config::AtributosConfig();
-$objUteis->encode($conf);
+//$objUteis->encode($conf);
 
 
 if($objSession2->get('tlAdmLoginId')){
@@ -70,7 +70,7 @@ switch ($objPost->param['acao']) {
         	if (!empty($usuario)) {
         		if($usuario->email){
         			$novaSenha = $objUteis->gerarCodigo(time());
-        			$objUteis->encode($novaSenha);
+        			//$objUteis->encode($novaSenha);
         			$msg = array();
         			$msg[0]['tipo'] = 'Nome:';
         			$msg[0]['msg'] = $usuario->nome;
@@ -123,7 +123,7 @@ switch ($objPost->param['acao']) {
         
         //busca as seções fixas e dinâmicas no banco de dados
         $secoes_fixas = $objSecao->listar_fixas();
-        $objUteis->encode($secoes_fixas);
+        //$objUteis->encode($secoes_fixas);
 
         $abrePag = "../usuarios/frms/frmCadUsuario.php";
         break;
@@ -133,7 +133,7 @@ switch ($objPost->param['acao']) {
     	$anexoTemp = $objPost->param["img"]["tmp_name"];
     	
     	$usuario_verifica = $objUsuario->usuarioByEmail($objPost->param["email"]);
-    	$objUteis->encode($usuario_verifica);
+    	//$objUteis->encode($usuario_verifica);
     	
     	if($usuario_verifica->email){
     		$objUteis->showResult("", "Este email já esta cadastrado", false, "mostraMensagem", 'index.php?acao=listaUsuarios&ctrl=usuarios');
@@ -141,7 +141,7 @@ switch ($objPost->param['acao']) {
     	}
     	
     	$usuario_login = $objUsuario->usuarioByLogin($objPost->param["login"]);
-    	$objUteis->encode($usuario_login);
+    	//$objUteis->encode($usuario_login);
     	
     	if($usuario_login->login){
     		$objUteis->showResult("", "Este login já existe", false, "mostraMensagem", 'index.php?acao=listaUsuarios&ctrl=usuarios');
@@ -189,7 +189,7 @@ switch ($objPost->param['acao']) {
         $usuario['publicar_fixa'] = $objPost->param['publicar_fixa'];
 
         //inseri o usuário no banco
-        $objUteis->decode($usuario);
+        //$objUteis->decode($usuario);
         $result = $objUsuario->cadastrar($usuario);
         
         
@@ -234,20 +234,20 @@ switch ($objPost->param['acao']) {
     case "listaUsuarios":
         //busca todos os usu�rios
         $usuarios = $objUsuario->listar();
-        $objUteis->encode($usuarios);
+        //$objUteis->encode($usuarios);
         
         $abrePag = "../usuarios/frms/listaUsuarios.php";
         break;
     case "frmAltUsuario":
         //busca todas as se��es fixas e din�micas
         $secoes_fixas = $objSecao->listar_fixas();
-        $objUteis->encode($secoes_fixas);
+        //$objUteis->encode($secoes_fixas);
         //busca em quais se��es o usu�rio est� cadastrado
         $secoes_fixas_usuario = $objSecao->secaoFixaPorUsuario($_REQUEST['id']);
-        $objUteis->encode($secoes_fixas_usuario);
+        //$objUteis->encode($secoes_fixas_usuario);
         //busca os dados do usu�rio por seu id
         $usuario = $objUsuario->usuarioById($_REQUEST['id']);
-        $objUteis->encode($usuario);
+        //$objUteis->encode($usuario);
         $abrePag = "../usuarios/frms/frmAltUsuario.php";
         break;
     case "alteraUsuario":
@@ -264,11 +264,11 @@ switch ($objPost->param['acao']) {
         $usuario['publicar_fixa'] = $objPost->param['publicar_fixa'];
         
         $usuarioById = $objUsuario->usuarioById($objPost->param['id']);
-        $objUteis->encode($usuarioById);
+        //$objUteis->encode($usuarioById);
         
         if($objPost->param['email'] != $usuarioById->email){
 	        $verificaEmail = $objUsuario->usuarioByEmail($objPost->param['email']);
-	        $objUteis->encode($verificaEmail);
+	        //$objUteis->encode($verificaEmail);
 	        if($verificaEmail->id){
 	        	$objUteis->showResult("", "Este email já existe em nosso banco de dados", false, "mostraMensagem", 'index.php?acao=listaUsuarios&ctrl=usuarios');
 	        	exit();
@@ -363,7 +363,7 @@ switch ($objPost->param['acao']) {
         }
 
         //altera os dados no usu�rio
-        $objUteis->decode($usuario);
+        //$objUteis->decode($usuario);
         $result = $objUsuario->alterar($usuario);
         //verifica se foi inserido com sucesso e retorna a mensagem para o usu�rio
         if ($result) {
@@ -390,7 +390,7 @@ switch ($objPost->param['acao']) {
         //deleta o usuário
         
         $usuario = $objUsuario->usuarioById($objPost->param['id']);
-        $objUteis->encode($usuario);
+        //$objUteis->encode($usuario);
         $result = $objUsuario->deletar($objPost->param['id']);
         //verifica se foi inserido com sucesso e retorna a mensagem para o usu�rio
         if ($result) {
@@ -419,7 +419,7 @@ switch ($objPost->param['acao']) {
         break;
     case "verificaUsuario":
         $usuario = $objUsuario->usuarioByLogin($objPost->param["fieldValue"]);
-        $objUteis->encode($usuario);
+        //$objUteis->encode($usuario);
 
         /* RECEIVE VALUE */
         $validateValue = $objPost->param['fieldValue'];
@@ -444,7 +444,7 @@ switch ($objPost->param['acao']) {
         if (!$objSession2->get('tlAdmLoginNivel') == 1) {
             if ($objPost->param["fieldValue"] != $objSession2->get('tlAdmLoginUsuario')) {
                 $usuario = $objUsuario->usuarioByLogin($objPost->param["fieldValue"]);
-                $objUteis->encode($usuario);
+                //$objUteis->encode($usuario);
             } else {
             	if(isset($usuario->id)){
                 	$usuario->id == "";
@@ -475,7 +475,7 @@ switch ($objPost->param['acao']) {
         break;
     case "verificaUsuarioEmail":
         $usuario = $objUsuario->usuarioByEmail($objPost->param["fieldValue"]);
-        $objUteis->encode($usuario);
+        //$objUteis->encode($usuario);
 
         /* RECEIVE VALUE */
         $validateValue = $_REQUEST['fieldValue'];
@@ -497,7 +497,7 @@ switch ($objPost->param['acao']) {
         break;
     case "verificaUsuarioSenha":
         $usuario = $objUsuario->usuarioBySenha($objSession2->get('tlAdmLoginUsuario'), $objPost->param["fieldValue"]);
-        $objUteis->encode($usuario);
+        //$objUteis->encode($usuario);
 
         /* RECEIVE VALUE */
         $validateValue = $objPost->param['fieldValue'];

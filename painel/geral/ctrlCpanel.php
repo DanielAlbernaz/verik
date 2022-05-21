@@ -12,7 +12,7 @@ include_once "classes/cpanel/xmlapi.php";
 $permissao = $objSecao->permissaoSecaoFixaUsuario("1",$objSession2->get('tlAdmLoginId'));
 
 $conf = Config::AtributosConfig();
-$objUteis->encode($conf);
+//$objUteis->encode($conf);
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($objPost->param['acao']) {

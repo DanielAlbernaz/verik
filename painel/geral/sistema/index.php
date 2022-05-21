@@ -66,7 +66,7 @@ $objPost = new gp();
     }
     
     $secoes_fixas = $objSecao->listar_fixas();
-    $objUteis->encode($secoes_fixas);
+    //$objUteis->encode($secoes_fixas);
 
     for($i=0;$i<$secoes_fixas["num"];$i++){
     $sem_acento = $objUteis->nameArq(utf8_decode($secoes_fixas[$i]->titulo));
@@ -264,7 +264,7 @@ $configuracao = Config::AtributosConfig(); ?>
             $sem_acento = $objUteis->nameArq(utf8_decode($secoes_fixas[$i]->titulo));
             $permissao2 = $objSecao->permissaoSecaoFixaUsuario($secoes_fixas[$i]->id,$objSession2->get('tlAdmLoginId'));
             $menus = $objSecao->listar_menu_by_secao_fixa($secoes_fixas[$i]->id);
-            $objUteis->encode($menus);
+            //$objUteis->encode($menus);
             ?>
         <?if(count($menus) &&  isset($permissao2->id) &&  $permissao2->id){?>
         <li><a href="#" title="" class="exp"><span style="background-image:url('<?=$secoes_fixas[$i]->img?>')"><?=$secoes_fixas[$i]->menu?></span></a>
@@ -380,7 +380,7 @@ $configuracao = Config::AtributosConfig(); ?>
                     $sem_acento = $objUteis->nameArq(utf8_decode($secoes_fixas[$i]->titulo));
                     $permissao2 = $objSecao->permissaoSecaoFixaUsuario($secoes_fixas[$i]->id,$objSession2->get('tlAdmLoginId'));
                     $menus = $objSecao->listar_menu_by_secao_fixa($secoes_fixas[$i]->id);
-                    $objUteis->encode($menus);
+                    //$objUteis->encode($menus);
                     ?>
                 <?if(count($menus) &&  isset($permissao2->id) &&  $permissao2->id){?>
                 <li><a href="<?=$menus[$j]->url?>" title="" class="exp"><img src="<?=$secoes_fixas[$i]->img?>" alt="" /><?=$secoes_fixas[$i]->menu?></a>

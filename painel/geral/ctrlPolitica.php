@@ -10,7 +10,7 @@
 include_once "classes/class.Politica.php";
 $objPolitica = new Politica();
 
-$permissao = $objSecao->permissaoSecaoFixaUsuario("40",$objSession2->get('tlAdmLoginId'));
+$permissao = $objSecao->permissaoSecaoFixaUsuario("12",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($objPost->param['acao']) {
@@ -21,7 +21,7 @@ case "frmAlterar":
 		'id' => $objPost->param["id"]
 	);
 	$politicaForm = $objPolitica->lista($condicao);
-	$objUteis->encode($politicaForm);
+	//$objUteis->encode($politicaForm);
 	// inclui o formulario
 	$abrePag = "../frms/frmAltPolitica.php";
 break;
@@ -31,14 +31,10 @@ case "alterar":
 	$form['id'] = $objPost->param['id'];
 	$form['titulo'] = $objPost->param['titulo'];
 	$form['texto'] = $objPost->param['texto'];	
-	$form['status'] = 1;
+	$form['imagem'] = $objUteis->imagePrimary($objPost->param['imagem'], '1920', $_POST, $objPost->param['imgAntiga'], 'politica', 'politica', true);
 	
-	
-	//se tiver selecionado uma imagem
-	
-
 	//altera o registro no banco
-	$objUteis->decode($form);
+	//$objUteis->decode($form);
 	$result = $objPolitica->alterar($form);
 	
 	//verifica se foi alterado
