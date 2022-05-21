@@ -1529,14 +1529,14 @@ class Form {
                 			for($i = 0; $i < $arrayFotos ["num"]; $i ++) {
                 				if ($urlExcluirArquivo) {
                 					$divExcluirArquivo = '
-                		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos [$i]->id . '&img=' . $arrayFotos [$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
+                		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos[$i]->id . '&img=' . $arrayFotos[$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
                 		</div>';
                 				}
                 				$funcaoJquery .= '
                 		<li style="width:95px; position:relative; background:#fff; height:100px; overflow:hidden;">
                 			';
-                				$funcaoJquery .= '<a href="' . $arrayFotos [$i] ->img . '" title="" rel="lightbox">';
-                				$funcaoJquery .= '<img src="' . $arrayFotos [$i]->img . '" height="100" alt="" />';
+                				$funcaoJquery .= '<a href="' . $arrayFotos[$i]->img . '" title="" rel="lightbox">';
+                				$funcaoJquery .= '<img src="' . $arrayFotos[$i]->img . '" height="100" alt="" />';
                 				$funcaoJquery .= '</a>';
                 				$funcaoJquery .= $divExcluirArquivo;
                 				$funcaoJquery .= '

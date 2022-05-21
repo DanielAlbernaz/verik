@@ -7,8 +7,8 @@
  */
 
 //inclui a classe do objeto
-include_once "classes/class.Categoria.php";
-$objCategoria = new Categoria();
+include_once "classes/class.CategoriaPergunta.php";
+$objCategoria = new CategoriaPergunta();
 
 $permissao = $objSecao->permissaoSecaoFixaUsuario("15",$objSession2->get('tlAdmLoginId'));
 
@@ -16,7 +16,7 @@ $permissao = $objSecao->permissaoSecaoFixaUsuario("15",$objSession2->get('tlAdmL
 switch ($objPost->param['acao']) {
 case "frmCad":
 	// inclui o arquivo
-	$abrePag = "../frms/frmCadCategoria.php";
+	$abrePag = "../frms/frmCadCategoriaPergunta.php";
 	break;
 case "cadastrar":
 	//monta o array dos post
@@ -43,7 +43,7 @@ case "cadastrar":
 			->showResult("Cadastrado com sucesso.",
 					"Erro ao cadastrar.", $result,
 					"mostraMensagem",
-					'index.php?acao=listar&ctrl=categoria');
+					'index.php?acao=listar&ctrl=categoriapergunta');
 	exit();
 	break;
 case "listar":
@@ -52,7 +52,7 @@ case "listar":
 	$categorias = $objCategoria->listar();
 	//$objUteis->encode($categorias);
 	// inclui o formulario
-	$abrePag = "../frms/listaCategoria.php";
+	$abrePag = "../frms/listaCategoriaPergunta.php";
 	break;
 case "frmAlterar":
 	
@@ -63,7 +63,7 @@ case "frmAlterar":
 	$categoriaForm = $objCategoria->lista($condicao);
 	//$objUteis->encode($categoriaForm);
 	// inclui o formulario
-	$abrePag = "../frms/frmAltCategoria.php";
+	$abrePag = "../frms/frmAltCategoriaPergunta.php";
 	break;
 case "alterar":
 	//monta o array para alterar
@@ -90,7 +90,7 @@ case "alterar":
 			->showResult("Alterado com sucesso",
 					"Erro ao alterar.", $result,
 					"mostraMensagem",
-					'index.php?acao=listar&ctrl=categoria');
+					'index.php?acao=listar&ctrl=categoriapergunta');
 	exit();
 
 	break;

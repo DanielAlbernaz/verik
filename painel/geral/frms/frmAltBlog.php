@@ -27,7 +27,7 @@ $optionsCategoria[] = '<option value='.$blogForm->id_categoria.' selected="selec
 foreach($categoria as $key => $val){
     if($val->id <> NULL){
         if($val->id <> $blogForm->id_categoria){
-            $optionsCategoria[] = '<option value='.$val->id.'>'.$val->nome_categoria.'</option>';
+            $optionsCategoria[] = '<option value='.$val->id.'>'.$val->nome.'</option>';
         }       
     }  
 }
