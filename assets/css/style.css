@@ -1607,6 +1607,37 @@ hr {
     color: var(--white-color);
 }
 
+.login__btn {
+    background: var(--bg-verik-amarelo);
+    border-radius: 0.3rem;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 0;
+    border: none !important;
+}
+
+.login__btn:hover {
+    background: #f1f1f1;
+    color: var(--black-color);
+}
+
+.login_cadastro__btn {
+    background: #f1f1f1;
+    border-radius: 0.3rem;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 0;
+    border: #d8d7d7 1px solid;
+    text-align: center;
+}
+
+.login_cadastro__btn:hover {
+    background: #d6d5d5;
+    color: var(--black-color);
+}
+
 .ver_carrinho__btn {
     font-size: 1.4rem;
     font-weight: var(--body-line-height);
@@ -12418,7 +12449,7 @@ details>summary::-webkit-details-marker {
     background: var(--white-color);
     position: relative;
     font-weight: 500;
-    color: var(--light-color);
+    color: var(--black-color);
 }
 
 @media only screen and (min-width: 992px) {
