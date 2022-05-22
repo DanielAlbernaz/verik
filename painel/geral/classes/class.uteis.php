@@ -2826,6 +2826,23 @@ public function enviaEmailContatoSite($emails=null, $msg=null, $replyTo=null, $a
         }
 	}
 
+    function converterPreco(string $preco)
+    {
+        $preco = str_replace('R$', '', $preco);
+        $preco = str_replace('.', '', $preco);
+        $preco = str_replace(',', '.', $preco);
+
+        return $preco;
+    }
+
+    function converterPrecoExebicao(string $preco)
+    {
+        if($preco != null){
+            return number_format($preco, 2, ',', '.');
+        }else{
+            return null;
+        }
+    }
 
 
 }

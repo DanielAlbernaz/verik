@@ -1,12 +1,12 @@
 <?php
-class Produto {
+class Cor {
 	
 
 	function cadastrar($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
-		$result = $sqlGl->insertInto('produtos',$form);
+		$result = $sqlGl->insertInto('cores_produto',$form);
 		$lastInsert = $result->execute();
 
 		//retorna o resultado da query para a câmada de controle
@@ -16,7 +16,7 @@ class Produto {
 	function alterar($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
-		$result = $sqlGl->update('produtos')->set($form)->where('id', $form['id']);
+		$result = $sqlGl->update('cores_produto')->set($form)->where('id', $form['id']);
 		$result = $result->execute(true);
 
 		//retorna o resultado da query para a câmada de controle
@@ -26,7 +26,17 @@ class Produto {
 	function deletar($id) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
-		$result = $sqlGl->deleteFrom("produtos")->where("id",$id);
+		$result = $sqlGl->deleteFrom("cores_produto")->where("id",$id);
+		$result = $result->execute();
+
+		//retorna o resultado da query para a câmada de controle
+		return $result;
+	}
+
+	function deletarIdProduto($id) {
+		//chamada ao objeto da classe de abstração de banco de dados
+		global $sqlGl;
+		$result = $sqlGl->deleteFrom("cores_produto")->where("id_produto",$id);
 		$result = $result->execute();
 
 		//retorna o resultado da query para a câmada de controle
@@ -38,7 +48,7 @@ class Produto {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
-		$aValores = $sqlGl -> from("produtos")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("cores_produto")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -52,7 +62,7 @@ class Produto {
 		$sql =  'SELECT ';
 		$sql .= ' * ';
 		$sql .= 'FROM ';
-		$sql .= 'produtos ';
+		$sql .= 'cores_produto ';
 		$sql .= ' WHERE ';
  		$sql .= 'STATUS = 1 ';			
 
@@ -82,14 +92,14 @@ class Produto {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 
-		$aValores = $sqlGl -> from("produtos")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("cores_produto")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetch();
 		return $aValores;
 	}
 
 	function publicar($id, $status) {
 		global $sqlGl;
-		$result = $sqlGl->update('produtos')->set('status',$status)->where('id', $id);
+		$result = $sqlGl->update('cores_produto')->set('status',$status)->where('id', $id);
 		$result = $result->execute(true);
 		
 		//retorna o resultado da query para a câmada de controle
@@ -101,7 +111,7 @@ class Produto {
 	function pegarListagensParaAlterarBack($fromPosition, $toPosition) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
-		$aValores = $sqlGl -> from("produtos")->where('ordem <= :ordem1 && ordem >= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
+		$aValores = $sqlGl -> from("cores_produto")->where('ordem <= :ordem1 && ordem >= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -111,7 +121,7 @@ class Produto {
 	function pegarListagensParaAlterarForward($fromPosition, $toPosition) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
-		$aValores = $sqlGl -> from("produtos")->where('ordem >= :ordem1 && ordem <= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
+		$aValores = $sqlGl -> from("cores_produto")->where('ordem >= :ordem1 && ordem <= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -120,7 +130,7 @@ class Produto {
 
 	function alteraOrdem($id, $posicao) {
 		global $sqlGl;
-		$result = $sqlGl->update('produtos')->set('ordem',$posicao)->where('id', $id);
+		$result = $sqlGl->update('cores_produto')->set('ordem',$posicao)->where('id', $id);
 		$result = $result->execute(true);
 		
 		//retorna o resultado da query para a câmada de controle
@@ -134,7 +144,7 @@ class Produto {
 	
 	    $pdo = $sqlGl->getPdo();
 	
-	    $stmt = $pdo->query("SHOW TABLE STATUS LIKE 'produtos'");
+	    $stmt = $pdo->query("SHOW TABLE STATUS LIKE 'cores_produto'");
 	    $res = $stmt->fetch(PDO::FETCH_ASSOC);
 	
 	    return $res['auto_increment'];
@@ -196,7 +206,7 @@ class Produto {
                 $sql = 'SELECT ';
                 $sql .= '   * ';
                 $sql .= 'FROM ';
-                $sql .= '   produtos ';
+                $sql .= '   cores_produto ';
                 $sql .= 'WHERE ';
                 // $sql .= '   data_inicio_exibicao <= now() and ';
                 // $sql .= '   (data_expiracao > now() or data_expiracao = 0) and ';
@@ -227,7 +237,7 @@ class Produto {
                 $sql = 'SELECT ';
                 $sql .= '   * ';
                 $sql .= 'FROM ';
-                $sql .= '   produtos ';
+                $sql .= '   cores_produto ';
                 $sql .= 'WHERE ';
                 // $sql .= '   data_inicio_exibicao <= now() and ';
                 // $sql .= '   (data_expiracao > now() or data_expiracao = 0) and ';
@@ -260,7 +270,7 @@ class Produto {
 	    $sql = 'SELECT ';
             $sql .= '   COUNT(est.id) AS qtd ';
             $sql .= 'FROM ';
-            $sql .= '   produtos est ';
+            $sql .= '   cores_produto est ';
             $sql .= 'WHERE ';
 			$sql .= '   (data_inicio_exibicao <= NOW()) and ';
             $sql .= '   (data_expiracao >= NOW() or data_expiracao is null or data_expiracao = "0000-00-00 00:00:00" ) and ';
@@ -292,7 +302,7 @@ class Produto {
 	    $sql = 'SELECT ';
             $sql .= '   est.* ';
             $sql .= 'FROM  ';
-            $sql .= '   produtos est ';
+            $sql .= '   cores_produto est ';
             $sql .= 'WHERE ';
             $sql .= '   (data_inicio_exibicao <= NOW()) and ';
             $sql .= '   (data_expiracao >= NOW() or data_expiracao is null or data_expiracao = "0000-00-00 00:00:00" ) and ';
@@ -327,7 +337,7 @@ class Produto {
 		$sql =  'SELECT ';
 		$sql .= ' * ';
 		$sql .= 'FROM ';
-		$sql .= 'produtos ';
+		$sql .= 'cores_produto ';
 		$sql .= ' WHERE ';
  		$sql .= 'STATUS = 1 ';			
  		$sql .= 'ORDER BY ID DESC ';			

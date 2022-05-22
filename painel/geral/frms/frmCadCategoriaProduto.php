@@ -2,8 +2,8 @@
 
 
 //Informações do Formalário
-$nomedoformulario = 'Cadastrar Categorias';
-$acaodoformulario = 'index.php?acao=cadastrar&ctrl=categoria';
+$nomedoformulario = 'Cadastrar Categorias Produto';
+$acaodoformulario = 'index.php?acao=cadastrar&ctrl=categoriaproduto';
 $avisodoformulario = 'Esta página você cadastra as categoria.';
 
 //Inicia o Formulário

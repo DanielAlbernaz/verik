@@ -353,11 +353,11 @@ $(function() {
                
 		}
 		
-		if (document.getElementById("texto_apresentacao") != null) {
+		if (document.getElementById("informacao_adicional") != null) {
 
 
 
-            CKEDITOR.replace('texto_apresentacao',
+            CKEDITOR.replace('informacao_adicional',
 
                {
 

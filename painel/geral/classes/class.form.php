@@ -61,7 +61,7 @@ class Form {
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $nomeLabel . '</label>';
 		$input .= '<div class="formRight" id="cPicker">';
-		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' " title="' . $textoDescription . '" value="' . $value . '" />';
+		$input .= '<input type="color" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' " title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		
@@ -150,6 +150,28 @@ class Form {
 		
 		echo $input;
 	}
+
+	public function sk_formTextPequenoNumber($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '', $readOnly = null) {
+		if ($required == true) {
+			$required = 'validate[required]';
+			$addAsteristico = '<span class="req">*</span>';
+		}
+		if ($descripton) {
+			$tooltip = 'tipS';
+			$textoDescription = $descripton;
+		}
+		
+		$input = "";
+		$input .= '<div class="formRow">';
+		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
+		$input .= '<div class="formRight">';
+		$input .= '<input type="number" style="width: 100px;" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '"  '. $readOnly .'/>';
+		$input .= '</div><div class="clear"></div>';
+		$input .= '</div>';
+		
+		echo $input;
+	}
+
 	public function sk_formGoogleMaps($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
 		if ($required == true) {
 			$required = 'validate[required]';
@@ -621,6 +643,29 @@ class Form {
 		
 		echo $input;
 	}
+
+	public function sk_formPrecoPequeno($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+		
+		if ($required == true) {
+			$required = 'validate[required]';
+			$addAsteristico = '<span class="req">*</span>';
+		}
+		if ($descripton) {
+			$tooltip = 'tipS';
+			$textoDescription = $descripton;
+		}
+		
+		$input = "";
+		$input .= '<div class="formRow">';
+		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
+		$input .= '<div class="formRight ' . $tooltip . '" title="' . $textoDescription . '">';
+		$input .= '<input type="text" style="width: 100px;" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $nameInput . ' preco" value="' . $value . '" />';
+		$input .= '</div><div class="clear"></div>';
+		$input .= '</div>';
+		
+		echo $input;
+	}
+
 	public function sk_formArea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
 		
 		if ($required == true) {
