@@ -9,6 +9,11 @@
 <title>Painel Administrativo</title>
 <link href="../sistema/css/main.css" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" type="text/css" href="../sistema/css/login/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../sistema/css/login/fontawesome-all.min.css">
+<link rel="stylesheet" type="text/css" href="../sistema/css/login/iofrm-style.css">
+<link rel="stylesheet" type="text/css" href="../sistema/css/login/iofrm-theme1.css">
+
 <script type="text/javascript" src="../sistema/js/jquery.js"></script>
 
 <script type="text/javascript" src="../sistema/js/plugins/spinner/ui.spinner.js"></script>
@@ -62,86 +67,76 @@
 
 <script src="../sistema/js/plugins/ckeditor/ckeditor.js"></script>
 
+<!--login -->
+<script src="../sistema/js/login/popper.min.js"></script>
+<script src="../sistema/js/login/bootstrap.min.js"></script>
+<script src="../sistema/js/login/main.js"></script>
+
 </head>
 
 <body class="nobg loginPage">
 
 <?php $configuracao = Config::AtributosConfig(); ?>
 
-<!-- Top fixed navigation -->
-<div class="topNav">
-    <div class="wrapper">
-        <div class="userNav">
-            <ul>
-                <li><a href="<?php echo $configuracao["siteCliente"]?>" title=""><img src="../sistema/images/icons/topnav/mainWebsite.png" alt="" /><span>Voltar para o Website</span></a></li>
-                <li><a href="<?php echo $configuracao["siteDesenvolvedor"]?>" title=""><img src="../sistema/images/icons/topnav/messages.png" alt="" /><span>Desenvolverdor</span></a></li>
-            </ul>
+
+<div class="form-body">
+    <div class="website-logo">
+        <a href="#">
+            <div>
+                <img src="../sistema/images/logo.png" alt="Verik">
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+
+            </div>
         </div>
-        <div class="clear"></div>
-    </div>
-</div>
-
-
-<!-- Main content wrapper -->
-<div class="loginWrapper">
-    <div class="loginLogo" style="display:none;"><img src="../sistema/images/loginLogo.png" alt="" /></div>
-    <div class="widget" id='logarPainel'>
-        <div class="title"><img src="../sistema/images/icons/dark/files.png" alt="" class="titleIcon" /><h6>Acesso Restrito</h6></div>
-        <form action="javascript:;" id="frmLogarPaginaInicial" class="form">
-            <fieldset>
-                <div class="formRow">
-                    <label for="login">Usuário / email:</label>
-                    <div class="loginInput"><input type="text" name="email" class="validate[required,custom[email]]" id="email" /></div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="formRow">
-                    <label for="pass">Senha:</label>
-                    <div class="loginInput"><input type="password" name="senha" class="validate[required]" id="pass" /></div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="loginControl">
-                    <div class="rememberMe">
-                    	<a href="javascript:;" id="clicarEsqueciSenha">
-							Esqueci minha senha.                    	
-                    	</a>
+        <div class="form-holder" id='logarPainel'>
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Bem-vindo!<br/> Faça login na sua conta.</h3>
+                    <p>Para acessar a área administrativa, preencha os campos abaixo com usuário e senha válidos! :)</p>
+                    <div class="page-links">
+                        <a href="#" class="active">Login</a>
                     </div>
-                    <input type="hidden" value="<?=$_SERVER['REMOTE_ADDR'];?>" name="ip" />
-                    <input type="submit" value="Logar" class="dredB logMeIn" />
-                    <div class="clear"></div>
+                    <form action="javascript:;" id="frmLogarPaginaInicial">
+                        <input type="text" name="email" class="form-control validate[required,custom[email]]" id="email" placeholder="Seu e-mail">
+                        <input type="password" name="senha" class="form-control validate[required]" id="pass"  placeholder="Sua senha">
+                        <input type="hidden" value="<?=$_SERVER['REMOTE_ADDR'];?>" name="ip" />
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn">Login</button> <a href="javascript:;" id="clicarEsqueciSenha">Esqueceu sua senha?</a>
+                        </div>
+                    </form>                    
                 </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="widget" style="display: none;" id="esqueciSenha">
-        <div class="title"><img src="../sistema/images/icons/dark/files.png" alt="" class="titleIcon" /><h6>Esqueci minha senha</h6></div>
-        <form action="javascript:;" id="frmEsquecerSenhaPaginaInicial" class="form">
-            <fieldset>
-                <div class="formRow">
-                    <label for="login">Usuário / email:</label>
-                    <div class="loginInput"><input type="text" name="email" class="validate[required,custom[email]]" id="email" /></div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="loginControl">
-                	<div class="rememberMe">
-                    	<a href="javascript:;" id="clicarVoltarSenha">
-							Voltar                   	
-                    	</a>
-                    </div>	
-                    <input type="submit" value="Recuperar Senha" class="dredB logMeIn" />
-                    <div class="clear"></div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</div>    
+            </div>
+        </div>
 
-<!-- Footer line -->
-<div id="footer">
-    <div class="wrapper">Todos os direitos reservados. <a href="<?php echo $configuracao["siteCliente"]?>" target="_blank" title=""><?php echo $configuracao["nomeCliente"]?></a></div>
+
+        <div class="form-holder" style="display: none;" id="esqueciSenha">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Esqueceu sua senha de acesso?</h3>
+                    <p>Identifique-se para receber um e-mail com as instruções com uma nova senha.</p>
+                    <div class="page-links">
+                        <a href="#" class="active">Recuperar senha</a>
+                    </div>
+                    <form action="javascript:;" id="frmEsquecerSenhaPaginaInicial">
+                        <input type="text" name="email" class="form-control validate[required,custom[email]]" id="email" placeholder="Seu e-mail">
+                        <input type="hidden" value="<?=$_SERVER['REMOTE_ADDR'];?>" name="ip" />
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn">Recuperar Senha</button> <a href="javascript:;" id="clicarVoltarSenha">Fazer Login</a>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <script>
 	$('#clicarEsqueciSenha').click(function(){
