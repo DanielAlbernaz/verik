@@ -13,19 +13,19 @@ $objForm->sk_iniciaFormulario($nomedoformulario,$acaodoformulario,$avisodoformul
 
 $objForm->sk_formFileCrop("Banner",'imagem',false,'Tamanho da imagem do banner 1180px x 293px',$AppExcelenciaForm->imagem);    
 
-echo'<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon"><h6>Vídeos</h6></div>';
+echo'<div class="title"><h6>Vídeos</h6></div>';
 
 $objForm->sk_formText('Título','titulo_video','',true,'Aqui digita um título.', $AppExcelenciaForm->titulo_video);
 
 $objForm->sk_formText('Subtitulo','sub_titulo_video','',true,'Aqui digita um título.', $AppExcelenciaForm->sub_titulo_video);
 
-echo'<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon"><h6>Vantagens</h6></div>';
+echo'<div class="title"><h6>Vantagens</h6></div>';
 
 $objForm->sk_formText('Título','titulo_vantagens','',true,'Aqui digita um título.', $AppExcelenciaForm->titulo_vantagens);
 
 $objForm->sk_formText('Subtitulo','sub_titulo_vantagens','',true,'Aqui digita um título.', $AppExcelenciaForm->sub_titulo_vantagens);
 
-echo'<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon"><h6>Links APP\'s</h6></div>';
+echo'<div class="title"><h6>Links APP\'s</h6></div>';
 
 $objForm->sk_formText('Título','titulo_link','',true,'Aqui digita um título.', $AppExcelenciaForm->titulo_link);
 
