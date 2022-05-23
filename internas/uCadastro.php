@@ -33,7 +33,7 @@
                                         <p class="account__login--header__desc">Veja seus pedidos de forma fácil, compre mais rápido e tenha uma experiência personalizada :)</p>
                                     </div>
                                     <div class="account__login--inner">
-                                        <input class="account__login--input" placeholder="E-mail" type="text">
+                                        <input class="account__login--input" onblur="aqui(this.value)" placeholder="E-mail" type="text">
                                         <input class="account__login--input" placeholder="Crie sua senha" type="password">
                                         <input class="account__login--input" placeholder="Confirme a senha" type="password">
                                         <input class="account__login--input" placeholder="CPF ou CNPJ" type="text">

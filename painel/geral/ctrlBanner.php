@@ -4,8 +4,6 @@
 include_once "classes/class.Banner.php";
 $objBanner = new Banner();
 
-include_once "classes/class.Crop_Imagem.php";
-
 $permissao = $objSecao->permissaoSecaoFixaUsuario("4",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
@@ -21,60 +19,13 @@ case "cadastrar":
 	$form['ordem'] = $objPost->param['ordem'];
 	$form['url'] = $objPost->param['url'];
 	$form['status'] = $objPost->param['status'];
-	$form['dhcadastro'] = date('Y-m-d H:i:s');
+	$form['dhcadastro'] = $objPost->param['dhcadastro'] ? $objUteis->converteDataHora($objPost->param['dhcadastro']) : date('Y-m-d H:i:s');
 	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
-    if($form['data_expiracao']){
+    if($objPost->param['data_expiracao']){
 		$form['data_expiracao'] = $objUteis->converteDataHora($objPost->param['data_expiracao']);
 	}
-	$form['idoperador_cadastro'] = $objSession2->get('tlAdmLoginId');
-	
-	//se tiver selecionado uma imagem destaque
-	if($objPost->param["imagem"]["name"] !=""){
-
-		$formatoImgDestaque = ".".$objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
-
-		}else{      
-			$objUteis->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=frmCad&ctrl=banner');
-			exit();
-		}
-
-		//Retorna formato da imagem
-		$formatoImgDestaque = $objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		//Definir nome para imagem
-		$dir = "arq_banner/";
-		if(!file_exists("arq_banner")) {
-				$objUteis->criaDir("arq_banner");
-		}
-		$nomeImg = "banner".time().".".$formatoImgDestaque;
-		$temp = $dir.$nomeImg;
-//deleta a imagem antiga
-$objUteis->delFile($objPost->param['imgAntiga']);
-//Fazendo o upload da imagem
-	$imagem = $objPost->param["imagem"];
-	// armazena dimensões da imagem
-	$imagesize = getimagesize($imagem['tmp_name']);				
-	if($imagesize !== false){
-		// move a imagem para o servidor
-		if($objUteis->uploadArq($objPost->param["imagem"]["tmp_name"],$temp)){
-			$oImg = new Crop_Imagem($temp );
-			// valida via m2brimagem
-			if($oImg->valida() == 'OK'){					
-				// redimensiona (caso seja menor que o tamanho )
-				$oImg->redimensiona('1920', '', '');
-				// grava nova imagem
-				$oImg->grava($temp);                            
-				$oImg->posicaoCrop( $_POST['x']*2, $_POST['y']*2 );
-				$oImg->redimensiona( $_POST['w']*2, $_POST['h']*2, 'crop' );
-				$oImg->redimensiona('1920', '', '');
-				$oImg->grava( $temp );
-			}
-		}
-	}
-	$imgDestaque = $dir.$nomeImg;
-}
-
-$form['imagem'] =  $imgDestaque;
+	$form['idoperador_cadastro'] = $objSession2->get('tlAdmLoginId');	
+	$form['imagem'] = $objUteis->imagePrimary($objPost->param['imagem'], '1920', $_POST, '', 'arq_banner', 'banner', true);
 	
 	//Cadastra os dados
 	//$objUteis->decode($form);
@@ -126,57 +77,13 @@ case "alterar":
 	$form['abrir_mesma_aba'] = $objPost->param['abrir_mesma_aba'];
 	$form['url'] = $objPost->param['url'];
 	$form['data_inicio_exibicao'] = ($objPost->param['data_inicio_exibicao'] ? $objUteis->converteDataHora($objPost->param['data_inicio_exibicao']) : date('Y-m-d H:i:s'));            
-    if($form['data_expiracao']){
+    if($objPost->param['data_expiracao']){
 		$form['data_expiracao'] = $objUteis->converteDataHora($objPost->param['data_expiracao']);
+	}else{
+		$form['data_expiracao'] = null;
 	}
-	
-	 //se tiver selecionado uma imagem destaque
-	 if($objPost->param["imagem"]["name"] !=""){
-		$formatoImgDestaque = ".".$objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		if($formatoImgDestaque == ".jpg" || $formatoImgDestaque == ".JPG" || $formatoImgDestaque == ".jpeg" || $formatoImgDestaque == ".JPEG" || $formatoImgDestaque == ".png" || $formatoImgDestaque == ".PNG" || $formatoImgDestaque == ".gif" || $formatoImgDestaque == ".GIF") {
-
-		}else{
-				$objUteis->showResult("","Formato de arquivo inválido. Apenas imagens .jpg, png, gif ou .jpeg",false,"mostraMensagem",'index.php?acao=frmCad&ctrl=noticias');
-				exit();
-		}
-
-		//Retorna formato da imagem
-		$formatoImgDestaque = $objUteis->formatoFile($objPost->param["imagem"]["name"]);
-		//Definir nome para imagem
-		$dir = "arq_banner/";
-		if(!file_exists("arq_banner")) {
-				$objUteis->criaDir("arq_banner");
-		}
-		$nomeImg = "banner".time().".".$formatoImgDestaque;
-		$temp = $dir.$nomeImg;
-//deleta a imagem antiga
-$objUteis->delFile($objPost->param['imgAntiga']);
-//Fazendo o upload da imagem
-		$imagem = $objPost->param["imagem"];
-		// armazena dimensões da imagem
-		$imagesize = getimagesize($imagem['tmp_name']);				
-		if($imagesize !== false){
-			// move a imagem para o servidor
-			if($objUteis->uploadArq($objPost->param["imagem"]["tmp_name"],$temp)){
-				$oImg = new Crop_Imagem($temp );
-				// valida via m2brimagem
-				if($oImg->valida() == 'OK'){					
-					// redimensiona (caso seja menor que o tamanho )
-					$oImg->redimensiona('1920', '', '');
-					// grava nova imagem
-					$oImg->grava($temp);                            
-					$oImg->posicaoCrop( $_POST['x']*2, $_POST['y']*2 );
-					$oImg->redimensiona( $_POST['w']*2, $_POST['h']*2, 'crop' );
-					$oImg->redimensiona('1920', '', '');
-					$oImg->grava( $temp );
-				}
-			}
-		}
-		$imgDestaque = $dir.$nomeImg;
-		$form['imagem'] = $imgDestaque;
-}else{
-$form['imagem'] = $objPost->param['imgAntiga'];
-}
+	$form['idoperador_alteracao'] = $objSession2->get('tlAdmLoginId');	
+	$form['imagem'] = $objUteis->imagePrimary($objPost->param['imagem'], '1920', $_POST, $objPost->param['imgAntiga'], 'blog', 'blog', true); 
 
 	//altera o registro no banco
 	//$objUteis->decode($form);

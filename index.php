@@ -55,6 +55,7 @@
             <div class="loader-section section-right"></div>
         </div>
     </div>
+    
     <!--/fim preloader -->
     <?php
         include("$abrePag");
@@ -70,8 +71,9 @@
     <!-- <script src="<?= $path["site"] ?>assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
 
     <script src="<?= $path["site"] ?>assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="<?= $path["site"] ?>assets/js/plugins/glightbox.min.js"></script>
-
+    <script src="<?= $path["site"] ?>assets/js/plugins/glightbox.min.js"></script>   
+    <script src="<?= $path["site"] ?>js/jquery.js"></script>
+    <script src="<?= $path["site"] ?>js/validation.js?<?=rand(1, 999);?>"></script>
     <!-- Customscript js -->
     <script src="<?= $path["site"] ?>assets/js/script.js"></script>
 

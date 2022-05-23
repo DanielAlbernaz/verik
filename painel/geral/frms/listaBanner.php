@@ -2,10 +2,12 @@
 //Dados da Tabela
 $dadosDaTabela = array(
     0 => 'ID',
-    1 => 'TITULO',
-    2 => 'IMAGEM',
-    3 => 'DATA EXIBIÇÃO',
-    4 => 'ORDEM'
+    1 => 'ORDEM',
+    2 => 'TITULO',
+    3 => 'IMAGEM',
+    4 => 'DT CADASTO',
+    5 => 'DT. INÍCIO EXIBIÇÃO',
+    6 => 'DT. FIM EXIBIÇÃO',
 
 );
 
@@ -23,7 +25,7 @@ for($i=0;$i<$banners["num"];$i++){
     }
     $data_expiracao = $objUteis->dataHora($banners[$i]->data_expiracao);
     $hora_expiracao = explode(':',$data_expiracao['hora']);
-    if($banners[$i]->data_expiracao != '0000-00-00 00:00:00'){
+    if($banners[$i]->data_expiracao != '0000-00-00 00:00:00' && $produtos[$i]->data_expiracao != 0){
         $banners[$i]->data_expiracao = $data_expiracao['data'].' - '.$hora_expiracao[0].':'.$hora_expiracao[1];
     }else{
         $banners[$i]->data_expiracao = '';
@@ -34,10 +36,12 @@ for($i=0;$i<$banners["num"];$i++){
 //Campos para puxar na listagem
 $campos = array(
     0 => 'id',
-    1 => 'titulo',
-    2 => 'imagem',
-    3 => 'data_inicio_exibicao',
-    4 => 'ordem'
+    1 => 'ordem',
+    2 => 'titulo',
+    3 => 'imagem',
+    4 => 'dhcadastro',
+    5 => 'data_inicio_exibicao',
+    6 => 'data_expiracao',
 );
 
 $publicar = 0;
