@@ -1366,73 +1366,73 @@ public function enviaEmailSugestao($emails=null, $replyTo=null, $assunto=null, $
         
                 case '01';
         
-                    $mesRetorno = "Jan";
+                    $mesRetorno = "Janeiro";
         
                 break;
         
                 case '02';
         
-                    $mesRetorno = "Fev";
+                    $mesRetorno = "Fevereiro";
         
                 break;
         
                 case '03';
         
-                    $mesRetorno = "Mar";
+                    $mesRetorno = "Março";
         
                 break;
         
                 case '04';
         
-                    $mesRetorno = "Abr";
+                    $mesRetorno = "Abril";
         
                 break;
         
                 case '05';
         
-                    $mesRetorno = "Mai";
+                    $mesRetorno = "Maio";
         
                 break;
         
                 case '06';
         
-                    $mesRetorno = "Jun";
+                    $mesRetorno = "Junho";
         
                 break;
         
                 case '07';
         
-                    $mesRetorno = "Jul";
+                    $mesRetorno = "Julho";
         
                 break;
         
                 case '08';
         
-                    $mesRetorno = "Ago";
+                    $mesRetorno = "Agosto";
         
                 break;
         
                 case '09';
         
-                    $mesRetorno = "Set";
+                    $mesRetorno = "Setembro";
         
                 break;
         
                 case '10';
         
-                    $mesRetorno = "Out";
+                    $mesRetorno = "Outubro";
         
                 break;
         
                 case '11';
         
-                    $mesRetorno = "Nov";
+                    $mesRetorno = "Novembro";
         
                 break;
         
                 case '12';
         
-                    $mesRetorno = "Dez";
+                    $mesRetorno = "Dezembro";
         
                 break;
         
@@ -2833,6 +2833,29 @@ public function enviaEmailContatoSite($emails=null, $msg=null, $replyTo=null, $a
         $preco = str_replace(',', '.', $preco);
 
         return $preco;
+    }
+
+    function converteDataExtenso($data)
+    {
+        //2022-05-21
+
+
+       
+        //$hora2 = explode('-', $hora[0]);
+        //$dia = $hora2[2];
+
+        $originalDate = "2022-05-21";
+        //original date is in format YYYY-mm-dd
+        $data = explode(' ', $data);  
+        $DateTime = DateTime::createFromFormat('Y-m-d', $data[0]);
+        $newDate = $DateTime->format('d-m-Y');
+        
+        $newDate = explode('-', $newDate);
+        
+        
+
+        return $newDate['0'] . ' ' . $this->retornaMesExtenso($newDate['1']) . ' ' . $newDate['2'];
+
     }
 
     function converterPrecoExebicao(string $preco)

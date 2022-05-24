@@ -27,79 +27,24 @@
                     <div class="col-xxl-9 col-xl-8 col-lg-8">
                         <div class="blog__wrapper blog__wrapper--sidebar">
                             <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-sm-u-2 row-cols-1 mb--n30">
+
+                            <?php for($i=0; $i < $blogs['num']; $i++){ 
+                                // print_rpre();
+                                ?>                                
                                 <div class="col mb-30">
                                     <div class="blog__items">
                                         <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog1.png" alt="Título notícias - Verik - Dicas e novidades"></a>
+                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] . $path['geral'] ?>sistema/<?= $blogs[$i]->imagem ?>" alt="Título notícias - Verik - Dicas e novidades"></a>
                                         </div>
                                         <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">5 habilidades que todo instalador de energia solar fotovoltaica precisa ter [...]</a></h3>
+                                            <span class="blog__content--meta"><?=$objUteis->converteDataExtenso($blogs[$i]->dhcadastro)?></span>
+                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog"><?= $blogs[$i]->titulo ?></a></h3>
                                             <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col mb-30">
-                                    <div class="blog__items">
-                                        <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog2.png" alt="Título notícias - Verik - Dicas e novidades"></a>
-                                        </div>
-                                        <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">Como automatizar ar-condicionado em casa? </a></h3>
-                                            <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-30">
-                                    <div class="blog__items">
-                                        <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog3.png" alt="Título notícias - Verik - Dicas e novidades"></a>
-                                        </div>
-                                        <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">Empresa de energia solar: razões para escolher a Intelbras Solar</a></h3>
-                                            <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-30">
-                                    <div class="blog__items">
-                                        <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog4.png" alt="Título notícias - Verik - Dicas e novidades"></a>
-                                        </div>
-                                        <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">Novas regras de energia solar: quais os benefícios para as revendas?</a></h3>
-                                            <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-30">
-                                    <div class="blog__items">
-                                        <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog1.png" alt="Título notícias - Verik - Dicas e novidades"></a>
-                                        </div>
-                                        <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">Lorem ipsum, dolor sit amet consectetur are elit.</a></h3>
-                                            <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-30">
-                                    <div class="blog__items">
-                                        <div class="blog__thumbnail">
-                                            <a class="blog__thumbnail--link" href="<?= $path["site"] ?>detalhes-blog"><img class="blog__thumbnail--img" src="<?= $path["site"] ?>assets/img/blog/blog2.png" alt="Título notícias - Verik - Dicas e novidades"></a>
-                                        </div>
-                                        <div class="blog__content">
-                                            <span class="blog__content--meta">22 Abril 2022</span>
-                                            <h3 class="blog__content--title titulo_dicas_novidades"><a href="<?= $path["site"] ?>detalhes-blog">Meet the Woman Behind Cool
-                                                Ethical Label Reformation </a></h3>
-                                            <a class="blog__content--btn primary__btn" href="<?= $path["site"] ?>detalhes-blog">Saiba mais </a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <?php }?>
+
                             </div>
                             <div class="pagination__area bg__gray--color">
                                 <nav class="pagination">

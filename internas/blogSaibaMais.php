@@ -28,18 +28,18 @@
                         <div class="blog__details--wrapper">
                             <div class="entry__blog">
                                 <div class="blog__post--header mb-30">
-                                    <h2 class="post__header--title mb-15">Novas regras de energia solar: quais os benefícios para as revendas?</h2>
-                                    <p class="blog__post--meta">22 de Abril 2022 / Categoria: <a class="blog__post--meta__link" href="<?= $path["site"] ?>dicas-novidades">Company, Image, Travel</a></p>                                     
+                                    <h2 class="post__header--title mb-15"> <?= $blog->titulo ?> </h2>
+                                    <p class="blog__post--meta"><?=$objUteis->converteDataExtenso($blog->dhcadastro)?> / Categoria: <a class="blog__post--meta__link" href="<?= $path["site"] ?>dicas-novidades">Company, Image, Travel</a></p>                                     
                                 </div>
                                 <div class="blog__thumbnail mb-30">
-                                    <img class="blog__thumbnail--img border-radius-10" src="<?= $path["site"] ?>assets/img/blog/blog-page-big1.png" alt="Título da notícias - Dicas e novidades - Verik">
+                                <img class="about__thumb--img border-radius-5 display-block" src="<?= $path["site"] . $path['geral'] ?>sistema/<?= $blog->imagem ?>" alt="Sobre nós - Verik">
                                 </div>
                                 <div class="blog__details--content">
                                     
                                    
                                    
                                    
-                                    <p class="blog__details--content__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus sapiente omnis sunt labore mollitia, quaerat incidunt sequi, ut alias accusamus nostrum magni fugit facilis dignissimos illum repellendus et numquam adipisci quos. Eos omnis maiores beatae cum a consequatur magnam sequi neque, at numquam qui ipsam unde veritatis voluptates quam dicta! Ipsam, mollitia illo fuga vel culpa reprehenderit quisquam maxime nesciunt. Sunt quaerat inventore aspernatur quibusdam corrupti numquam mollitia exercitationem rem alias consectetur hic iusto dignissimos nostrum odio, cumque impedit.</p>
+                                    <p class="blog__details--content__desc"> <?= $blog->texto ?> </p>
                                 </div>
                             </div>
                             <div class="blog__tags--social__media d-flex align-items-center justify-content-between">                                

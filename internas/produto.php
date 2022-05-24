@@ -131,11 +131,10 @@
                     <div class="col">
                         <div class="product__details--info">
                             <form action="#">
-                                <h2 class="product__details--info__title mb-15">Oversize Cotton Dress</h2>
+                                <h2 class="product__details--info__title mb-15"> <?= $produto->nome_produto ?> </h2>
                                 <div class="product__details--info__price mb-10">
-                                    <span class="current__price">$110</span>
-                                    <span class="price__divided"></span>
-                                    <span class="old__price">$178</span>
+                                    <span class="current__price">R$ <?=$objUteis->converterPrecoExebicao($produto->preco_venda) ?></span>
+                                    
                                 </div>
                                 <div class="product__details--info__rating d-flex align-items-center mb-15">
                                     <ul class="rating d-flex justify-content-center">
@@ -177,7 +176,7 @@
                                     </ul>
                                     <span class="product__items--rating__count--number">(24)</span>
                                 </div>
-                                <p class="product__details--info__desc mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut numquam ullam is recusandae laborum explicabo id sequi quisquam, ab sunt deleniti quidem ea animi facilis quod nostrum odit! Repellendus voluptas suscipit cum harum dolor sciunt.</p>
+                                <p class="product__details--info__desc mb-15"></p>
                                 <div class="product__variant">
                                     <div class="product__variant--list mb-10">
                                         <fieldset class="variant__input--fieldset">
@@ -221,9 +220,9 @@
                                         <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>
                                     </div>
                                     <div class="product__details--info__meta">
-                                        <p class="product__details--info__meta--list"><strong>Barcode:</strong>  <span>565461</span> </p>
+                                        <p class="product__details--info__meta--list"><strong>Barcode:</strong>  <span> <?= $produto->codigo_barras ?> </span> </p>
                                         <p class="product__details--info__meta--list"><strong>Sky:</strong>  <span>4420</span> </p>
-                                        <p class="product__details--info__meta--list"><strong>Vendor:</strong>  <span>Belo</span> </p>
+                                        <p class="product__details--info__meta--list"><strong>Vendor:</strong>  <span> <?= $produto->fabricante ?> </span> </p>
                                         <p class="product__details--info__meta--list"><strong>Type:</strong>  <span>Dress</span> </p>
                                     </div>
                                 </div>
@@ -292,34 +291,9 @@
                                 <div id="description" class="tab_pane active show">
                                     <div class="product__tab--content">
                                         <div class="product__tab--content__step mb-30">
-                                            <h2 class="product__tab--content__title h4 mb-10">Nam provident sequi</h2>
-                                            <p class="product__tab--content__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam provident sequi, nemo sapiente culpa nostrum rem eum perferendis quibusdam, magnam a vitae corporis! Magnam enim modi, illo harum suscipit tempore aut dolore doloribus deserunt voluptatum illum, est porro? Ducimus dolore accusamus impedit ipsum maiores, ea iusto temporibus numquam eaque mollitia fugiat laborum dolor tempora eligendi voluptatem quis necessitatibus nam ab?</p>
-                                        </div>
-                                        <div class="product__tab--content__step">
-                                            <h4 class="product__tab--content__title mb-10">More Details</h4>
-                                            <ul>
-                                                <li class="product__tab--content__list">
-                                                    <svg class="product__tab--content__list--icon" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"></path></svg>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, dolorum?
-                                                </li>
-                                                <li class="product__tab--content__list">
-                                                    <svg class="product__tab--content__list--icon" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"></path></svg>
-                                                    Magnam enim modi, illo harum suscipit tempore aut dolore?
-                                                </li>
-                                                <li class="product__tab--content__list">
-                                                    <svg class="product__tab--content__list--icon" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"></path></svg>
-                                                    Numquam eaque mollitia fugiat laborum dolor tempora;
-                                                </li>
-                                                <li class="product__tab--content__list">
-                                                    <svg class="product__tab--content__list--icon" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"></path></svg>
-                                                    Sit amet consectetur adipisicing elit.  Quo delectus repellat facere maiores.
-                                                </li>
-                                                <li class="product__tab--content__list">
-                                                    <svg class="product__tab--content__list--icon" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"></path></svg>
-                                                    Repellendus itaque sit quia consequuntur, unde veritatis. dolorum?
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            
+                                            <p class="product__tab--content__desc"> <?= $produto->descricao ?> </p>
+                                        </div> 
                                     </div> 
                                 </div>
                                 <div id="reviews" class="tab_pane">
@@ -588,16 +562,16 @@
                                 <div id="information" class="tab_pane">
                                     <div class="product__tab--conten">
                                         <div class="product__tab--content__step mb-30">
-                                            <h2 class="product__tab--content__title h4 mb-10">Nam provident sequi</h2>
-                                            <p class="product__tab--content__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam provident sequi, nemo sapiente culpa nostrum rem eum perferendis quibusdam, magnam a vitae corporis! Magnam enim modi, illo harum suscipit tempore aut dolore doloribus deserunt voluptatum illum, est porro? Ducimus dolore accusamus impedit ipsum maiores, ea iusto temporibus numquam eaque mollitia fugiat laborum dolor tempora eligendi voluptatem quis necessitatibus nam ab?</p>
+                                           
+                                            <p class="product__tab--content__desc"> <?= $produto->informacao_adicional ?></p>
                                         </div>
                                     </div> 
                                 </div>
                                 <div id="custom" class="tab_pane">
                                     <div class="product__tab--content">
                                         <div class="product__tab--content__step mb-30">
-                                            <h2 class="product__tab--content__title h4 mb-10">Nam provident sequi</h2>
-                                            <p class="product__tab--content__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam provident sequi, nemo sapiente culpa nostrum rem eum perferendis quibusdam, magnam a vitae corporis! Magnam enim modi, illo harum suscipit tempore aut dolore doloribus deserunt voluptatum illum, est porro? Ducimus dolore accusamus impedit ipsum maiores, ea iusto temporibus numquam eaque mollitia fugiat laborum dolor tempora eligendi voluptatem quis necessitatibus nam ab?</p>
+                                            
+                                            <p class="product__tab--content__desc"> <?= $produto->informacao_adicional ?></p>
                                         </div>
                                     </div> 
                                 </div>

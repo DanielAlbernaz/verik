@@ -19,6 +19,40 @@ $objPost = new gp();
 include_once $path["classes"] ."class.Configuracao.php";
 $objConfiguracao = new Configuracao();
 
+//inclui a classe de termo de uso
+include_once $path["classes"] ."class.Termo.php";
+$objTermo = new Termo();
+
+//inclui a classe de politica cookies
+include_once $path["classes"] ."class.PoliticaCookies.php";
+$objPoliticaCookies = new PoliticaCookies();
+
+//inclui a classe de trocas e devoluções
+include_once $path["classes"] ."class.TrocasDevolucoes.php";
+$objTrocasDevolucoes = new TrocasDevolucoes();
+
+//inclui a classe de politica privacidade
+include_once $path["classes"] ."class.Privacidade.php";
+$objPrivacidade = new Privacidade();
+
+//inclui a classe de sobre nós
+include_once $path["classes"] ."class.SobreNos.php";
+$objSobreNos = new SobreNos();
+
+//inclui a classe de visão e missão 
+include_once $path["classes"] ."class.Missao.php";
+$objMissao = new Missao();
+
+//inclui a classe de detalhes blog 
+include_once $path["classes"] ."class.Blog.php";
+$objBlog = new Blog();
+
+//inclui a classe de detalhes busca 
+include_once $path["classes"] ."class.Produto.php";
+$objProduto = new Produto();
+
+
+
 //classe de session
 include_once $path["classes"]."session/class.eyesecuresession.inc.php";
 $objSession2 = new EyeSecureSession('site');
@@ -63,6 +97,10 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Sobre nós 
         case 'sobre-nos':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $sobreNos = $objSobreNos->lista(); 
+
+            $missao = $objMissao->lista(); 
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -73,6 +111,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Dicas e novidades = Blog
         case 'dicas-novidades':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $blogs = $objBlog->listar(['status' => 1]);           
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -83,6 +123,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Saiba mais - Dicas e novidades = Blog
         case 'detalhes-blog':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $blog = $objBlog->lista();
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -123,6 +165,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
          // Trocas e devoluções
          case 'trocas-devolucoes':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $trocas_devolucoes = $objTrocasDevolucoes->lista(); 
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -133,6 +177,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Política de Privacidade
         case 'politica-privacidade':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $politica_privacidade = $objPrivacidade->lista();
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -143,7 +189,9 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Política de Cookies
         case 'politica-cookies':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
-            
+
+            $politica_cookie = $objPoliticaCookies->lista();
+        
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
             $titPag .= "Política de Cookies - Verik";
@@ -153,7 +201,9 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Termo de uso
         case 'termo-uso':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
-            
+
+            $termo = $objTermo->lista();   
+
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
             $titPag .= "Termo de uso - Verik";
@@ -165,6 +215,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
          // Todos os produtos
          case 'busca':
             $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+
+            $buscas = $objProduto->listar(['status' => 1]); 
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
@@ -175,6 +227,8 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         // Produtos
         case 'produto':
             $atributos = $objUteis->gerarUrl($_REQUEST['atributos']);
+
+            $produto = $objProduto->lista(); 
             
             // $meta->tags = "tags";
             // $meta->descricao = "descricao.";
