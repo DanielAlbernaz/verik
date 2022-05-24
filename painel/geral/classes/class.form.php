@@ -13,7 +13,7 @@ class Form {
 		}
 		$formulario .= '<form id="validate" class="form ' . $wizard . '" method="post" action="' . $acaoDoFormulario . '" target="iframeCadForms" name="frmCadFormulario" enctype="multipart/form-data">';
 		$formulario .= '<div class="widget">';
-		$formulario .= '<div class="title"><h6>' . $nome . '</h6></div>';
+		$formulario .= '<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>' . $nome . '</h6></div>';
 		
 		echo $formulario;
 	}
@@ -750,7 +750,7 @@ class Form {
 	<div class="widget">
 		';
 		$formulario .= '
-		<div class="title"><h6>' . $nome . '</h6>
+		<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>' . $nome . '</h6>
 		</div>
 		';
 		$formulario .= '
@@ -1561,7 +1561,7 @@ class Form {
 		
 		if ($arrayFotos) {
 			$funcaoJquery .= '
-                <div style="margin-top:20px;" class="title"><h6>Arquivos:</h6>
+                <div style="margin-top:20px;" class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>Arquivos:</h6>
                 </div>
                 ';
                 			$funcaoJquery .= '
@@ -1631,7 +1631,7 @@ class Form {
 	<div class="widget">
 		';
 		$formulario .= '
-		<div class="title"><h6>' . $nome . '</h6>
+		<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>' . $nome . '</h6>
 		</div>
 		';
 		$formulario .= '

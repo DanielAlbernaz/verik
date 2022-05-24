@@ -33,9 +33,6 @@
 			## INI - site do desenvolvedor ##
 			$allConfig["siteDesenvolvedor"] = "http://www.netsuprema.com.br/";
 			
-			## INI - Site do cliente ##
-			$allConfig["urllogo"] = "http://lucasdiasdesigner.com.br/embreve/images/logo-transparent.png";
-
 			## INI - Nome do cliente ##
 			$allConfig["nomeCliente"] = "Excelência Distribuidora de sistemas de segurança eletrônica";
 			

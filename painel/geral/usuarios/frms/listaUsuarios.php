@@ -4,7 +4,7 @@
 
     <!-- Dynamic table -->
     <div class="widget">
-        <div class="title"><h6>Listar Usuários</h6></div>
+        <div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>Listar Usuários</h6></div>
         <table cellpadding="0" cellspacing="0" border="0" class="display withCheck dTable">
             <thead>
                 <tr>
