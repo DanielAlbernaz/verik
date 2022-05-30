@@ -27,7 +27,7 @@
 			$allConfig["banco"]["local"]["user"]  = "root";
 			$allConfig["banco"]["local"]["senha"] = "";
 			$allConfig["banco"]["local"]["banco"] = "verik";
-			$allConfig["banco"]["local"]["port"] = "3309";
+			$allConfig["banco"]["local"]["port"] = "3306";
 			$allConfig["banco"]["local"]["type"] = "mysql";
 			
 			## INI - site do desenvolvedor ##
