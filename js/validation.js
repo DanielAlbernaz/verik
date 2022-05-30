@@ -168,22 +168,74 @@ function validaCep()
 }
 
 
-// function validaCep()
-// {   
-//     $.ajax({											
-//         url: pathSite + 'valida-email-existe',
-//         dataType: 'json', 
-//         data: $("#email").val(),
-//         type: 'post',												
-//         success: function(obj){
-//             console.log('suceeso');
-//     },
-//     error : function (XMLHttpRequest, textStatus, errorThrown) {
-//         console.log(XMLHttpRequest);
-//         console.log(textStatus);
-//         console.log(errorThrown);
-//     },							
-//     beforeSend : function(requisicao){
-//     }
-// });
-// }
+function validaEmail()
+{   
+    $.ajax({											
+        url: pathSite + 'valida-email-existe',
+        dataType: 'json', 
+        data: {'email':$("#email").val()},
+        type: 'post',												
+        success: function(obj){
+            console.log('suceeso');
+            if(obj.situacao == 'error'){
+                $('#email').css("border", "1px solid red");
+                $('#valida_email').text('Email já existente!');
+                $('#valida_email').css("color", "red");
+                $("#botao_cadastrar").attr("disabled", true);
+
+            }else{
+                $('#email').css("border", "");
+                $('#valida_email').text('');
+                $('#valida_email').css("color", "");
+                $("#botao_cadastrar").attr("disabled", false);
+            }
+    },
+    error : function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
+        console.log(errorThrown);
+    },							
+    beforeSend : function(requisicao){
+    }
+    
+    
+   
+});
+}
+
+function VerificaCpf()
+{   
+    console.log($('#tipo_pessoa').val());
+    $.ajax({											
+        url: pathSite + 'valida-cpf-existe',
+        dataType: 'json', 
+        data: {'cpf':$("#cpfCnpj").val(), 'tipo_pessoa':$('#tipo_pessoa').val()},
+        type: 'post',												
+        success: function(obj){
+            console.log('suceeso');
+            if(obj.situacao == 'error'){
+                
+                $('#cpfCnpj').css("border", "1px solid red");
+                $('#valida_cpf').text(obj.msg);
+                $('#valida_cpf').css("color", "red");
+                $("#botao_cadastrar").attr("disabled", true);
+
+            }else{
+                $('#cpfCnpj').css("border", "");
+                $('#valida_cpf').text('');
+                $('#valida_cpf').css("color", "");
+                $("#botao_cadastrar").attr("disabled", false);
+            }
+    },
+    error : function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
+        console.log(errorThrown);
+    },							
+    beforeSend : function(requisicao){
+    }
+    
+    
+   
+});
+}

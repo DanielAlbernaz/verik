@@ -394,6 +394,55 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
         exit;
     break; // ------------------------------------------------------------ //
 
+    // Verificar se Email já existe
+    case 'valida-email-existe':
+        
+        $resposta = [];
+
+        //busca email
+        $emailUsuario = $objUsuarioSite->lista(['email' => $_POST['email']]);
+
+        //valida email
+        if($emailUsuario){
+            
+            $resposta['situacao'] = "error";   
+            $resposta['msg'] = "Email já cadastrado!";  
+
+        }           
+
+        echo json_encode($resposta);            
+        exit;
+    break; // ------------------------------------------------------------ //
+
+    // Verificar se o CPF já existe
+    case 'valida-cpf-existe':
+        
+        
+        $resposta = [];
+
+        //busca CPF
+        
+        if($_POST['tipo_pessoa'] == 1){
+            $cpfUsuario = $objUsuarioSite->lista(['cpf' => $_POST['cpf']]);
+        }else{
+            $cnpjUsuario = $objUsuarioSite->lista(['cnpj' => $_POST['cpf']]);
+        }
+        
+        //valida CPF
+        if($cpfUsuario){
+            
+            $resposta['situacao'] = "error";   
+            $resposta['msg'] = "CPF já cadastrado!";  
+
+        }elseif($cnpjUsuario){
+            $resposta['situacao'] = "error";   
+            $resposta['msg'] = "CNPJ já cadastrado!"; 
+        }          
+
+        echo json_encode($resposta);            
+        exit;
+    break; // ------------------------------------------------------------ //
+
         
 
     }

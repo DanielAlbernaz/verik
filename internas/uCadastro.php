@@ -33,16 +33,18 @@
                                         <p class="account__login--header__desc">Veja seus pedidos de forma fácil, compre mais rápido e tenha uma experiência personalizada :)</p>
                                     </div>
                                     <div class="account__login--inner">
-                                        <input class="account__login--input validate[required,custom[email]" id="email" name="email" placeholder="E-mail" type="text" required>
+                                        <input class="account__login--input validate[required,custom[email]" onblur="validaEmail()" id="email" name="email" placeholder="E-mail" type="text" required>
+                                        <p id="valida_email"></p>
 
                                         <input class="account__login--input" placeholder="Crie sua senha" id="senha" name="senha" required type="password">
 
                                         <input class="account__login--input" placeholder="Confirme a senha" onblur="validaSenha()" id="confirmar_senha" name="confirmar_senha" required type="password">
                                         <p id="erro_senha"></p>
 
-                                        <input class="account__login--input" placeholder="CPF ou CNPJ" mask-input="cpfCnpj" onblur="validaCpfCnpj()" name="cpfCnpj" id="cpfCnpj" type="text">
+                                        <input class="account__login--input" placeholder="CPF ou CNPJ" mask-input="cpfCnpj" onblur="validaCpfCnpj(), VerificaCpf() " name="cpfCnpj" id="cpfCnpj" type="text">
                                         <p id="erro_cpfCnpj"></p>
                                         <div id="tipo_pessoa_valida"></div>
+                                        <p id="valida_cpf"></p>
 
                                         <input class="account__login--input" placeholder="CEP" mask-input=cep id="cep" onblur="validaCep()" name="cep" type="text">
                                         <p id="erro_cep"></p>

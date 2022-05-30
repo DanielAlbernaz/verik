@@ -192,6 +192,20 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 INSERT INTO `empresa` (`id`, `titulo`, `img`, `texto`, `status`) VALUES
 	(1, 'fsad', '', 'teste', 1);
 
+-- Copiando estrutura para tabela verik.endereco_usuarios
+CREATE TABLE IF NOT EXISTS `endereco_usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` int(11) NOT NULL,
+  `cep` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_endereco_usuarios_usuarios_site` (`usuario_id`),
+  CONSTRAINT `FK_endereco_usuarios_usuarios_site` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_site` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Copiando dados para a tabela verik.endereco_usuarios: ~1 rows (aproximadamente)
+INSERT INTO `endereco_usuarios` (`id`, `usuario_id`, `cep`) VALUES
+	(1, 1, '74.255-470');
+
 -- Copiando estrutura para tabela verik.equipe
 CREATE TABLE IF NOT EXISTS `equipe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -228,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `datahora` datetime DEFAULT NULL,
   `ip` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=510 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=512 DEFAULT CHARSET=latin1;
 
 -- Copiando dados para a tabela verik.logs: ~302 rows (aproximadamente)
 INSERT INTO `logs` (`id`, `usuario`, `area`, `id_area`, `acao`, `datahora`, `ip`) VALUES
@@ -549,7 +563,9 @@ INSERT INTO `logs` (`id`, `usuario`, `area`, `id_area`, `acao`, `datahora`, `ip`
 	(506, 'Administrador', 'configuracaoproduto', 1, 'Alterou', '2022-05-22 19:25:30', '::1'),
 	(507, 'Administrador', 'configuracaoproduto', 1, 'Alterou', '2022-05-22 19:27:06', '::1'),
 	(508, 'Administrador', 'configuracaoproduto', 1, 'Alterou', '2022-05-22 19:27:21', '::1'),
-	(509, 'Administrador', 'configuracaoproduto', 1, 'Alterou', '2022-05-22 19:27:25', '::1');
+	(509, 'Administrador', 'configuracaoproduto', 1, 'Alterou', '2022-05-22 19:27:25', '::1'),
+	(510, 'Administrador', 'usu?rios', 1, 'entrou', '2022-05-24 11:25:58', '::1'),
+	(511, 'Administrador', 'usu?rios', 1, 'entrou', '2022-05-28 10:44:55', '::1');
 
 -- Copiando estrutura para tabela verik.perguntas
 CREATE TABLE IF NOT EXISTS `perguntas` (
@@ -807,19 +823,36 @@ INSERT INTO `trocas_devolucoes` (`id`, `titulo`, `texto`, `imagem`) VALUES
 -- Copiando estrutura para tabela verik.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) NOT NULL DEFAULT '',
-  `usuario_cpanel` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `img` varchar(255) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 0,
-  `nivel` int(1) NOT NULL DEFAULT 0,
+  `nome` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `tipo_pessoa` int(11) NOT NULL,
+  `cpf` varchar(255) DEFAULT NULL,
+  `cnpj` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela verik.usuarios: ~0 rows (aproximadamente)
-INSERT INTO `usuarios` (`id`, `nome`, `usuario_cpanel`, `senha`, `email`, `img`, `status`, `nivel`) VALUES
-	(1, 'Administrador', 'angela', '202cb962ac59075b964b07152d234b70', 'daniel@daniel.com', '', 1, 1);
+-- Copiando dados para a tabela verik.usuarios: ~1 rows (aproximadamente)
+INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `status`, `tipo_pessoa`, `cpf`, `cnpj`) VALUES
+	(1, 'Administrador', '202cb962ac59075b964b07152d234b70', 'daniel@daniel.com', 1, 0, '0', NULL);
+
+-- Copiando estrutura para tabela verik.usuarios_site
+CREATE TABLE IF NOT EXISTS `usuarios_site` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `tipo_pessoa` int(11) NOT NULL,
+  `cpf` varchar(255) DEFAULT NULL,
+  `cnpj` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Copiando dados para a tabela verik.usuarios_site: ~0 rows (aproximadamente)
+INSERT INTO `usuarios_site` (`id`, `nome`, `senha`, `email`, `status`, `tipo_pessoa`, `cpf`, `cnpj`) VALUES
+	(1, NULL, '$2y$10$AAPfBsfQnaglnx3WVG7qX.zfGXcyij8YkNYxkM81rv3DLdGYTAbDK', 'daniel@daniel.com', 1, 1, '036.601.071-90', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
