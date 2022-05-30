@@ -22,7 +22,7 @@
 
         <div class="login__section section--padding">
             <div class="container">
-                <form action="#">
+                <form id="frmLoginUsuario" action="javascript:;" method="POST">
                     <div class="login__section--inner">
                         <div class="row row-cols-md-2 row-cols-1">
                             <div class="col box-login">
@@ -32,8 +32,10 @@
                                         <p class="account__login--header__desc">Veja seus pedidos de forma fácil, compre mais rápido e tenha uma experiência personalizada :)</p>
                                     </div>
                                     <div class="account__login--inner">
-                                        <input class="account__login--input" placeholder="E-mail" type="text">
-                                        <input class="account__login--input" placeholder="Senha" type="password">
+                                        <input class="account__login--input validate[required,custom[email]" id="email" name="email" placeholder="E-mail" type="text">
+
+                                        <input class="account__login--input" placeholder="Senha" id="senha" name="senha" type="password">
+
                                         <div class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
                                             <div class="account__login--remember position__relative">
                                                 <input class="checkout__checkbox--input" id="check1" type="checkbox">

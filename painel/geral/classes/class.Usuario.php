@@ -2,7 +2,7 @@
 
 /**
  * Class que representa o banco de dados que é usado no APP mobile excelenc_api
- * global $sqlGlEx;
+ * global $sqlGl;
  * Config criada ConexaoBancoExecelencia()
  * 
  * Desenvolvido por: Daniel Gomes Albernaz
@@ -12,9 +12,9 @@ class Usuario {
 
 	function cadastrar($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 		
-		$result = $sqlGlEx->insertInto('usuarios',$form);
+		$result = $sqlGl->insertInto('usuarios',$form);
 		$lastInsert = $result->execute();
 
 		//retorna o resultado da query para a câmada de controle
@@ -23,8 +23,8 @@ class Usuario {
 
 	function alterar($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
-		$result = $sqlGlEx->update('usuarios')->set($form)->where('id', $form['id']);
+		global $sqlGl;
+		$result = $sqlGl->update('usuarios')->set($form)->where('id', $form['id']);
 		$result = $result->execute(true);
 
 		//retorna o resultado da query para a câmada de controle
@@ -33,8 +33,8 @@ class Usuario {
 
 	function deletar($id) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
-		$result = $sqlGlEx->deleteFrom("usuarios")->where("id",$id);
+		global $sqlGl;
+		$result = $sqlGl->deleteFrom("usuarios")->where("id",$id);
 		$result = $result->execute();
 
 		//retorna o resultado da query para a câmada de controle
@@ -44,9 +44,9 @@ class Usuario {
 	
 	function listar($atributos=array(),$orderBy=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 		
-		$aValores = $sqlGlEx -> from("usuarios")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("usuarios")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -55,7 +55,7 @@ class Usuario {
 
 	function listarusuarios($parametros) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 
 		$sql =  'SELECT ';
 		$sql .= ' * ';
@@ -70,8 +70,8 @@ class Usuario {
 			$sqlResult .= $limit;
 		}
 	
-		$stmtePaginacao = $sqlGlEx->pdo->prepare($sql);
-		$stmte = $sqlGlEx->pdo->prepare($sqlResult);
+		$stmtePaginacao = $sqlGl->pdo->prepare($sql);
+		$stmte = $sqlGl->pdo->prepare($sqlResult);
 		
 		if($stmte->execute()) {
 			if($stmtePaginacao->execute()){
@@ -88,9 +88,9 @@ class Usuario {
 
 	function lista($atributos=array(),$orderBy=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 
-		$aValores = $sqlGlEx -> from("usuarios")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("usuarios")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetch();
 		return $aValores;
 	}
@@ -98,9 +98,9 @@ class Usuario {
 	function listaCaracteristicas($atributos=array(),$orderBy=null) {
 
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 		
-		$aValores = $sqlGlEx -> from("caracteristica_usuarios")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("caracteristica_usuarios")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -110,9 +110,9 @@ class Usuario {
 	function listaFotos($atributos=array(),$orderBy=null) {
 
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 		
-		$aValores = $sqlGlEx -> from("usuarios_fotos")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("usuarios_fotos")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -120,8 +120,8 @@ class Usuario {
 	}
 
 	function publicar($id, $status) {
-		global $sqlGlEx;
-		$result = $sqlGlEx->update('usuarios')->set('status',$status)->where('id', $id);
+		global $sqlGl;
+		$result = $sqlGl->update('usuarios')->set('status',$status)->where('id', $id);
 		$result = $result->execute(true);
 		
 		//retorna o resultado da query para a câmada de controle
@@ -132,8 +132,8 @@ class Usuario {
 
 	function pegarListagensParaAlterarBack($fromPosition, $toPosition) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
-		$aValores = $sqlGlEx -> from("usuarios")->where('ordem <= :ordem1 && ordem >= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
+		global $sqlGl;
+		$aValores = $sqlGl -> from("usuarios")->where('ordem <= :ordem1 && ordem >= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -142,8 +142,8 @@ class Usuario {
 
 	function pegarListagensParaAlterarForward($fromPosition, $toPosition) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
-		$aValores = $sqlGlEx -> from("usuarios")->where('ordem >= :ordem1 && ordem <= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
+		global $sqlGl;
+		$aValores = $sqlGl -> from("usuarios")->where('ordem >= :ordem1 && ordem <= :ordem2 ',array(':ordem1' => $fromPosition, ':ordem2' => $toPosition));
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	
@@ -151,8 +151,8 @@ class Usuario {
 	}
 
 	function alteraOrdem($id, $posicao) {
-		global $sqlGlEx;
-		$result = $sqlGlEx->update('usuarios')->set('ordem',$posicao)->where('id', $id);
+		global $sqlGl;
+		$result = $sqlGl->update('usuarios')->set('ordem',$posicao)->where('id', $id);
 		$result = $result->execute(true);
 		
 		//retorna o resultado da query para a câmada de controle
@@ -162,9 +162,9 @@ class Usuario {
 
 	function proximo_id() {
 	    //chamada ao objeto da classe de abstraÃ§Ã£o de banco de dados
-	    global $sqlGlEx;
+	    global $sqlGl;
 	
-	    $pdo = $sqlGlEx->getPdo();
+	    $pdo = $sqlGl->getPdo();
 	
 	    $stmt = $pdo->query("SHOW TABLE STATUS LIKE 'usuarios'");
 	    $res = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -174,8 +174,8 @@ class Usuario {
 
 	function cadastrarFoto($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
-		$result = $sqlGlEx->insertInto('usuarios_fotos',$form);
+		global $sqlGl;
+		$result = $sqlGl->insertInto('usuarios_fotos',$form);
 		$lastInsert = $result->execute();
 	
 		//retorna o resultado da query para a câmada de controle
@@ -184,9 +184,9 @@ class Usuario {
 
 	function cadastrarCaracteristica($form) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;		
+		global $sqlGl;		
 
-		$result = $sqlGlEx->insertInto('caracteristica_usuarios',$form);
+		$result = $sqlGl->insertInto('caracteristica_usuarios',$form);
 		$lastInsert = $result->execute();
 		//retorna o resultado da query para a câmada de controle
 
@@ -196,9 +196,9 @@ class Usuario {
 	
 	function listarCategorias($atributos=array(),$orderBy=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 
-		$aValores = $sqlGlEx -> from("categoria_usuarios")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("categoria_usuarios")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 
 		$aValores['num'] = count($aValores);
@@ -206,7 +206,7 @@ class Usuario {
 	}  
 
 	function listar_fotos($atributos=array()) {
-	    global $sqlGlEx;
+	    global $sqlGl;
 
 	    $sql = 'SELECT
 	                nft.id,
@@ -214,7 +214,7 @@ class Usuario {
                 FROM usuarios_fotos nft
                 WHERE nft.id_usuarios = :IDusuarios';
 	    
-	    $stmte = $sqlGlEx->pdo->prepare($sql);
+	    $stmte = $sqlGl->pdo->prepare($sql);
 	    $stmte->bindValue('IDusuarios',  $atributos['id'], PDO::PARAM_STR);
 	    if($stmte->execute()) {
 	        $aValores = $stmte->fetchAll(PDO::FETCH_OBJ);
@@ -226,8 +226,8 @@ class Usuario {
 	function deletarFoto($id) {
 
 	    //chamada ao objeto da classe de abstração de banco de dados
-	    global $sqlGlEx;
-	    $result = $sqlGlEx->deleteFrom("usuarios_fotos")->where("id",$id);
+	    global $sqlGl;
+	    $result = $sqlGl->deleteFrom("usuarios_fotos")->where("id",$id);
 	    $result = $result->execute();
 	    
 	    //retorna o resultado da query para a câmada de controle
@@ -236,7 +236,7 @@ class Usuario {
 
 	function listarusuariosRelacionados($atributos=array(),$orderBy=null,$limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
                 $sql = 'SELECT ';
                 $sql .= '   * ';
                 $sql .= 'FROM ';
@@ -254,7 +254,7 @@ class Usuario {
                 }
 		$aValores = array();		
 
-		$stmte = $sqlGlEx->pdo->prepare($sql);
+		$stmte = $sqlGl->pdo->prepare($sql);
 		$stmte->bindParam('STATUS', $atributos['status'], PDO::PARAM_INT);
 		$stmte->bindParam('ID', $atributos['id'], PDO::PARAM_INT);
 
@@ -267,7 +267,7 @@ class Usuario {
 
 	function listarusuariosRelacionadosusuarios($atributos=array(),$orderBy=null,$limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
                 $sql = 'SELECT ';
                 $sql .= '   * ';
                 $sql .= 'FROM ';
@@ -284,7 +284,7 @@ class Usuario {
                 }
 		$aValores = array();		
 
-		$stmte = $sqlGlEx->pdo->prepare($sql); 
+		$stmte = $sqlGl->pdo->prepare($sql); 
 		$stmte->bindParam('STATUS', $atributos['status'], PDO::PARAM_INT);
 
 		if($stmte->execute()) {
@@ -297,7 +297,7 @@ class Usuario {
 	function listarPaginacao($atributos=array()) {
 
 	    //chamada ao objeto da classe de abstração de banco de dados	
-	    global $sqlGlEx;
+	    global $sqlGl;
 		 
 		$atributos['status'] = 1;
 
@@ -318,7 +318,7 @@ class Usuario {
             ($atributos['pagina'] ? $atributos['pagina'] = $atributos['pagina'] : $atributos['pagina'] = 1);
             
 	    $aValores = array();
-	    $stmte = $sqlGlEx->pdo->prepare($sql);
+	    $stmte = $sqlGl->pdo->prepare($sql);
 
 	    if($stmte->execute()) {
 	        $qtd = $stmte->fetch(PDO::FETCH_OBJ);
@@ -349,7 +349,7 @@ class Usuario {
             $sql .= '   est.id desc ';
             $sql .= 'LIMIT '.$qtd_pagina.',4  ';
 
-	    $stmte = $sqlGlEx->pdo->prepare($sql); 
+	    $stmte = $sqlGl->pdo->prepare($sql); 
         
 	    if($stmte->execute()){
 	        $aValores = $stmte->fetchAll(PDO::FETCH_OBJ);
@@ -362,7 +362,7 @@ class Usuario {
 
 	function listarUltimosusuarios() {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 
 		$sql =  'SELECT ';
 		$sql .= ' * ';
@@ -372,7 +372,7 @@ class Usuario {
  		$sql .= 'STATUS = 1 ';			
  		$sql .= 'ORDER BY ID DESC ';			
  		$sql .= 'LIMIT 3 ';	
-		$stmte = $sqlGlEx->pdo->prepare($sql); print_rpre($sql)	;
+		$stmte = $sqlGl->pdo->prepare($sql); print_rpre($sql)	;
 		
 		$stmte->execute();
 			$aValores = $stmte->fetchAll(PDO::FETCH_OBJ);
@@ -383,9 +383,9 @@ class Usuario {
 
 	function listarHabilidades($atributos=array(),$orderBy=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
-		global $sqlGlEx;
+		global $sqlGl;
 
-		$aValores = $sqlGlEx -> from("caracteristica_usuarios")->where($atributos)->orderBy($orderBy);
+		$aValores = $sqlGl -> from("caracteristica_usuarios")->where($atributos)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 
 		$aValores['num'] = count($aValores);
@@ -396,9 +396,9 @@ class Usuario {
 
 		//chamada ao objeto da classe de abstração de banco de dados
 
-		global $sqlGlEx;
+		global $sqlGl;
 
-		$result = $sqlGlEx->deleteFrom("caracteristica_usuarios")->where("id_usuarios",$id);
+		$result = $sqlGl->deleteFrom("caracteristica_usuarios")->where("id_usuarios",$id);
 
 		$result = $result->execute();
 
@@ -414,11 +414,11 @@ class Usuario {
 
 		//chamada ao objeto da classe de abstração de banco de dados
 
-		global $sqlGlEx;
+		global $sqlGl;
 
 		
 
-		$result = $sqlGlEx->insertInto('caracteristica_usuarios',$form);
+		$result = $sqlGl->insertInto('caracteristica_usuarios',$form);
 
 		$lastInsert = $result->execute();
 

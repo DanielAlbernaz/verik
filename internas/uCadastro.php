@@ -23,7 +23,7 @@
 
         <div class="login__section section--padding">
             <div class="container">
-                <form action="#">
+                <form id="frmCadastroUsurio" action="javascript:;" method="POST">
                     <div class="login__section--inner">
                         <div class="row row-cols-md-2 row-cols-1">
                             <div class="col box-login">
@@ -33,19 +33,28 @@
                                         <p class="account__login--header__desc">Veja seus pedidos de forma fácil, compre mais rápido e tenha uma experiência personalizada :)</p>
                                     </div>
                                     <div class="account__login--inner">
-                                        <input class="account__login--input" onblur="aqui(this.value)" placeholder="E-mail" type="text">
-                                        <input class="account__login--input" placeholder="Crie sua senha" type="password">
-                                        <input class="account__login--input" placeholder="Confirme a senha" type="password">
-                                        <input class="account__login--input" placeholder="CPF ou CNPJ" type="text">
-                                        <input class="account__login--input" placeholder="CEP" type="text">
+                                        <input class="account__login--input validate[required,custom[email]" id="email" name="email" placeholder="E-mail" type="text" required>
+
+                                        <input class="account__login--input" placeholder="Crie sua senha" id="senha" name="senha" required type="password">
+
+                                        <input class="account__login--input" placeholder="Confirme a senha" onblur="validaSenha()" id="confirmar_senha" name="confirmar_senha" required type="password">
+                                        <p id="erro_senha"></p>
+
+                                        <input class="account__login--input" placeholder="CPF ou CNPJ" mask-input="cpfCnpj" onblur="validaCpfCnpj()" name="cpfCnpj" id="cpfCnpj" type="text">
+                                        <p id="erro_cpfCnpj"></p>
+                                        <div id="tipo_pessoa_valida"></div>
+
+                                        <input class="account__login--input" placeholder="CEP" mask-input=cep id="cep" onblur="validaCep()" name="cep" type="text">
+                                        <p id="erro_cep"></p>
+
                                         <div class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
                                             <div class="account__login--remember position__relative">
-                                                <input class="checkout__checkbox--input" id="check1" type="checkbox">
+                                                <input class="checkout__checkbox--input" id="checkCiente" type="checkbox">
                                                 <span class="checkout__checkbox--checkmark"></span>
-                                                <label class="checkout__checkbox--label login__remember--label" for="check1">Estou ciente do termo de uso.</label>
+                                                <label class="checkout__checkbox--label login__remember--label" for="checkCiente">Estou ciente do termo de uso.</label>
                                             </div>
                                         </div>
-                                        <button class="account__login--btn login__btn" type="submit">Cadastrar</button>
+                                        <button class="account__login--btn login__btn" type="submit" id="botao_cadastrar">Cadastrar</button>
                                         <p class="account__login--signup__text login-m20-top">Já tem uma conta ? <a href="<?= $path["site"] ?>login">Faça seu login</a></p>
                                     </div>
                                 </div>

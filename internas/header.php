@@ -66,6 +66,7 @@
                                         fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
                                     </svg>
                                 <span class="header__account--btn__text">Minha conta</span>
+                                <span class="header__account--btn__text"><?=  $objSession2->get('id') ? $objSession2->get('email') : null ?></span>
                             </a>
                         </li>
                         <li class="header__account--items d-none d-lg-block">

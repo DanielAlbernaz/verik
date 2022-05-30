@@ -10,6 +10,13 @@ include_once $path["conexao"] . "class.conexao.php";
 include_once $path["classes"] . "class.uteis.php";
 $objUteis = new Uteis();
 
+//classe úteis
+include_once $path["classes"] . "class.UsuarioSite.php";
+$objUsuarioSite = new UsuarioSite();
+
+//classe úteis
+include_once $path["classes"] . "class.EnderecoUsuario.php";
+$objEnderecoUsuario = new EnderecoUsuario();
 
 //classe de post
 include_once $path["classes"]."session/post.class.php";
@@ -50,8 +57,6 @@ $objBlog = new Blog();
 //inclui a classe de detalhes busca 
 include_once $path["classes"] ."class.Produto.php";
 $objProduto = new Produto();
-
-
 
 //classe de session
 include_once $path["classes"]."session/class.eyesecuresession.inc.php";
@@ -321,6 +326,73 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
             $titPag .= "Conclusão do pedido - Verik";
             $abrePag = "internas/cConclusao.php";            
         break; // ------------------------------------------------------------ //
+
+        // Cadastrar usuário
+        case 'cadastrar-usuario':
+            //1 fisica 
+            //2 juridica 
+            $formUsuario = [];
+            $formEndereco = [];
+            $resposta = [];
+
+            $formUsuario['senha'] = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+            $formUsuario['email'] = $_POST['email'];
+            $formUsuario['status'] = 1;
+            $formUsuario['tipo_pessoa'] = $_POST['tipo_pessoa'];
+            if($_POST['tipo_pessoa'] == 1){
+                $formUsuario['cpf'] = $_POST['cpfCnpj'];
+            }else{
+                $formUsuario['cnpj'] = $_POST['cpfCnpj'];
+            }   
+            
+            //$objUteis->decode($formUsuario);
+            $idUsuario = $objUsuarioSite->cadastrar($formUsuario);
+
+            $formEndereco['usuario_id'] = $idUsuario;
+            $formEndereco['cep'] = $_POST['cep'];
+
+            $enderecoUsuario = $objEnderecoUsuario->cadastrar($formEndereco);
+
+            if($idUsuario && $enderecoUsuario){
+                $resposta['situacao'] = "sucess";
+            }else{
+                $resposta['situacao'] = "error";                
+            }
+
+            echo json_encode($resposta);            
+        exit;
+    break; // ------------------------------------------------------------ //
+
+    // Logar usuario no site
+    case 'logar-usuario':
+        
+        $resposta = [];
+
+        //busca email
+        $emailUsuario = $objUsuarioSite->lista(['email' => $_POST['email']]);
+
+        //valida email
+        if($emailUsuario){
+            //valida senha 
+            if(password_verify($_POST['senha'], $emailUsuario->senha)){
+                //Logar
+                $objSession2->set('id', $emailUsuario->id);
+                $objSession2->set('nome', $emailUsuario->nome);
+                $objSession2->set('email', $emailUsuario->email);    
+                $resposta['situacao'] = "sucess";             
+            }else{
+                $resposta['situacao'] = "error";   
+                $resposta['msg'] = "Senha incorreta favor tentar novamente!";
+            }  
+
+        }else{
+            $resposta['situacao'] = "error";   
+            $resposta['msg'] = "Email não cadastrado, favor verificar se foi digitado corretamente!";   
+        }
+
+        echo json_encode($resposta);            
+        exit;
+    break; // ------------------------------------------------------------ //
 
         
 
