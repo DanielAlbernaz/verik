@@ -390,6 +390,90 @@
 }
 
 
+/* área do usuário*/
+
+.box-minha-conta-bem {
+    float: left;
+    width: 90%;
+    position: relative;
+    padding: 30px 75px 30px 25px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 7%);
+    margin-bottom: 10px;
+}
+
+.box-minha-conta-bem span {
+    width: 100%;
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.box-minha-conta-bem p {
+    width: 100%;
+    font-size: 15px;
+    color: rgb(94, 94, 94);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.btn-editar-inf {
+    border: #E7E7E7 1px solid;
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 12px;
+    color: #818A8F;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-editar-inf:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.box-ultimo-pedido {
+    padding: 30px 25px 30px 25px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 7%);
+    margin-bottom: 10px;
+}
+
+.box-ultimo-pedido span {
+    font-size: 15px;
+    color: #000;
+    font-weight: 600;
+}
+
+.box-ultimo-pedido p {
+    font-size: 15px;
+    color: #000;
+    font-weight: 400;
+}
+
+.esp-linha-box-ultimo-pedido {
+    margin: 30px 0 40px 0;
+    clear: both;
+    border-bottom: #D6D6D6 1px solid;
+}
+
+.titulo-barra-progresso {
+    margin-bottom: 40px;
+}
+
+.btn-cor {
+    color: #000;
+}
+
+.titulo-meus-pedidos {
+    color: #000;
+    margin-bottom: 40px;
+}
+
+
 /*mobile*/
 
 @media (min-width: 250px) and (max-width: 990px) {
@@ -471,5 +555,16 @@
     }
     .box-barra-progresso {
         width: 100% !important;
+    }
+    /*área restrita*/
+    .box-minha-conta-bem {
+        width: 100% !important;
+        padding: 30px 25px 30px 25px !important;
+    }
+    .box-minha-conta-bem span {
+        font-size: 15px !important;
+    }
+    .box-minha-conta-bem p {
+        font-size: 13px !important;
     }
 }

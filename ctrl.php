@@ -275,6 +275,16 @@ if (!isset($objPost->param["acao"]) && empty($objPost->param["acao"])) {
             $abrePag = "internas/uEsqueceuSenha.php";            
         break; // ------------------------------------------------------------ //
 
+        // Minha Conta
+        case 'minha-conta':
+            $atributos = $objUteis->gerarUrl($objPost->param['atributos']);
+            
+            // $meta->tags = "tags";
+            // $meta->descricao = "descricao.";
+            $titPag .= "Minha conta - Verik";
+            $abrePag = "internas/uMinhaConta.php";            
+        break; // ------------------------------------------------------------ //
+
         // CARRINHO
 
         // Pré Carrinho
