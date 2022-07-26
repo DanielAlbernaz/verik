@@ -76,6 +76,7 @@
     <script src="<?= $path["site"] ?>js/jquery.js"></script>    
     <script src="<?= $path["site"] ?>js/validation.js?<?=rand(1, 999);?>"></script>
     <script src="<?= $path["site"] ?>js/custom.js?<?=rand(1, 999);?>"></script>
+    <script src="<?= $path["site"] ?>js/produto.js?<?=rand(1, 999);?>"></script>
     <!-- Customscript js -->
     <script src="<?= $path["site"] ?>assets/js/script.js"></script>
 

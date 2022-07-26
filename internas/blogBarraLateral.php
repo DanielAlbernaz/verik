@@ -17,7 +17,7 @@
                 <!-- opcao 1 -->
                 <div class="product__items product__items--grid d-flex align-items-center">                    
                     <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
+                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Ferramentas</a></h3>
                     </div>
                 </div>
                 <!--/fim opcao 1 -->
@@ -25,7 +25,7 @@
                 <!-- opcao 1 -->
                 <div class="product__items product__items--grid d-flex align-items-center">                    
                     <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
+                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Segurança</a></h3>
                     </div>
                 </div>
                 <!--/fim opcao 1 -->
@@ -33,34 +33,12 @@
                 <!-- opcao 1 -->
                 <div class="product__items product__items--grid d-flex align-items-center">                    
                     <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
+                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Cameras</a></h3>
                     </div>
                 </div>
                 <!--/fim opcao 1 -->
 
-                <!-- opcao 1 -->
-                <div class="product__items product__items--grid d-flex align-items-center">                    
-                    <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
-                    </div>
-                </div>
-                <!--/fim opcao 1 -->
-
-                <!-- opcao 1 -->
-                <div class="product__items product__items--grid d-flex align-items-center">                    
-                    <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
-                    </div>
-                </div>
-                <!--/fim opcao 1 -->
-
-                <!-- opcao 1 -->
-                <div class="product__items product__items--grid d-flex align-items-center">                    
-                    <div class="product__items--grid__content">
-                        <h3 class="product__items--content__title h4"><a href="<?= $path["site"] ?>detalhes-blog">Women Fish Cut</a></h3>
-                    </div>
-                </div>
-                <!--/fim opcao 1 -->
+                
                 
                 
             </div>

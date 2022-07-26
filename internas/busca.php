@@ -25,19 +25,21 @@
                         <span class="widget__filter--btn__text">Filtros</span>
                     </button>
                     <div class="product__view--mode d-flex align-items-center">
-                        <p class="product__showing--count">Sua busca "camera"  obteve 34 resultados</p>
+                        <?php if($atributos['search']){ ?> 
+                            <p class="product__showing--count">Sua busca "<?= $atributos['search'] ?>"  obteve <?= $produtos['resultados'] ?> resultados</p>
+                        <?php } ?> 
                         <div class="product__view--mode__list product__short--by align-items-center d-none d-lg-flex">
                             <label class="product__view--label">Ordenar :</label>
                             <div class="select shop__header--select">
-                                <select class="product__view--select">
+                                <select class="product__view--select" onchange="ordenarProdutos(this.value);" name="ordenar" id="ordenar">
                                     <option selected value="1">Escolha aqui</option>
-                                    <option value="2">Menor preço</option>
-                                    <option value="3">Maior Preço</option>
-                                    <option value="4">Mais vendidos</option>
-                                    <option value="4">A - Z</option>
-                                    <option value="4">Z - A</option>
-                                    <option value="4">Data de lançamento</option>
-                                    <option value="4">Melhor Desconto</option>
+                                    <option value="menor-preco" <?=($atributos['ordenacao'] == 'menor-preco' ? 'selected' : '')?>>Menor preço</option>
+                                    <option value="maior-preco" <?=($atributos['ordenacao'] == 'maior-preco' ? 'selected' : '')?>>Maior Preço</option>
+                                    <!-- <option value="4">Mais vendidos</option> -->
+                                    <option value="a-z" <?=($atributos['ordenacao'] == 'a-z' ? 'selected' : '')?>>A - Z</option>
+                                    <option value="z-a" <?=($atributos['ordenacao'] == 'z-a' ? 'selected' : '')?>>Z - A</option>
+                                    <option value="data-lancamento" <?=($atributos['ordenacao'] == 'data-lancamento' ? 'selected' : '')?>>Data de lançamento</option>
+                                    <!-- <option value="4">Melhor Desconto</option> -->
                                 </select>
                             </div>
                         </div>
@@ -78,9 +80,9 @@
                         <div class="product__view--mode__list product__view--search d-none d-lg-block">
                             <form class="product__view--search__form" action="#">
                                 <label>
-                                    <input class="product__view--search__input border-0" placeholder="O que você está procurando?" type="text">
+                                    <input class="product__view--search__input border-0" id="fieldPesquisaProduto" placeholder="O que você está procurando?" type="text">
                                 </label>
-                                <button class="product__view--search__btn" aria-label="shop button"  type="submit">
+                                <button class="product__view--search__btn" aria-label="shop button" onclick="pesquisarProdutos()" type="button">
                                     <svg class="product__view--search__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>  
                                 </button>
                             </form>
@@ -90,7 +92,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-4">
                         <div class="shop__sidebar--widget widget__area d-md-2-none">                            
-                            <div class="single__widget widget__bg">
+                            <!-- <div class="single__widget widget__bg">
                                 <h2 class="widget__title h3">Todos os Segmentos</h2>
                             <ul class="widget__categories--menu">
                             <li class="widget__categories--menu__list">
@@ -269,37 +271,37 @@
                             </ul>
                             </li>
                             </ul>
-                            </div>
+                            </div> -->
+                            <!-- Fabricantes -->
                             <div class="single__widget widget__bg">
                                 <h2 class="widget__title h3">Fabricantes</h2>
+                                <input type="hidden" id="marcaFabricante" value="<?=$atributos['fabricante']?>">
                                 <ul class="widget__form--check">
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="check1">Diversos</label>
-                                        <input class="widget__form--check__input" id="check1" type="checkbox">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="check2">Intelbras</label>
-                                        <input class="widget__form--check__input" id="check2" type="checkbox">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="check3">Conduti</label>
-                                        <input class="widget__form--check__input" id="check3" type="checkbox">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="check4">MCM</label>
-                                        <input class="widget__form--check__input" id="check4" type="checkbox">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
-                                    <li class="widget__form--check__list">
-                                        <label class="widget__form--check__label" for="check5">SMS</label>
-                                        <input class="widget__form--check__input" id="check5" type="checkbox">
-                                        <span class="widget__form--checkmark"></span>
-                                    </li>
+                                    <?php for($y = 0; $y < $marcas['num']; $y++){ ?>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check1"><?= ucwords(strtolower($marcas[$y]->marca))?></label>
+                                            <input class="widget__form--check__input" id="marca<?=$y?>" <?= $atributos['fabricante'] == $marcas[$y]->marca ? "checked" : ""  ?>  onclick="fitroMarca(this.value, this.id)" type="checkbox" value="<?=$marcas[$y]->marca?>">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
-                            </div>                                                                                                                
+                            </div>
+
+                            <!-- Categorias -->
+                            <div class="single__widget widget__bg">
+                                <h2 class="widget__title h3">Categorias</h2>
+                                <input type="hidden" id="categoriaSelecionar" value="<?=$atributos['categoria']?>">
+                                <ul class="widget__form--check">
+                                    <?php for($o = 0; $o < $categorias['num']; $o++){ ?>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check1"><?= ucwords(strtolower($categorias[$o]->nome))?></label>
+                                            <input class="widget__form--check__input" id="categoria<?=$o?>" <?= $atributos['categoria'] == $categorias[$o]->grupo_produtos_id ? "checked" : ""  ?>  onclick="fitroCategoria(this.value, this.id)" type="checkbox" value="<?=$categorias[$o]->grupo_produtos_id?>">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>                                                                                                                                          
+                                                                                                                                            
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-8">
@@ -309,14 +311,17 @@
                                     <div class="product__section--inner product__grid--inner">
                                         <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 mb--n30">
 
-                                        <?php for($i=0; $i < $buscas['num']; $i++){ ?>
-
+                                        <?php for($i = 0; $i < $produtos['num']; $i++){ ?>
                                             <div class="col mb-30">
                                                 <div class="product__items ">
                                                     <div class="product__items--thumbnail">
-                                                        <a class="product__items--link" href="product-details.html">
-                                                            <img class="product__items--img product__primary--img" src="<?= $path["site"] . $path['geral'] ?>sistema/<?= $buscas[$i]->imagem_principal ?>">
-                                                            <img class="product__items--img product__secondary--img" src="<?= $path["site"] ?>assets/img/produtos/product2.png" alt="product-img">
+                                                        <a class="product__items--link" href="<?= $path['site'] . $objUteis->linkProduto($produtos[$i])?>">
+                                                            <?php $fotos = $objProduto->listaFotosProduto($produtos[$i]->produto_id); ?>
+                                                            <?php if($fotos){  ?>
+                                                                <img class="product__items--img product__primary--img" src="<?= $objUteis->imagemProdutoVerik($fotos[0]->foto) ?>" alt="product-img">
+                                                            <?php }else{ ?>
+                                                                <img class="product__items--img product__primary--img" src="<?= $path['site']?>imagens/sem-imagem.png" alt="product-img">
+                                                            <?php } ?>
                                                         </a>
                                                         <div class="product__badge">
                                                             <span class="product__badge--items sale">Em oferta</span>
@@ -324,16 +329,16 @@
                                                     </div>
                                                     <div class="product__items--content">
                                                         
-                                                        <h3 class="product__items--content__title h4"><a href="product-details.html"><?= $buscas[$i]->nome_produto ?></a></h3>
+                                                        <h3 class="product__items--content__title h4"><a href="<?= $path['site'] . $objUteis->linkProduto($produtos[$i])?>"><?= ucwords(strtolower($produtos[$i]->nome)) ?></a></h3>
                                                         <div class="product__items--price">
-                                                            <span class="current__price">R$ <?=$objUteis->converterPrecoExebicao($buscas[$i]->preco_venda) ?></span>
-                                                            
-                                                            
+                                                            <span class="current__price">R$ <?= $objUteis->converterPrecoExebicao($produtos[$i]->preco_venda) ?></span>
+                                                            <!-- <span class="price__divided"></span>
+                                                            <span class="old__price">$78</span> -->
                                                         </div>
                                                         
                                                         <ul class="product__items--action d-flex">
                                                             <li class="product__items--action__list">
-                                                                <a class="product__items--action__btn add__to--cart" href="cart.html">
+                                                                <a class="product__items--action__btn add__to--cart" href="<?= $path['site'] . $objUteis->linkProduto($produtos[$i])?>">
                                                                     <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 14.706 13.534">
                                                                         <g transform="translate(0 0)">
                                                                         <g>
@@ -347,38 +352,37 @@
                                                                 </a>
                                                             </li>
                                                             <li class="product__items--action__list">
-                                                                <a class="product__items--action__btn" href="wishlist.html">
+                                                                <a class="product__items--action__btn" onclick="adicionarFavorito(<?= $produtos[$i]->produto_id ?>)">
                                                                     <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>
                                                                     <span class="visually-hidden">Wishlist</span> 
                                                                 </a>
                                                             </li>
-                                                            <li class="product__items--action__list">
-                                                                <a class="product__items--action__btn" data-open="modal1" href="javascript:void(0)">
+                                                            <!-- <li class="product__items--action__list">
+                                                                <a class="product__items--action__btn" data-open="modal<?=$i?>" href="javascript:void(0)">
                                                                     <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg"  width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                                                                     <span class="visually-hidden">Quick View</span>
                                                                 </a>
-                                                            </li>
+                                                            </li> -->
                                                             
                                                         </ul>
                                                     </div>
                                                 </div>
+                                            </div>                                        
+                                        <?php } ?>
 
-
-
+                                        <?php if($produtos['resultados'] == 0){ ?>
+                                            <div>
+                                                <p>Não foi encontrado nenhum resultado para a pesquisa "<?= $atributos['search'] ?>", tente outra palavra chave.</p>
                                             </div>
-
-
-                                            
-                                            <?php }?>
-                                            
-                                            
-                                            
+                                        <?php } ?>
+                                                                                       
                                         </div>
                                     </div>
                                 </div>
                                 <div id="product_list" class="tab_pane">
                                     <div class="product__section--inner">
                                         <div class="row row-cols-1 mb--n30">
+                                            
                                             <div class="col mb-30">
                                                 <div class="product__items product__list--items d-flex">
                                                     <div class="product__items--thumbnail product__list--items__thumbnail">
@@ -392,14 +396,14 @@
                                                     </div>
                                                     <div class="product__list--items__content">
                                                         
-                                                        <h3 class="product__list--items__content--title h4 mb-10"><a href="product-details.html"> <?= $buscas[$i]->nome_produto ?> </a></h3>
+                                                        <h3 class="product__list--items__content--title h4 mb-10"><a href="product-details.html">CAMERA VIDEO WI-FI FULL HD IM3 C/MICROSD 32GB - PC</a></h3>
                                                         <div class="product__list--items__price mb-10">
                                                             <span class="current__price">$110</span>
                                                             <span class="price__divided"></span>
                                                             <span class="old__price">$78</span>
                                                         </div>
                                                         
-                                                        <p class="product__list--items__content--desc d-xl-none mb-15">, ipsum dolor sit amet consectetur adipisicing elit. Quia voluptas dolore doloribus architecto sequi corporis deleniti officia culpa dolor esse consectetur eligendi, natus at rem ab quae amet molestiae quod voluptates, illo exercitationem numquam ipsa. Est fuga ex ipsum alias ipsa quibusdam magni harum labore voluptate, esse deserunt saepe eveniet.</p>
+                                                        <p class="product__list--items__content--desc d-xl-none mb-15">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia voluptas dolore doloribus architecto sequi corporis deleniti officia culpa dolor esse consectetur eligendi, natus at rem ab quae amet molestiae quod voluptates, illo exercitationem numquam ipsa. Est fuga ex ipsum alias ipsa quibusdam magni harum labore voluptate, esse deserunt saepe eveniet.</p>
                                                         <ul class="product__items--action d-flex">
                                                             <li class="product__items--action__list">
                                                                 <a class="product__items--action__btn add__to--cart" href="cart.html">
@@ -701,28 +705,110 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- Pai paginação -->
                             <div class="pagination__area bg__gray--color">
                                 <nav class="pagination">
-                                    <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
-                                        <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
-                                                <svg xmlns="http://www.w3.org/2000/svg"  width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
-                                                <span class="visually-hidden">pagination arrow</span>
-                                            </a>
-                                        <li>
-                                        <li class="pagination__list"><span class="pagination__item pagination__item--current">1</span></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">2</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">3</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">4</a></li>
-                                        <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
-                                                <span class="visually-hidden">pagination arrow</span>
-                                            </a>
-                                        <li>
-                                    </ul>
+
+                                    <!-- Pagination -->
+                                    <?php if(isset($atributos['pagina'])){ ?>
+                                        <input type="hidden" value="<?=$atributos['pagina']?>" name="pagina" id="pagina">
+                                    <?php }?>
+                                    <?php if($produtos['resultados'] >15) { ?>					
+
+                                        <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
+                                        <?php
+                                            $itensPorPagina = 16;
+                                            $maxExibibirPaginas = 4;
+                                            $qtdPagina = ceil($produtos["resultados"] / $itensPorPagina);
+
+                                            $link .= 'busca/';
+
+                                            if(isset($atributos['fabricante']) && !empty($atributos['fabricante'])){
+                                                $link  .= 'fabricante/'.$atributos['fabricante'] . '/';
+                                            }
+                                            if(isset($atributos['categoria']) && !empty($atributos['categoria'])){
+                                                $link  .= 'categoria/'.$atributos['categoria'] . '/';
+                                            }
+
+                                            if(isset($atributos['ordenacao']) && !empty($atributos['ordenacao'])){
+                                                if((isset($atributos['fabricante']) && !empty($atributos['fabricante'])) || (isset($atributos['categoria']) && !empty($atributos['categoria'])) || (isset($atributos['sub-categoria']) && !empty($atributos['sub-categoria'])) || (isset($atributos['busca']) && !empty($atributos['busca']))){
+                                                    $link .= 'ordenacao/'. $atributos['ordenacao'] . '/';
+                                                }else{
+                                                    $link .= 'ordenacao/'. $atributos['ordenacao'] . '/';
+                                                }
+                                                
+                                            }
+                                                                
+                                            $link .= 'pagina/';
+                                            
+                                            
+                                            $quantidadeResults = $produtos["resultados"];
+                                            $paginaAtual = ($atributos['pagina'] ? $atributos['pagina'] : 1);
+                                            $i = 1;					
+                                        ?>			
+                                        
+                                        
+                                        <?php if($quantidadeResults > $itensPorPagina){?>
+                                            <?php
+                                                        $anterior = $atributos['pagina'] - 1;
+                                                    ?>
+                                            <li class="pagination__list">
+                                                <a href="<?= $path["site"]?><?= $link . $anterior ?>/" class="pagination__item--arrow  link ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"  width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
+                                                    <span class="visually-hidden">Anterior</span>
+                                                </a>
+                                            </li>											
+                                            <?php for($i = ($paginaAtual - $maxExibibirPaginas); $i <= $paginaAtual - 1; $i++){
+                                                    if($i >= 1){ ?>
+                                                        <li class="pagination__list" >
+                                                            <span class="<?=($i == $paginaAtual ? "pagination__item pagination__item--current" : '')?>">
+                                                                <a class="<?=($i == $paginaAtual ? "" : "pagination__item")?>" href="<?= $path["site"]?><?= $link ?><?= $i?>/"><?=$i?></a>
+                                                            </span>                                                    
+                                                        </li>
+                                            <?php }}}?>
+
+                                            <li class="pagination__list" >
+                                                <?php $proximo = $i + 1;?>
+                                                <span class="<?=($i == $paginaAtual ? "pagination__item pagination__item--current" : '')?>">
+                                                    <a class="<?=($i == $paginaAtual ? "" : "pagination__item")?>" href="<?= $path["site"]?><?= $link .  $paginaAtual?>/">
+                                                        <?=$i?>
+                                                    </a>
+                                                </span>                                        
+                                            </li>
+
+                                        <?php for($i = $paginaAtual +1; $i <= $paginaAtual + $maxExibibirPaginas; $i++){
+                                                if($i <= $qtdPagina){ ?>
+                                                    <li class="pagination__list" >
+                                                        <span>
+                                                            <a class="<?=($i == $paginaAtual ? "" : "pagination__item")?>" href="<?= $path["site"]. $link .  $i?>/">
+                                                                <?=$i?>
+                                                            </a>
+                                                        </span> 
+                                                    </li>
+                                        <?php }} ?>
+
+                                        <?php if($quantidadeResults > $itensPorPagina){ ?>												
+                                                <li class="pagination__list">
+                                                    <a href="<?= $path["site"]?><?= $link . $proximo?>/" class="pagination__item--arrow  link ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
+                                                        <span class="visually-hidden">Próximo</span>
+                                                    </a>
+                                                </li>
+                                        <?php } ?>
+
+                                        </ul>					
+                                        
+                                    <?php }?>						
+                                    <!--/fim paginação -->
+
                                 </nav>
                             </div>
+                            <!-- Pai paginação -->
+                            	
+
+                            
                         </div>
                     </div>
                 </div>
@@ -739,7 +825,7 @@
 
 
 <!-- Quickview Wrapper -->
-<div class="modal" id="modal1" data-animation="slideInUp">
+<div class="modal" id="modal<?=$i?>" data-animation="slideInUp">
         <div class="modal-dialog quickview__main--wrapper">
             <header class="modal-header quickview__header">
                 <button class="close-modal quickview__close--btn" aria-label="close modal" data-close>✕ </button>
@@ -853,7 +939,7 @@
                     <div class="col">
                         <div class="quickview__info">
                             <form action="#">
-                                <h2 class="product__details--info__title mb-15">CAMERA VIDEO WI-FI FULL HD IM3 C/MICROSD 32GB - PC</h2>
+                                <h2 class="product__details--info__title mb-15">Teste CAMERA VIDEO WI-FI FULL HD IM3 C/MICROSD 32GB - PC</h2>
                                 <div class="product__details--info__price mb-10">
                                     <span class="current__price">$58.00</span>
                                     <span class="old__price">$68.00</span>
@@ -986,3 +1072,5 @@
         </div>
     </div>
     <!-- Quickview Wrapper End -->
+
+    

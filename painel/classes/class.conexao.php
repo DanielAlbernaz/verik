@@ -19,3 +19,34 @@
 	$pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
 	$pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
 	$sqlGl = new FluentPDO($pdo);
+
+
+	// Conexão com banco Verik
+	$atributosDeConexaoVerik = $config->ConexaoBancoExecelencia();
+
+	$aParametrosVerik = array();
+	$aParametrosVerik['host'] = $atributosDeConexaoVerik["banco"]["local"]["host"];
+	$aParametrosVerik['user'] = $atributosDeConexaoVerik["banco"]["local"]["user"];
+	$aParametrosVerik['passwd'] = $atributosDeConexaoVerik["banco"]["local"]["senha"];
+	$aParametrosVerik['DBType'] = $atributosDeConexaoVerik["banco"]["local"]["type"];
+	$aParametrosVerik['port'] = $atributosDeConexaoVerik["banco"]["local"]["port"];
+	$aParametrosVerik['dbName'] = $atributosDeConexaoVerik["banco"]["local"]["banco"];
+	 
+// 	$pdo2 = new PDO($aParametrosVerik['DBType'].":host=".$aParametrosVerik['host'].";port=".$aParametrosVerik['port'].";ci:dbname=".$aParametrosVerik['dbName'], $aParametrosVerik['user'],$aParametrosVerik['passwd']);
+// // 	$pdo2 = new Pdo("oci:dbname=(".$aParametrosVerik['dbName']." = (ADDRESS_LIST = (
+// // 		ADDRESS = (PROTOCOL = TCP)
+// // 		(HOST = {".$aParametrosVerik['host']."} )
+// // 		(PORT = {".$aParametrosVerik['port']."} )
+// // 	   ))
+// // 	 (CONNECT_DATA = (SID = {".$aParametrosVerik['serviceName']."})
+// // 	 )); charset=AL32UTF8",
+// // 	 $aParametrosVerik['user'],
+// // $params['passwd']
+// // );
+// 	$pdo2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+// 	$pdo2->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+// 	$pdo2->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+// 	$sqlGlEx = new FluentPDO($pdo2);
+
+
+	

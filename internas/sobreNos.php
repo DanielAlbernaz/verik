@@ -59,7 +59,7 @@
         <!-- End counterup banner section -->
 
        <!-- Start about section -->
-       <section class="about__section section--padding mb-95">
+       <!-- <section class="about__section section--padding mb-95">
             <div class="container">
                 <div class="row">
                     
@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End about section -->
         
         <!-- End brand logo section -->

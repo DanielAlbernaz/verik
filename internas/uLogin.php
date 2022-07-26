@@ -38,9 +38,9 @@
 
                                         <div class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
                                             <div class="account__login--remember position__relative">
-                                                <input class="checkout__checkbox--input" id="check1" type="checkbox">
+                                                <input class="checkout__checkbox--input" id="manter_conectado" name="manter_conectado" type="checkbox">
                                                 <span class="checkout__checkbox--checkmark"></span>
-                                                <label class="checkout__checkbox--label login__remember--label" for="check1">Continuar conectado</label>
+                                                <label class="checkout__checkbox--label login__remember--label" for="manter_conectado">Continuar conectado</label>
                                             </div>
                                             <a href="<?= $path["site"] ?>esqueceu-senha" class="account__login--forgot">Esqueci minha senha</a>
                                         </div>

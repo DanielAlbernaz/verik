@@ -117,103 +117,47 @@
                                         </thead>
                                         <tbody class="cart__table--body">
                                             <!-- 1 -->
-                                            <tr class="cart__table--body__items">
-                                                <td class="cart__table--body__list descricao-table-produtos-carrinho">
-                                                    <div class="cart__product d-flex align-items-center">
-                                                        <button class="cart__remove--btn" aria-label="search button" type="button">
-                                                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="14px" height="16px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg>
-                                                        </button>
-                                                        <div class="cart__thumbnail">
-                                                            <a href="<?= $path["site"] ?>produto"><img class="border-radius-5" src="<?= $path["site"] ?>assets/img/produtos/product1.png" alt="Nome do produto - Marca do produto - verik"></a>
-                                                        </div>
-                                                        <div class="cart__content">
-                                                            <h4 class="cart__content--title"><a href="<?= $path["site"] ?>produto">Headset Gamer HyperX Cloud Stinger, Drivers 50mm, Múltiplas Plataformas, P2 e P3 - HX-HSCS-BK/NA</a></h4>
-                                                            <span class="cart__content--variant">Caracteristicas 220V</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price">R$ 42,86</span>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <div class="quantity__box">
-                                                        <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
-                                                        <label>
-                                                            <input type="number" class="quantity__number quickview__value--number" value="1" data-counter/>
-                                                        </label>
-                                                        <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price end">R$ 1.500,00</span>
-                                                </td>
-                                            </tr>
                                             
-                                            <!-- 1 -->
-                                            <tr class="cart__table--body__items">
-                                                <td class="cart__table--body__list descricao-table-produtos-carrinho">
-                                                    <div class="cart__product d-flex align-items-center">
-                                                        <button class="cart__remove--btn" aria-label="search button" type="button">
-                                                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="14px" height="16px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg>
-                                                        </button>
-                                                        <div class="cart__thumbnail">
-                                                            <a href="<?= $path["site"] ?>produto"><img class="border-radius-5" src="<?= $path["site"] ?>assets/img/produtos/product1.png" alt="Nome do produto - Marca do produto - verik"></a>
+                                            <?php foreach($_SESSION['PRODUTO_CARRINHO']['ID'] as $produto){ ?>
+                                                <tr class="cart__table--body__items" id="produtoCarrinho<?= $produto['id'] ?>">
+                                                    <td class="cart__table--body__list descricao-table-produtos-carrinho">
+                                                        <div class="cart__product d-flex align-items-center">
+                                                            <button class="cart__remove--btn" aria-label="search button" type="button" onclick="excluirProdutoCarrinho(<?= $produto['id']?>)">
+                                                                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="14px" height="16px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg>
+                                                            </button>
+                                                            <div class="cart__thumbnail">
+                                                            <?php $foto = $objProduto->listaFotosProduto($produto['id']); ?>  
+                                                                <?php if($foto){  ?>
+                                                                    <a href="<?= $path["site"] ?>produto"><img class="border-radius-5" src="<?= $objUteis->imagemProdutoVerik($foto[0]->foto) ?>" alt="Nome do produto - Marca do produto - verik"></a>
+                                                                <?php }else{ ?>
+                                                                    <a href="<?= $path["site"] ?>produto"><img class="border-radius-5" src="<?= $path['site']?>imagens/sem-imagem.png" alt="Nome do produto - Marca do produto - verik"></a>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="cart__content">
+                                                                <h4 class="cart__content--title"><a href="<?= $path["site"] ?>produto"><?= $produto['nome']?></a></h4>
+                                                                <span class="cart__content--variant"><?= $produto['marca']?></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="cart__content">
-                                                            <h4 class="cart__content--title"><a href="<?= $path["site"] ?>produto">Headset Gamer HyperX Cloud Stinger, Drivers 50mm, Múltiplas Plataformas, P2 e P3 - HX-HSCS-BK/NA</a></h4>
-                                                            <span class="cart__content--variant">Caracteristicas 220V</span>
+                                                    </td>
+                                                    <td class="cart__table--body__list">
+                                                        <span class="cart__price">R$ <?= $objUteis->converterPrecoExebicao($produto['preco'])?></span>
+                                                    </td>
+                                                    <td class="cart__table--body__list">
+                                                        <div class="quantity__box">
+                                                            <button type="button" class="quantity__value quickview__value--quantity decrease" onclick="removerQuantidadeCarrinho(<?= $produto['id']?>)" value="Decrease Value">-</button>
+                                                            <label>
+                                                                <input type="number" class="quantity__number quickview__value--number" id="quantidadeProdutos<?= $produto['id']?>" value="<?= $produto['qtd']?>" />
+                                                            </label>
+                                                            <button type="button" class="quantity__value quickview__value--quantity increase" onclick="adicionarQuantidadeCarrinho(<?= $produto['id']?>)" value="Increase Value">+</button>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price">R$ 42,86</span>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <div class="quantity__box">
-                                                        <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
-                                                        <label>
-                                                            <input type="number" class="quantity__number quickview__value--number" value="1" data-counter/>
-                                                        </label>
-                                                        <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price end">R$ 1.500,00</span>
-                                                </td>
-                                            </tr>
-                                            
-                                            <!-- 1 -->
-                                            <tr class="cart__table--body__items">
-                                                <td class="cart__table--body__list descricao-table-produtos-carrinho">
-                                                    <div class="cart__product d-flex align-items-center">
-                                                        <button class="cart__remove--btn" aria-label="search button" type="button">
-                                                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="14px" height="16px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg>
-                                                        </button>
-                                                        <div class="cart__thumbnail">
-                                                            <a href="<?= $path["site"] ?>produto"><img class="border-radius-5" src="<?= $path["site"] ?>assets/img/produtos/product1.png" alt="Nome do produto - Marca do produto - verik"></a>
+                                                    </td>
+                                                    <td class="cart__table--body__list">
+                                                        <div id="precoTotalItem<?= $produto['id']?>">
+                                                            <span class="cart__price end">R$ <?= $objUteis->converterPrecoExebicao($produto['preco_total'])?></span>
                                                         </div>
-                                                        <div class="cart__content">
-                                                            <h4 class="cart__content--title"><a href="<?= $path["site"] ?>produto">Headset Gamer HyperX Cloud Stinger, Drivers 50mm, Múltiplas Plataformas, P2 e P3 - HX-HSCS-BK/NA</a></h4>
-                                                            <span class="cart__content--variant">Caracteristicas 220V</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price">R$ 42,86</span>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <div class="quantity__box">
-                                                        <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
-                                                        <label>
-                                                            <input type="number" class="quantity__number quickview__value--number" value="1" data-counter/>
-                                                        </label>
-                                                        <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cart__table--body__list">
-                                                    <span class="cart__price end">R$ 1.500,00</span>
-                                                </td>
-                                            </tr>                                                                                                                                    
+                                                    </td>
+                                                </tr> 
+                                            <?php } ?>                                                                                                                            
                                         </tbody>
                                     </table>                                     
                                 </div>
@@ -234,9 +178,9 @@
                                         <h3 class="coupon__code--title">Resumo do pedido</h3>
                                         <table class="cart__summary--total__table">
                                             <tbody>
-                                                <tr class="cart__summary--total__list">
+                                                <tr class="cart__summary--total__list" id="divTotalProdutos">
                                                     <td class="cart__summary--total__title text-left">Valor dos Produtos:</td>
-                                                    <td class="cart__summary--amount text-right">R$ 1.500,00</td>
+                                                    <td class="cart__summary--amount text-right" id="valorTotalProdutos">R$ <?=$objUteis->converterPrecoExebicao($totalProdutos)?></td>                                                    
                                                 </tr>
                                                 <tr class="cart__summary--total__list">
                                                     <td class="cart__summary--total__title text-left">Frete:</td>

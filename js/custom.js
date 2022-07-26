@@ -268,5 +268,144 @@ function mostraMensagem(msg,tempo,type,modal) {
                 speed  : 500
             }
         }).show();
+}
 
+function ordenarProdutos(ordenacao, marcar = null){
+	var url = $('base').attr('href');
+
+	url = 'busca/';
+	
+	if($('#marcaFabricante').val()){
+		url += 'fabricante/'+ $('#marcaFabricante').val() +'/';
+	}
+		
+	if($('#busca').val()){
+		url += 'busca/'+ $('#busca').val() +'/';
+	}
+	
+	if($('#categoriaSelecionar').val()){
+		url += 'categoria/'+ $('#categoriaSelecionar').val() +'/grupo/';
+	}
+				
+	if($('#pagina').val()){
+		url += 'ordenacao/' + ordenacao + '/pagina/'+ $('#pagina').val() +'';
+	}else{
+		url += 'ordenacao/' + ordenacao + '/pagina/1';
+	}
+	window.location.href = pathSite + url;
+}
+
+function fitroMarca(marca, id){
+	var url = $('base').attr('href');	
+	url = 'busca/'; 
+
+    if($('#'+id).is(':checked')){
+		
+		url += 'fabricante/'+ marca +'/';
+
+		
+		if($('#categoriaSelecionar').val()){
+			url += 'categoria/'+ $('#categoriaSelecionar').val() +'/';
+		}
+			
+		if($('#fieldPesquisaProduto').val().length > 0){
+			url += 'search/'+ $('#fieldPesquisaProduto').val() +'/';
+		}
+		
+		if($('#ordenar').val()){
+			url += 'ordenacao/'+ $('#ordenar').val() +'/';
+		}
+			
+		url += 'pagina/1';
+			
+		window.location.href = pathSite + url;
+	}else{
+		
+		if($('#categoriaSelecionar').val()){
+			url += 'categoria/'+ $('#categoriaSelecionar').val() +'/';
+		}
+		
+		if($('#fieldPesquisaProduto').val().length > 0){
+			url += 'search/'+ $('#fieldPesquisaProduto').val() +'/';
+		}
+		
+		if($('#ordenar').val()){
+			url += 'ordenacao/'+ $('#ordenar').val() +'/';
+		}
+			
+		url += 'pagina/1';
+			
+		window.location.href = pathSite + url;
+	}
+    
+}
+
+function fitroCategoria(categoria, id){
+	var url = $('base').attr('href');	         
+    url = 'busca/'; 
+
+	if($('#'+id).is(':checked')){
+		url += 'categoria/'+ categoria +'/';
+
+		
+		if($('#marcaFabricante').val()){
+			url += 'fabricante/'+ $('#marcaFabricante').val() +'/';
+		}
+		
+		if($('#fieldPesquisaProduto').val().length > 0){
+			url += 'search/'+ $('#fieldPesquisaProduto').val() +'/';
+		}
+		
+		if($('#ordenar').val()){
+			url += 'ordenacao/'+ $('#ordenar').val() +'/';
+		}
+			
+		url += 'pagina/1';
+			
+		window.location.href = pathSite + url;
+	}else{
+		
+		if($('#marcaFabricante').val()){
+			url += 'fabricante/'+ $('#marcaFabricante').val() +'/';
+		}
+
+		if($('#fieldPesquisaProduto').val().length > 0){
+			url += 'search/'+ $('#fieldPesquisaProduto').val() +'/';
+		}
+		
+		if($('#ordenar').val()){
+			url += 'ordenacao/'+ $('#ordenar').val() +'/';
+		}
+			
+		url += 'pagina/1';
+			
+		window.location.href = pathSite + url;
+	}
+}
+
+function pesquisarProdutos(){
+
+	if($('#fieldPesquisaProduto').val().length > 0){
+
+		var url = $('base').attr('href');	         
+    	url = 'busca/'; 
+
+		url += 'search/'+ $('#fieldPesquisaProduto').val() +'/';
+
+		if($('#categoriaSelecionar').val()){
+			url += 'categoria/'+ $('#categoriaSelecionar').val() +'/';
+		}
+
+		if($('#marcaFabricante').val()){
+			url += 'fabricante/'+ $('#marcaFabricante').val() +'/';
+		}
+		
+		if($('#ordenar').val()){
+			url += 'ordenacao/'+ $('#ordenar').val() +'/';
+		}
+			
+		url += 'pagina/1';
+			
+		window.location.href = pathSite + url;
+	}
 }

@@ -2837,25 +2837,15 @@ public function enviaEmailContatoSite($emails=null, $msg=null, $replyTo=null, $a
 
     function converteDataExtenso($data)
     {
-        //2022-05-21
-
-
-       
-        //$hora2 = explode('-', $hora[0]);
-        //$dia = $hora2[2];
-
         $originalDate = "2022-05-21";
         //original date is in format YYYY-mm-dd
         $data = explode(' ', $data);  
         $DateTime = DateTime::createFromFormat('Y-m-d', $data[0]);
         $newDate = $DateTime->format('d-m-Y');
         
-        $newDate = explode('-', $newDate);
-        
-        
+        $newDate = explode('-', $newDate);  
 
         return $newDate['0'] . ' ' . $this->retornaMesExtenso($newDate['1']) . ' ' . $newDate['2'];
-
     }
 
     function converterPrecoExebicao(string $preco)
@@ -2867,7 +2857,72 @@ public function enviaEmailContatoSite($emails=null, $msg=null, $replyTo=null, $a
         }
     }
 
+    function linkProduto($produto)
+    {
+        $nomeProduto = str_replace(' ', '-', $produto->nome);
+        $nomeFabricante = str_replace(' ', '-', $produto->nome_fabricante);
+        $nomeMarca = str_replace(' ', '-', $produto->marca);
+        
+        $link = 'produto/' . 'p/' . $produto->produto_id . '/' . $nomeProduto . '-' . $nomeFabricante . '-' . $nomeMarca;
 
+        return strtolower($this->removerAcentos($link));
+    }
+
+    function adicionarTotalCarrinho()
+    {
+        //classe de session
+        include_once "class.Produto.inc.php";
+        $objSession2Produto = new ProdutoCarrinho('site');
+
+        $produtosCarrinho = $objSession2Produto->getProdutoItems();
+
+        $total = new stdClass();
+        foreach($produtosCarrinho as $produtoCarrinho){
+            $total->totalProdutos+= $produtoCarrinho['preco_total'];                 
+        }
+        $total->produto_id = 'total';
+        $objSession2Produto->adicionarTotal($total);
+    }
+
+    // function linkPreCarrinho($produto)
+    // {
+    //     $nomeProduto = str_replace(' ', '-', $produto->nome);
+    //     $nomeFabricante = str_replace(' ', '-', $produto->nome_fabricante);
+    //     $nomeMarca = str_replace(' ', '-', $produto->marca);
+        
+    //     $link = 'precarrinho/' . 'p/' . $produto->produto_id . '/' . $nomeProduto . '-' . $nomeFabricante . '-' . $nomeMarca;
+
+    //     return strtolower($this->removerAcentos($link));
+    // }
+
+
+    function verificarManterLogado($token)
+    {     
+        if($token){
+            include_once "class.UsuarioSite.php";
+            $objUsuarioSite = new UsuarioSite();
+
+            include_once "session/class.eyesecuresession.inc.php";
+            $objSession2 = new EyeSecureSession('site');
+
+            $usuario = $objUsuarioSite->listaTokenSession(array('token' => $token));
+        
+            if($usuario){
+                $logar = $objUsuarioSite->lista(array('id' => $usuario->usuario_id));
+                // $this->encode($logar);
+            
+                $objSession2->set('id', $logar->id);
+                $objSession2->set('nome', $logar->nome);
+                $objSession2->set('email', $logar->email); 
+            } 
+        }
+    }
+
+    function imagemProdutoVerik($photo)
+    {
+        $img = stream_get_contents($photo);
+        return 'data:image/jpeg;base64,' . base64_encode($img);
+    }
 }
  function print_rpre($aDados, $return = false) {
 

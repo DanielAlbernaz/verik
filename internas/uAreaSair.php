@@ -10,7 +10,7 @@
     </div>
 
 
-    <a href="usuario-sair" class="log-out-btn" ><i class="fas fa-power-off" data-toggle="tooltip" data-placement="left" title="Sair"></i></a>
+    <a href="<?= $path['site']?>usuario-sair" class="log-out-btn" ><i class="fas fa-power-off" data-toggle="tooltip" data-placement="left" title="Sair"></i></a>
 
 
 </div>

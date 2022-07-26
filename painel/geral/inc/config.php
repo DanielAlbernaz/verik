@@ -70,31 +70,33 @@
 		/**
 		 * Desenvolvimento
 		 */
-		// public $configBancoExecelencia;	
+		// public $configBancoVerik;	
 		// 	public static function ConexaoBancoExecelencia(){
-		// 		$configBancoExecelencia["banco"]["local"]["host"]  = "192.168.7.206";
-		// 		$configBancoExecelencia["banco"]["local"]["user"]  = "root";
-		// 		$configBancoExecelencia["banco"]["local"]["senha"] = "mysql";
-		// 		$configBancoExecelencia["banco"]["local"]["banco"] = "excelenc_api";
-		// 		$configBancoExecelencia["banco"]["local"]["port"]  = "3306";	
-		// 		$configBancoExecelencia["banco"]["local"]["type"]  = "mysql";
+		// 		$configBancoVerik["banco"]["local"]["host"]  = "192.168.7.206";
+		// 		$configBancoVerik["banco"]["local"]["user"]  = "root";
+		// 		$configBancoVerik["banco"]["local"]["senha"] = "mysql";
+		// 		$configBancoVerik["banco"]["local"]["banco"] = "excelenc_api";
+		// 		$configBancoVerik["banco"]["local"]["port"]  = "3306";	
+		// 		$configBancoVerik["banco"]["local"]["type"]  = "mysql";
 
-		// 		return $configBancoExecelencia;
+		// 		return $configBancoVerik;
 		// }
 
 		/**
 		 * Produção
 		 */
-		public $configBancoExecelencia;	
+		public $configBancoVerik;	
 			public static function ConexaoBancoExecelencia(){
-				$configBancoExecelencia["banco"]["local"]["host"]  = "189.113.168.208";
-				$configBancoExecelencia["banco"]["local"]["user"]  = "excelenc_api";
-				$configBancoExecelencia["banco"]["local"]["senha"] = "@2018@n49tsuprema";
-				$configBancoExecelencia["banco"]["local"]["banco"] = "excelenc_api";
-				$configBancoExecelencia["banco"]["local"]["port"]  = "3306";	
-				$configBancoExecelencia["banco"]["local"]["type"]  = "mysql";
+				$configBancoVerik["banco"]["local"]["host"]  = "189.112.246.1";
+				$configBancoVerik["banco"]["local"]["user"]  = "BANCOWEB";
+				$configBancoVerik["banco"]["local"]["senha"] = "D1T3C7";
+				$configBancoVerik["banco"]["local"]["banco"] = "SANTRIPDB1";
+				$configBancoVerik["banco"]["local"]["serviceName"] = "SANTRIPDB1";
 
-				return $configBancoExecelencia;
+				$configBancoVerik["banco"]["local"]["port"]  = "1521";	
+				$configBancoVerik["banco"]["local"]["type"]  = "oci";
+
+				return $configBancoVerik;
 		}
 			   
 	}

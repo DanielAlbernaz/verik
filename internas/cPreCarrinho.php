@@ -8,15 +8,19 @@
                         <div class="row">
                             <!-- imagem do produto -->
                             <div class="col-md-3">
-                                <img class="product__items--img product__primary--img" src="<?=$path["site"]?>assets/img/produtos/camera-ip-dome-vip-1220-d-g3.png" alt="Nome do produto - Marca do produto - Verik">
+                                <?php if($produto->foto){  ?>
+                                    <img class="product__items--img product__primary--img" src="<?= $objUteis->imagemProdutoVerik($produto->foto) ?>" alt="product-img">
+                                <?php }else{ ?>
+                                    <img class="product__items--img product__primary--img" src="<?= $path['site']?>imagens/sem-imagem.png" alt="product-img">
+                                <?php } ?>
                             </div>
                             <!--/fim imagem do produto -->
                             <!-- marca e nome do produto -->
                             <div class="col-md-7">                                
                                 <div class="descricao-produto-precarrinho">
                                     <p class="borderR">                                    
-                                        <strong class="marca-produto-precarrinho">Samsung</strong><br/>
-                                        Smart TV 50 4k QLED Samsung 50Q80A, HDMI, USB, Modo Game, Processador IA, Pontos Quânticos, Alexa e Google Assistant, Preto - QN50Q80AAGXZD
+                                        <strong class="marca-produto-precarrinho"><?= $produto->marca ?></strong><br/>
+                                        <?= $produto->nome ?>
                                     </p>
                                 </div>                                
                             </div>
@@ -24,7 +28,7 @@
                             <!--  Preço do produto -->
                             <div class="col-md-2">
                                 <div class="preco-precarrinho">
-                                    R$ 3.609,05
+                                    R$ <?= $objUteis->converterPrecoExebicao($produto->preco_venda) ?>
                                 </div>
                             </div>
                             <!--/fim Preço do produto -->

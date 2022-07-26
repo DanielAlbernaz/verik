@@ -54,7 +54,7 @@
                 <div class="header__account header__sticky--none">
                     <ul class="d-flex">
                         <li class="header__account--items">
-                            <a class="header__account--btn" href="#">
+                            <a class="header__account--btn" href="<?=$path['site']?><?= $objSession2->get('id') ? 'minha-conta' : 'login' ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26.51" height="23.443"
                                     viewBox="0 0 512 512">
                                     <path
@@ -66,7 +66,6 @@
                                         fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
                                     </svg>
                                 <span class="header__account--btn__text">Minha conta</span>
-                                <span class="header__account--btn__text"><?=  $objSession2->get('id') ? $objSession2->get('email') : null ?></span>
                             </a>
                         </li>
                         <li class="header__account--items d-none d-lg-block">

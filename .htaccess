@@ -18,7 +18,6 @@ RewriteRule ^novidades/(.*)$ index.php?acao=novidades&atributos=$1
 RewriteRule ^novidade/(.*)$ index.php?acao=novidade&atributos=$1
 RewriteRule ^produto-search/(.*)$ index.php?acao=produto-search&atributos=$1
 RewriteRule ^cadastro-revenda/(.*)$ index.php?acao=cadastro-revenda&atributos=$1
-RewriteRule ^produto/(.*)$ index.php?acao=produto&atributos=$1
 RewriteRule ^orcamento-finalizado/(.*)$ index.php?acao=orcamento-finalizado&atributos=$1
 RewriteRule ^carrinho/(.*)$ index.php?acao=carrinho&atributos=$1
 RewriteRule ^servicos/(.*)$ index.php?acao=servicos&atributos=$1
@@ -28,6 +27,10 @@ RewriteRule ^treinamentos-online/(.*)$ index.php?acao=treinamentos-online&atribu
 RewriteRule ^treinamento/(.*)$ index.php?acao=treinamento&atributos=$1
 RewriteRule ^nossa-loja/(.*)$ index.php?acao=nossa-loja&atributos=$1
 
+# Verik
+RewriteRule ^busca/(.*)$ index.php?acao=busca&atributos=$1
+RewriteRule ^precarrinho/(.*)$ index.php?acao=precarrinho&atributos=$1
+RewriteRule ^produto/(.*)$ index.php?acao=produto&atributos=$1
 
 #http://agendagospelgyn.com.br/images/w590/h550/painel/geral/sistema/arq_galerias/fotos/18/0201301120642020.jpg
 
